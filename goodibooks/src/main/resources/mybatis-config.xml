@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- Alias -->
+	<typeAliases>
+		<typeAlias type="com.goodibooks.vo.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.goodibooks.vo.BookInfoVO" alias="BookInfoVO"/>
+		<typeAlias type="com.goodibooks.vo.BookImgVO" alias="BookImgVO"/>
+		<typeAlias type="com.goodibooks.vo.CategoryVO" alias="CategoryVO"/>	
+		<typeAlias type="com.goodibooks.vo.BoardVO" alias="BoardVO" />
+	</typeAliases>
+	
+	
+</configuration>
