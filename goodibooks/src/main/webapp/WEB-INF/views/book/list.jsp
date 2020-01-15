@@ -64,6 +64,7 @@
 						</div>
 						<div class="left-menu mb-30">
 							<ul>
+									<li><a href="list.action">전체 보기<span>${totalBook}</span></a></li>
 								<c:forEach var="c" items="${categorys}">
 									<li><a href="#">${c.category_name}<span>${c.book_count}</span></a></li>
 								</c:forEach>
@@ -98,22 +99,22 @@
 					<div class="tab-content">
 						<div class="tab-pane fade" id="th">
 							<div class="row">
+								<c:forEach var="b" items="${books}">
 								<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
 									<!-- single-product-start -->
 									<div class="product-wrapper mb-40">
 										<div class="product-img">
-											<a href="#">
-												<img src="/goodibooks/resources/img/product/1.jpg" alt="book" class="primary" />
+											<a href="detail.action?book_no=${b.book_no}">
+												<img src="/goodibooks/resources/img/book-img/${b.imgs[0].img}.jpg" alt="book" class="primary" />
 											</a>
 											<div class="quick-view">
-												<a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">
+												<a class="action-view" href="detail.action?book_no=${b.book_no}" title="Quick View">
 													<i class="fa fa-search-plus"></i>
 												</a>
 											</div>
 											<div class="product-flag">
 												<ul>
 													<li><span class="sale">new</span></li>
-													<li><span class="discount-percentage">-5%</span></li>
 												</ul>
 											</div>
 										</div>
@@ -127,10 +128,10 @@
 													<li><a href="#"><i class="fa fa-star"></i></a></li>
 												</ul>
 											</div>
-											<h4><a href="#">Joust Duffle Bag</a></h4>
+											<h4><a href="#">${b.name}</a></h4>
 											<div class="product-price">
 												<ul>
-													<li>$60.00</li>
+													<li>${b.price}</li>
 												</ul>
 											</div>
 										</div>
@@ -147,7 +148,7 @@
 									</div>
 									<!-- single-product-end -->
 								</div>
-							
+								</c:forEach>
 							</div>
 						</div>
 						<div class="tab-pane fade show active" id="list">
@@ -160,7 +161,7 @@
 									<div class="col-lg-4 col-md-4 col-12">
 										<div class="product-wrapper-2">
 											<div class="product-img">
-												<a href="#">
+												<a href="detail?book_no=${b.book_no}">
 													<img src="/goodibooks/resources/img/book-img/${b.imgs[0].img}.jpg" alt="book" class="primary" />
 												</a>
 											</div>
@@ -178,7 +179,7 @@
 														<li><a href="#"><i class="fa fa-star"></i></a></li>
 													</ul>
 												</div>
-												<h4><a class="detailBtn" href="detail.action?book_no=1">${b.name}</a></h4>
+												<h4><a class="detailBtn" href="detail.action?book_no=${b.book_no}">${b.name}</a></h4>
 												<div class="product-price">
 													<ul>
 														<li>${b.price}</li>
@@ -238,7 +239,6 @@
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
 	</footer>
-	<!-- Modal end -->
 
 
 	<!-- all js here -->

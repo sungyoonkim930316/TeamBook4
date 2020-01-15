@@ -14,7 +14,9 @@ public interface BookMapper {
 	BookInfoVO selectBookByBookNo(int book_no);
 	List<BookImgVO> selectImgByBookNo(int book_no);
 	List<BookInfoVO> selectBooks();
+	int bookCount();
 	List<CategoryVO> selectCategorys();
 	int bookCountByCategoryNo(int category_no);
+	
 	
 }

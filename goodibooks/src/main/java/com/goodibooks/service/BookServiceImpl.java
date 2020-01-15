@@ -54,5 +54,11 @@ public class BookServiceImpl implements BookService {
 				
 		return categorys;
 	}
+
+	@Override
+	public int bookCount() {
+		
+		return bookMapper.bookCount();
+	}
 	
 }

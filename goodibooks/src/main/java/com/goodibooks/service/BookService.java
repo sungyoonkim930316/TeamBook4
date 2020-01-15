@@ -10,5 +10,6 @@ public interface BookService {
 	BookInfoVO showBookDetailByBookNo(int book_no);
 	List<BookInfoVO> showBookList();
 	List<CategoryVO> getCategoryList();
+	int bookCount();
 	
 }
