@@ -75,9 +75,9 @@
 										</div>
 										<div class="product-info-stock-sku">
 											<div class="product-attribute">
-												<span>카테고리명 &nbsp;&nbsp; <a href="">${book.category_name}</a></span><br><br>
-												<span>출판사 &nbsp;&nbsp; <a href="">${book.pub_name}</a></span><br><br>
-												<span>저자 &nbsp;&nbsp; <a href="">${book.writer}</a></span>
+												<span>카테고리명 &nbsp;&nbsp; <a href="list.action?searchType=C&searchKey=${book.category_name}">${book.category_name}</a></span><br><br>
+												<span>출판사 &nbsp;&nbsp; <a href="list.action?searchType=P&searchKey=${book.pub_name}">${book.pub_name}</a></span><br><br>
+												<span>저자 &nbsp;&nbsp; <a href="list.action?searchType=W&searchKey=${book.writer}">${book.writer}</a></span>
 											</div>
 										</div>
 										<div class="product-reviews-summary">
@@ -104,8 +104,8 @@
 												<div class="quality-button">
 													<input class="qty" type="number" value="1">
 												</div>
-												<a href="#">장바구니</a>
-												<a href="#">바로 구매하기</a>
+												<a id="cartBtn" href="#">장바구니</a>
+												<a id="buyBtn" href="#">바로 구매하기</a>
 											</form>
 										</div>
 									</div>
@@ -326,5 +326,14 @@
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
+	<script type="text/javascript">
+		$(function() {
+			$("#cartBtn").on("click", function(event) {
+				if (!confirm("장바구나에 넣을까요?")) return;
+			});
+
+		});
+			
+	</script>
     </body>
 </html>

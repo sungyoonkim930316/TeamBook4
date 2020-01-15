@@ -16,7 +16,6 @@
 		select img from book_img where book_no = #{book_no}
 	</select>
 	
-	
 	<!-- 책 리스트 -->
 	<select id="selectBooks" resultType="BookInfoVO">
 		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
@@ -35,6 +34,33 @@
 	<!-- 카테고리별 책 개수 -->
 	<select id="bookCountByCategoryNo" parameterType="int" resultType="int">
 		select count(category_no) from book_info where category_no = #{categoryNo} group by category_no
+	</select>
+	
+	<!-- 책 검색 -->
+	<sql id="searchCondition">
+		<trim suffix=" like '%'||#{searchKey}||'%'">
+				<choose>
+			<when test="searchType == 'T'.toString()">
+				b.name
+			</when>
+			<when test="searchType == 'W'.toString()">
+				b.writer
+			</when>
+			<when test="searchType == 'C'.toString()">
+				category_name
+			</when>
+			<when test="searchType == 'P'.toString()">
+				pub_name
+			</when>
+		</choose>
+		</trim>
+
+	</sql>
+	<select id="searchBook" parameterType="hashmap" resultType="BookInfoVO" >
+		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
+		from book_info b, publisher p, category c 
+		where b.pub_no = p.pub_no and c.category_no = b.category_no and 
+		<include refid="searchCondition"></include>
 	</select>
 	
 </mapper>

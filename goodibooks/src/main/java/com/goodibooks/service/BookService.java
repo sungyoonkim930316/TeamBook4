@@ -1,5 +1,6 @@
 package com.goodibooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.vo.BookInfoVO;
@@ -11,5 +12,6 @@ public interface BookService {
 	List<BookInfoVO> showBookList();
 	List<CategoryVO> getCategoryList();
 	int bookCount();
+	Object searchBook(HashMap<String, Object> params);
 	
 }

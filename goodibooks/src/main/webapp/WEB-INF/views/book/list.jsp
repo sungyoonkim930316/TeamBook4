@@ -66,7 +66,7 @@
 							<ul>
 									<li><a href="list.action">전체 보기<span>${totalBook}</span></a></li>
 								<c:forEach var="c" items="${categorys}">
-									<li><a href="#">${c.category_name}<span>${c.book_count}</span></a></li>
+									<li><a href="list.action?searchType=C&searchKey=${c.category_name}">${c.category_name}<span>${c.book_count}</span></a></li>
 								</c:forEach>
 							</ul>
 						</div>
@@ -89,7 +89,7 @@
 								</ul>
 							</div>
 							<div class="list-page">
-								<p>Items 1-9 of 11</p>
+								<p>Items </p>
 							</div>
 						</div>
 
@@ -161,7 +161,7 @@
 									<div class="col-lg-4 col-md-4 col-12">
 										<div class="product-wrapper-2">
 											<div class="product-img">
-												<a href="detail?book_no=${b.book_no}">
+												<a href="detail.action?book_no=${b.book_no}">
 													<img src="/goodibooks/resources/img/book-img/${b.imgs[0].img}.jpg" alt="book" class="primary" />
 												</a>
 											</div>
@@ -212,18 +212,15 @@
 					<!-- tab-area-end -->
 					<!-- pagination-area-start -->
 					<div class="pagination-area mt-50">
-						<div class="list-page-2">
-							<p>Items 1-9 of 11</p>
-						</div>
 						<div class="page-number">
 							<ul>
-								<li><a href="#" class="active">1</a></li>
+< 								<li><a href="#" class="active">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
 								<li><a href="#">4</a></li>
-								<li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li>
+								<li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li> 			
 							</ul>
-						</div>
+						</div> 
 					</div>
 					<!-- pagination-area-end -->
 				</div>

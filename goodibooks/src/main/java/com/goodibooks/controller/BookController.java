@@ -1,7 +1,12 @@
 package com.goodibooks.controller;
 
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,37 +28,36 @@ public class BookController {
 	// 상품 리스트 페이지로 이동
 	@GetMapping(path= {"/list.action"} )
 	// @RequestParam(required = false) : 데이터 없으면 null 로 설정
-	public String toList(Model model, @RequestParam(required = false)String searchType, @RequestParam(required = false)String searchKey) {
+	public String toList(Model model, 
+			@RequestParam(required = false)String searchType, 
+			@RequestParam(required = false)String searchKey, 
+			@RequestParam(defaultValue = "1")int page_no, 
+			HttpServletRequest req) {
 
-		if (searchType == null) { }
+		if (searchType == null) model.addAttribute("books", bookService.showBookList());
 		else {
+			HashMap<String, Object> params = new HashMap<>();
+			params.put("searchType", searchType);
+			params.put("searchKey", searchKey);
 			
+			model.addAttribute("books", bookService.searchBook(params));
 		}
 		
-		model = returnModel(model);
+		int total = bookService.bookCount();
+		//ThePager pager = new ThePager(total, page_no, 5, total/5, "list.action", req.getQueryString());
 		
-		
-		
-		return "book/list";
-	}
-	
-	public Model returnModel(Model model) {
-		
-		model.addAttribute("books", bookService.showBookList());
+		//model.addAttribute("pager", pager);
 		model.addAttribute("categorys", bookService.getCategoryList());
-		model.addAttribute("totalBook", bookService.bookCount());
-		
-		//페이저
-		//model.addAttribute("pager", new ThePager(0, 0, 5, 0, null, null));
-		//총데이터수, 현재페이지번호, 페이지당데이터개수, 번호로 보여주는페이지link개수, 페이저 포함되는페이지 주소, 리퀘스트 쿼리스트링
-		
-		return model;
+		model.addAttribute("totalBook", total);
+
+		return "book/list";
 	}
 	
 	// 상품 디테일 페이지로 이동
 	@GetMapping(path= {"/detail.action"})
 	public String toDetail(int book_no, Model model) {
 		
+		System.out.println(book_no);
 		BookInfoVO book = bookService.showBookDetailByBookNo(book_no);
 		
 		if (book == null) return "redirect:list";

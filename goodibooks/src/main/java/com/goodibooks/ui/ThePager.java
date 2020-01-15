@@ -43,8 +43,18 @@ public class ThePager {
 			(dataCount / pageSize) + ((dataCount % pageSize) > 0 ? 1 : 0); 
 	}
 	
+
+//	<ul>
+//	<li><a href="#" class="active">1</a></li>
+//	<li><a href="#">2</a></li>
+//	<li><a href="#">3</a></li>
+//	<li><a href="#">4</a></li>
+//	<li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li>
+//</ul>
+
 	public String toString(){
 		StringBuffer linkString = new StringBuffer(2048);
+		
 		
 		//1. 처음, 이전 항목 만들기
 		if (pageNo > 1) {

@@ -1,13 +1,13 @@
 package com.goodibooks.vo;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
 public class CartListVO {
 
-	private int cart_no;
-	private int cart_count;
+	private int cart_no;	//장바구니 번호
+	private int cart_count;	//책수량
+	private String id;		
+	private int book_no;	//책번호
 	
 }

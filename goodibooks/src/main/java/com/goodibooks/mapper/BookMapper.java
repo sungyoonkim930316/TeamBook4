@@ -1,5 +1,6 @@
 package com.goodibooks.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -17,6 +18,7 @@ public interface BookMapper {
 	int bookCount();
 	List<CategoryVO> selectCategorys();
 	int bookCountByCategoryNo(int category_no);
+	List<BookInfoVO> searchBook(HashMap<String, Object> params);
 	
 	
 }

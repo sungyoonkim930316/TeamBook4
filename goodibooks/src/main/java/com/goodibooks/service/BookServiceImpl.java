@@ -1,6 +1,7 @@
 package com.goodibooks.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.mapper.BookMapper;
@@ -31,6 +32,7 @@ public class BookServiceImpl implements BookService {
 		ArrayList<BookInfoVO> books = new ArrayList<>();
 		
 		for (BookInfoVO b : bookMapper.selectBooks()) {
+			
 			b.setImgs(bookMapper.selectImgByBookNo(b.getBook_no()));
 			books.add(b);
 		}
@@ -59,6 +61,18 @@ public class BookServiceImpl implements BookService {
 	public int bookCount() {
 		
 		return bookMapper.bookCount();
+	}
+
+	@Override
+	public Object searchBook(HashMap<String, Object> params) {
+		
+		List<BookInfoVO> books = bookMapper.searchBook(params);
+		
+		for (int i = 0; i < books.size(); i++) {
+			books.get(i).setImgs(bookMapper.selectImgByBookNo(books.get(i).getBook_no()));
+		}
+		
+		return books;
 	}
 	
 }
