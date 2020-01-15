@@ -1,4 +1,7 @@
+<%@ page import="com.goodibooks.vo.MemberVO"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -17,6 +20,7 @@
         <jsp:include page="/WEB-INF/views/modules/common-css.jsp" />
 		
     	<script src="/goodibooks/resources/js/vendor/modernizr-2.8.3.min.js"></script>
+    	
     	
     </head>
     <body class="blog">
@@ -45,9 +49,35 @@
 		</div>
 		<!-- breadcrumbs-area-end -->
 		
+		<!-- 200114 -->
 		
-		<h4>내용추가 ㄱㄱ </h4><br><br><br><br>
-		
+		<div class="container">
+		<h4>모든 회원정보</h4>
+		<table class="table table-striped">
+			<thead>
+			<tr>
+				<td>ID</td>
+				<td>이름</td>
+				<td>전화번호</td>
+				<td>주소</td>
+				<td>E-mail</td>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="member" items="${ list }">
+			<tr>
+				<td>${ member.id }</td>
+				<td>${ member.name }</td>
+				<td>${ member.phone }</td>
+				<td>${ member.addr1 }</td>
+				<td>${ member.email }</td>
+			</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+		<br><br><br>
+		</div>
+		<!-- 200114 -->
 		
 		<!-- footer-area-start -->
 		<footer>

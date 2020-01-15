@@ -154,7 +154,7 @@
 									<li><a href="#">관리자 페이지<i class="fa fa-angle-down"></i></a>
 										<div class="sub-menu">
 											<ul>
-												<li><a href="/goodibooks/account/admin.action">모든회원조회</a></li>
+												<li><a href="/goodibooks/admin/admin.action">모든회원조회</a></li>
 												<li><a href="/goodibooks/book/register.action">책 등록</a></li>
 											</ul>
 										</div>
