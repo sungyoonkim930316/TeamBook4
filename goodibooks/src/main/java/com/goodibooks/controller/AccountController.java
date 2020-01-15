@@ -75,13 +75,6 @@ public class AccountController {
 		return "account/checkout";
 	}
 	
-	// 어드민 페이지로 이동
-	@GetMapping(path = {"/admin.action"})
-	public String toAdmin() {
-		
-		return "account/admin";
-	}
-	
 	// 로그아웃 실행 - ms
 	@GetMapping(path = {"/logout.action"})
 	public String logout(HttpSession session) {
