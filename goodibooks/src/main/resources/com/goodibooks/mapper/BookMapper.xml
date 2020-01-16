@@ -64,7 +64,6 @@
 			<include refid="query"></include> and 
 			<include refid="searchCondition"></include>
 		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
-		
 	</select>
 	
 	<!-- topbar 검색 -->
