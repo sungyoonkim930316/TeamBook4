@@ -96,7 +96,7 @@
 										<div class="product-info-price">
 											<div class="price-final">
 												<span> ${book.price} 원 &nbsp;</span>
-												<span class="old-price">$40.00</span>
+												<span class="old-price">${book.price + 10000} 원</span>
 											</div>
 										</div>
 										<div class="product-add-form">
@@ -104,7 +104,7 @@
 												<div class="quality-button">
 													<input class="qty" type="number" value="1">
 												</div>
-												<a id="cartBtn" href="#">장바구니</a>
+												<a id="cartBtn" href="">장바구니</a>
 												<a id="buyBtn" href="#">바로 구매하기</a>
 											</form>
 										</div>
@@ -148,7 +148,7 @@
 					<div class="col-lg-3 col-md-12 col-12 order-lg-2 order-2">
 						<div class="shop-left">
 							<div class="left-title mb-20">
-								<h4>Related Products</h4>
+								<h4>이 책과 함께 구매한 책</h4>
 							</div>
 							<div class="random-area mb-30">
 								<div class="product-active-2 owl-carousel">
@@ -299,10 +299,6 @@
 									<a href="#"><img src="img/banner/33.jpg" alt="banner" /></a>
 								</div>
 							</div>
-							<div class="left-title-2 mb-30">
-								<h2>Compare Products</h2>
-								<p>You have no items to compare.</p>
-							</div>
 							<div class="left-title-2">
 								<h2>My Wish List</h2>
 								<p>You have no items in your wish list.</p>
@@ -329,7 +325,9 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#cartBtn").on("click", function(event) {
-				if (!confirm("장바구나에 넣을까요?")) return;
+				if (!confirm("장바구니에 넣을까요?")) return;
+
+				
 			});
 
 		});

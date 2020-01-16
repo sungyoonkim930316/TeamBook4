@@ -44,4 +44,5 @@
 	<import resource="board-context.xml"/>
 	<import resource="admin-context.xml"/>
 	<import resource="ask-context.xml"/>
+	<import resource="review-context.xml"/>
 </beans>

@@ -88,9 +88,6 @@
 									<li><a class="active" href="#list" data-toggle="tab"><i class="fa fa-bars"></i>List</a></li>
 								</ul>
 							</div>
-							<div class="list-page">
-								<p>Items </p>
-							</div>
 						</div>
 
 						
@@ -137,7 +134,7 @@
 										</div>
 										<div class="product-link">
 											<div class="product-button">
-												<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="/goodibooks/mypage/mycart.action" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 											<div class="add-to-link">
 												<ul>
@@ -182,19 +179,18 @@
 												<h4><a class="detailBtn" href="detail.action?book_no=${b.book_no}">${b.name}</a></h4>
 												<div class="product-price">
 													<ul>
-														<li>${b.price}</li>
-														<li class="old-price">$38.00</li>
+														판매가 &nbsp;&nbsp;<li>${b.price}</li>
 													</ul>
 												</div>
 												<p>${b.contents}</p>
 												</div>
 											<div class="product-link">
 												<div class="product-button">
-													<a href="#" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+													<a href="/goodibooks/mypage/mycart.action" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 												</div>
 												<div class="add-to-link">
 													<ul>
-														<li><a href="product-details.html" title="Details"><i class="fa fa-external-link"></i></a></li>
+														<li>Show Details <a href="/goodibooks/book/detail.action?book_no=${b.book_no}" title="Details"><i class="fa fa-external-link"></i></a></li>
 													</ul>
 												</div>
 											</div>
@@ -213,12 +209,13 @@
 					<!-- pagination-area-start -->
 					<div class="pagination-area mt-50">
 						<div class="page-number">
-							<ul>
-< 								<li><a href="#" class="active">1</a></li>
+ 							<ul>
+ 								${pager}
+ 								<!-- <li><a href="#" class="active">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
 								<li><a href="#">4</a></li>
-								<li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li> 			
+								<li><a href="#" class="angle"><i class="fa fa-angle-right"></i></a></li> --> 			
 							</ul>
 						</div> 
 					</div>
@@ -242,10 +239,6 @@
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
-	<script type="text/javascript">
-	$(function() {
-	});
-	</script>
 </body>
 
 </html>

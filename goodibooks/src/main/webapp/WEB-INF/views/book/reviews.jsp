@@ -3,80 +3,88 @@
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
 
     								<div class="valu valu-2">
-                                        <div class="section-title mb-60 mt-60">
-                                            <h2>한줄평</h2>
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <div class="review-title">
-                                                    <h3>themes</h3>
-                                                </div>
-                                                <div class="review-left">
-                                                    <div class="review-rating">
-                                                        <span>평점</span>
-                                                        <div class="rating-result">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="review-right">
-                                                    <div class="review-content">
-                                                        <h4>themes </h4>
-                                                    </div>
-                                                    <div class="review-details">
-                                                        <p class="review-author">Review by<a href="#">plaza</a></p>
-                                                        <p class="review-date">Posted on <span>12/9/16</span></p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
                                         <div class="review-add">
                                             <h3>이책을 평가해주세요!</h3>
                                         </div>
                                         
-                                        	<div class="review-field-ratings">
-                                            <span>Your Rating <sup>*</sup></span> 
-                                            <div class="control">
-                                                <div class="single-control">
-                                                    <span>Value</span>
-                                                    <div class="review-control-vote">
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                        <a href="#"><i class="fa fa-star"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="review-form">
-                                        
-                                            <div class="single-form single-form-2">
-                                                <label>Title <sup>*</sup></label>
-                                                <form action="#">
-                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" />
-                                                </form>
-                                            </div>
-                                            
-                                            <div class="single-form">
-                                                <label>Review <sup>*</sup></label>
-                                                <form action="#">
-                                                    <textarea name="massage" cols="10" rows="4"></textarea>
-                                                </form>
-                                            </div>
-                                            
-                                        </div>
-                                        
-                                       
-                                        
+                                        <c:if test="${ loginuser == null }">
+                                        	<p>소감을 남기려면 <a href="/goodibooks/account/login.action">로그인</a> 해주세요</p>
+                                        </c:if>
+                                        <c:if test="${ loginuser != null }">
+                                        <form action="/goodibooks/review/review.action?book_no=${ param.book_no }" method="post">
+                                        <input type="hidden" name="id" value="${ loginuser.id }">
+                                        <!-- <input type="hidden" name="rate" value="7"> -->
+                                        <input type="hidden" name="book_no" value="${ book.book_no }">
+                                        <label for="exampleInputEmail1">점수</label><br>
+                                        &nbsp;<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="rate" id="inlineRadio1" value="1">
+										  <!-- <label class="form-check-label" for="inlineRadio1">좋음</label> -->
+										  <i class="fa fa-star"></i>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="rate" id="inlineRadio2" value="2">
+										  <i class="fa fa-star"></i><i class="fa fa-star"></i>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="rate" id="inlineRadio3" value="3">
+										  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="rate" id="inlineRadio4" value="4">
+										  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="rate" id="inlineRadio5" value="5">
+										  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+										</div>
+										<br><br>
+                                        <div class="form-group">
+										    <label for="exampleInputEmail1">제목</label>
+										    <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+										</div>
+                                        <div class="form-group">
+                                        	<label for="exampleInputEmail1">내용</label>
+									    	<textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+									  	</div>
                                        
                                         <div class="review-form-button">
-                                            <a href="#">리뷰 남기기</a>
+                                        	<button type="submit" class="btn btn-outline-dark">리뷰 남기기</button>
                                         </div>
+                                        </form>
+                                        </c:if>
+                                        
+                                        <hr>
+                                        <!-- 리뷰 리스트 -->
+                                        <c:if test="${ empty reviews }">
+                                        <p class="text-center">아직 등록된 리뷰가 없지 뭐얌?</p>
+                                        </c:if>
+                                        <c:forEach items="${ reviews }" var="review">
+											
+											<div>
+											<h5>${ review.title }</h5>
+											<p>${ review.id } | ${ review.writeDate } | 
+												<c:if test="${ review.rate == 1 }">
+												<i class="fa fa-star"></i>
+												</c:if>
+												<c:if test="${ review.rate == 2 }">
+												<i class="fa fa-star"></i><i class="fa fa-star"></i>
+												</c:if>
+												<c:if test="${ review.rate == 3 }">
+												<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+												</c:if>
+												<c:if test="${ review.rate == 4 }">
+												<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+												</c:if>
+												<c:if test="${ review.rate == 5 }">
+												<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+												</c:if>
+											</p>
+											</div>
+											<div>
+											<p>${ review.content }</p>
+											</div>
+											<hr>
+                                        </c:forEach>
+                                        
                                     </div>
                                 

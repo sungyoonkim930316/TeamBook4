@@ -43,9 +43,9 @@
 					</div>
 					<div class="col-lg-6 col-md-5 col-12">
 						<div class="header-search">
-							<form action="#">
+							<form id="searchForm" method="get">
 								<input type="text" placeholder="Search entire store here..." />
-								<a href="#"><i class="fa fa-search"></i></a>
+								<a id="searchBtn"><i class="fa fa-search"></i></a>
 							</form>
 						</div>
 					</div>
@@ -106,40 +106,11 @@
 							<nav>
 								<ul>
 									<li><a href="/goodibooks/">Home</a></li>
-									<li><a href="product-details.html">Book<i class="fa fa-angle-down"></i></a>
-										<div class="mega-menu">
-											<span>
-												<a href="#" class="title">Jackets</a>
-												<a href="/goodibooks/book/list.action">Tops & Tees</a>
-												<a href="shop.html">Polo Short Sleeve</a>
-												<a href="shop.html">Graphic T-Shirts</a>
-												<a href="shop.html">Jackets & Coats</a>
-												<a href="shop.html">Fashion Jackets</a>
-											</span>
-											<span>
-												<a href="#" class="title">weaters</a>
-												<a href="shop.html">Crochet</a>
-												<a href="shop.html">Sleeveless</a>
-												<a href="shop.html">Stripes</a>
-												<a href="shop.html">Sweaters</a>
-												<a href="shop.html">hoodies</a>
-											</span>
-											<span>
-												<a href="#" class="title">Bottoms</a>
-												<a href="shop.html">Heeled sandals</a>
-												<a href="shop.html">Polo Short Sleeve</a>
-												<a href="shop.html">Flat sandals</a>
-												<a href="shop.html">Short Sleeve</a>
-												<a href="shop.html">Long Sleeve</a>
-											</span>
-											<span>
-												<a href="#" class="title">Jeans Pants</a>
-												<a href="shop.html">Polo Short Sleeve</a>
-												<a href="shop.html">Sleeveless</a>
-												<a href="shop.html">Graphic T-Shirts</a>
-												<a href="shop.html">Hoodies</a>
-												<a href="shop.html">Jackets</a>
-											</span>
+									<li><a href="/goodibooks/book/list.action">카테고리별 보기<i class="fa fa-angle-down"></i></a>
+										<div class="sub-menu">
+											<ul>
+												<li><a href="/goodibooks/book/list.action">카테고리</a></li>
+											</ul>
 										</div>
 									</li>
 									<li><a href="#">게시판<i class="fa fa-angle-down"></i></a>
