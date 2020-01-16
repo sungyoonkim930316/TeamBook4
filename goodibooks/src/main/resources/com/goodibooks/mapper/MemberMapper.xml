@@ -8,7 +8,7 @@
 
 	<insert id="insertMember" parameterType="MemberVO">
 		insert into member ( id, passwd, name, phone, email, addr1, addr2, addr3 ) 
-		values ( #{ id }, #{ passwd }, #{ name }, #{ phone }, #{ email }, #{ addr1 }, #{ addr2 }, #{ addr3 })
+		values ( #{ id }, #{ passwd }, #{ name }, #{ phone }, #{ email }, #{ addr1 }, #{ addr2 }, #{ addr3 } )
 	</insert>
 	
 	<!-- 멤버테이블 전체 조회로 변경 - ms -->
@@ -17,7 +17,7 @@
 	</select>
 	
 	<update id="updateMember" parameterType="memberVO">
-		update member set phone=#{ phone }, email=#{email} where id=#{ id } 
+		update member set phone=#{ phone }, email=#{email}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3} where id=#{ id } 
 	</update>
 	
 </mapper>
