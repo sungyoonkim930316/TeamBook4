@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodibooks.mapper.AskMapper">
+	  
+	  <insert id="askWriteBoard" parameterType="QnaVO">
+	  	INSERT INTO qna (no, title, content, id)
+	  	VALUES (qna_q_seq.nextval, #{title}, #{content}, #{id})
+	  </insert>
+	  
+	  <select id="selectQnaList" resultType="QnaVO">
+		SELECT no, title, id, regDate
+		FROM qna
+		WHERE deleted = '0'
+		ORDER BY no DESC
+	  </select>
+	  
+	  <select id="selectAskDetailByNo" parameterType="int" resultType="QnaVO">
+		SELECT no, title, content, regdate, updatedate
+		FROM qna
+		WHERE no = #{ no } AND deleted = '0'
+	</select>
+
+</mapper>

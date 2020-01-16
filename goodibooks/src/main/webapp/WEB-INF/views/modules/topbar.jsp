@@ -147,10 +147,12 @@
 											<ul>
 												<li><a href="/goodibooks/board/notice.action">공지사항</a></li>
 												<li><a href="/goodibooks/board/qna.action">자주하는질문</a></li>
+												<li><a href="/goodibooks/board/ask.action">1:1 문의</a></li>
 											</ul>
 										</div>
 									</li>
-									
+									<c:choose>
+									<c:when test="${ loginuser.userType == true }">
 									<li><a href="#">관리자 페이지<i class="fa fa-angle-down"></i></a>
 										<div class="sub-menu">
 											<ul>
@@ -159,6 +161,8 @@
 											</ul>
 										</div>
 									</li>
+									</c:when>
+									</c:choose>
 								</ul>
 							</nav>
 						</div>

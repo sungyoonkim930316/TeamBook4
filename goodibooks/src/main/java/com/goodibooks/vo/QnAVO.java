@@ -13,5 +13,6 @@ public class QnAVO {
 	private Date regDate;
 	private Date updateDate;
 	private boolean deleted;
-	
+	private String id;
+	private String qnaType;
 }
