@@ -104,7 +104,7 @@
 												<div class="quality-button">
 													<input class="qty" type="number" value="1">
 												</div>
-												<a id="cartBtn" href="#">장바구니</a>
+												<a id="cartBtn" href="/goodibooks/mypage/mycart.action">장바구니</a>
 												<a id="buyBtn" href="#">바로 구매하기</a>
 											</form>
 										</div>
@@ -298,10 +298,6 @@
 								<div class="banner-img-2">
 									<a href="#"><img src="img/banner/33.jpg" alt="banner" /></a>
 								</div>
-							</div>
-							<div class="left-title-2 mb-30">
-								<h2>Compare Products</h2>
-								<p>You have no items to compare.</p>
 							</div>
 							<div class="left-title-2">
 								<h2>My Wish List</h2>

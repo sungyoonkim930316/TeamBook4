@@ -6,6 +6,28 @@
 
 <mapper namespace="com.goodibooks.mapper.BookMapper">
 
+	<!-- 여러번 사용되는 쿼리 -->
+	<sql id="query">
+		select rownum idx, book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
+		from book_info b, publisher p, category c 
+		where b.pub_no = p.pub_no and c.category_no = b.category_no
+	</sql>
+	<sql id="searchCondition">
+		<trim suffix=" like '%'||#{searchKey}||'%'">
+		<choose>
+			<when test="searchType == 'W'.toString()">
+				b.writer
+			</when>
+			<when test="searchType == 'C'.toString()">
+				category_name
+			</when>
+			<when test="searchType == 'P'.toString()">
+				pub_name
+			</when>
+		</choose>
+		</trim>
+	</sql>
+	
 	<!-- 책 상세 보기 -->
 	<select id="selectBookByBookNo" parameterType="int" resultType="BookInfoVO">
 		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
@@ -13,15 +35,15 @@
 		where book_no = #{book_no} and b.pub_no = p.pub_no and c.category_no = b.category_no
 	</select>
 	<select id="selectImgByBookNo" parameterType="int" resultType="BookImgVO">
-		select img from book_img where book_no = #{book_no}
+		select img from book_img where book_no = #{book_no} order by img
+	</select>
+
+	<select id="selectBooks" parameterType="hashmap" resultType="BookInfoVO">
+		select * from (
+			<include refid="query"></include>
+		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
 	</select>
 	
-	<!-- 책 리스트 -->
-	<select id="selectBooks" resultType="BookInfoVO">
-		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
-		from book_info b, publisher p, category c 
-		where b.pub_no = p.pub_no and c.category_no = b.category_no
-	</select>
 	<!-- 전체 책 개수 -->
 	<select id="bookCount" resultType="int">
 		select count(*) from book_info
@@ -37,30 +59,21 @@
 	</select>
 	
 	<!-- 책 검색 -->
-	<sql id="searchCondition">
-		<trim suffix=" like '%'||#{searchKey}||'%'">
-				<choose>
-			<when test="searchType == 'T'.toString()">
-				b.name
-			</when>
-			<when test="searchType == 'W'.toString()">
-				b.writer
-			</when>
-			<when test="searchType == 'C'.toString()">
-				category_name
-			</when>
-			<when test="searchType == 'P'.toString()">
-				pub_name
-			</when>
-		</choose>
-		</trim>
-
-	</sql>
 	<select id="searchBook" parameterType="hashmap" resultType="BookInfoVO" >
-		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
-		from book_info b, publisher p, category c 
-		where b.pub_no = p.pub_no and c.category_no = b.category_no and 
-		<include refid="searchCondition"></include>
+		select * from (
+			<include refid="query"></include> and 
+			<include refid="searchCondition"></include>
+		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
+		
+	</select>
+	
+	<!-- topbar 검색 -->
+	<select id="searchBookByKey" parameterType="hashmap" resultType="BookInfoVO">
+		select * from (
+			select * from (
+				<include refid="query"></include> 
+			) where name like '%'||#{searchKey}||'%' or writer like '%'||#{searchKey}||'%' or pub_name like '%'||#{searchKey}||'%'
+		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
 	</select>
 	
 </mapper>

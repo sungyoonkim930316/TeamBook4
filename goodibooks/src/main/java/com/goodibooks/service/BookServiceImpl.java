@@ -21,17 +21,16 @@ public class BookServiceImpl implements BookService {
 		BookInfoVO book = bookMapper.selectBookByBookNo(book_no); // 책정보 가져오기
 		book.setImgs(bookMapper.selectImgByBookNo(book_no));	  // 이미지 가져오기
 		
-		System.out.println(book.toString());
 		return book;
 		
 	}
 
 	@Override
-	public List<BookInfoVO> showBookList() {
+	public List<BookInfoVO> showBookList(HashMap<String, Object> params) {
 		
 		ArrayList<BookInfoVO> books = new ArrayList<>();
 		
-		for (BookInfoVO b : bookMapper.selectBooks()) {
+		for (BookInfoVO b : bookMapper.selectBooks(params)) {
 			
 			b.setImgs(bookMapper.selectImgByBookNo(b.getBook_no()));
 			books.add(b);
@@ -66,7 +65,10 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public Object searchBook(HashMap<String, Object> params) {
 		
-		List<BookInfoVO> books = bookMapper.searchBook(params);
+		List<BookInfoVO> books;
+		
+		if (params.get("searchType").equals("A")) books = bookMapper.searchBookByKey(params);
+		else books = bookMapper.searchBook(params);
 		
 		for (int i = 0; i < books.size(); i++) {
 			books.get(i).setImgs(bookMapper.selectImgByBookNo(books.get(i).getBook_no()));
