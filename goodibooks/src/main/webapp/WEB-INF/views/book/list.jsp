@@ -239,10 +239,6 @@
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
-	<script type="text/javascript">
-	$(function() {
-	});
-	</script>
 </body>
 
 </html>
