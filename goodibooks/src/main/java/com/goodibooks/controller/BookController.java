@@ -1,6 +1,7 @@
 package com.goodibooks.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.goodibooks.service.BookService;
+import com.goodibooks.service.ReviewService;
+import com.goodibooks.ui.ThePager;
 import com.goodibooks.ui.ThePager2;
+
 import com.goodibooks.vo.BookInfoVO;
+import com.goodibooks.vo.ReviewVO;
 
 @Controller
 @RequestMapping(path= {"/book/"})
@@ -23,6 +28,10 @@ public class BookController {
 	@Autowired
 	@Qualifier("bookService")
 	private BookService bookService;
+	
+	@Autowired
+	@Qualifier("reviewService")
+	private ReviewService reviewService;
 
 	// 상품 리스트 페이지로 이동
 	@GetMapping(path= {"/list.action"} )
@@ -75,6 +84,11 @@ public class BookController {
 		params.put("searchType", "C");
 		params.put("searchKey", catName);
 		model.addAttribute("sideBookList", bookService.searchBook(params));
+
+		// 리뷰 조회
+		List<ReviewVO> reviews = reviewService.findReviewWithBookNo(book_no);
+		model.addAttribute("reviews", reviews);
+
 		return "book/detail";
 
 	}

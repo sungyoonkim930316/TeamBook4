@@ -10,9 +10,10 @@ public class ReviewVO {
 	private int re_no;
 	private int rate;
 	private String title;
-	private String contetnt;
+	private String content;
 	private Date writeDate;
 	private boolean deleted;
-	
+	private String id;
+	private int book_no;
 	
 }

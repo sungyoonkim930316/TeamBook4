@@ -12,6 +12,7 @@
 		<typeAlias type="com.goodibooks.vo.BookImgVO" alias="BookImgVO"/>
 		<typeAlias type="com.goodibooks.vo.CategoryVO" alias="CategoryVO"/>	
 		<typeAlias type="com.goodibooks.vo.BoardVO" alias="BoardVO" />
+		<typeAlias type="com.goodibooks.vo.ReviewVO" alias="ReviewVO" />
 	</typeAliases>
 	
 	

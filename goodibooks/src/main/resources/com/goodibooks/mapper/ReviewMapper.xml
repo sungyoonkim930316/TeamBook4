@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodibooks.mapper.ReviewMapper">
+
+	<insert id="insertReview" parameterType="ReviewVO">
+		insert into review (re_no, rate, title, content, book_no, id ) 
+		values ( review_seq.nextval, #{ rate }, #{ title }, #{ content }, #{ book_no }, #{ id } )
+	</insert>
+	
+	<select id="findReviewWithBookNo" parameterType="int" resultType="ReviewVO">
+		select * from review where book_no = #{ book_no } and deleted ='0'
+	</select>
+
+</mapper>

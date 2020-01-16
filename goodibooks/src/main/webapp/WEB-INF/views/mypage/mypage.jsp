@@ -346,12 +346,36 @@
 																	</div>
 																	<div class="single-register">
 																			<label>휴대폰<span>*</span></label>
-																			<input type="text" name="phone"/>
+																			<input type="text" name="phone" value="${ loginuser.phone }"/>
 																	</div>
 																	<div class="single-register">
 																			<label>이메일<span>*</span></label>
-																			<input type="text" name="email" />
+																			<input type="text" name="email" value="${ loginuser.email }"/>
 																	</div>
+																	
+																	<div class="row">
+																		<div class="col-lg-6 col-md-6 col-12">
+																			<div class="single-register">
+																				<label>우편번호<span>*</span></label> 
+																				<input type="text" id="addr1" name='addr1' value="${ loginuser.addr1 }" />
+																			</div>
+																		</div>
+																		<div class="col-lg-6 col-md-6 col-12">
+																			<div class="single-register">
+																				<button type="button" onclick="execPostCode();" >우편번호 찾기</button>
+																			</div>
+																		</div>
+																	</div>
+										
+																	<div class="single-register" style="width:100%">
+																		<label>도로명 주소<span>*</span></label> 
+																		<input type="text" id="addr2" name="addr2" value="${ loginuser.addr2 }" />
+																	</div>
+																	<div class="single-register">
+																		<label>상세 주소<span>*</span></label> 
+																		<input type="text" id="addr3" name="addr3" value="${ loginuser.addr3 }"/>
+																	</div>
+																	
 																	<br>
 																	<div class="single-register">
 																		<button id="edit" type="submit" >수정하기</button>
