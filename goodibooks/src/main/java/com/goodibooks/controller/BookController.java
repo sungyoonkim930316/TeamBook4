@@ -63,13 +63,18 @@ public class BookController {
 	
 	// 상품 디테일 페이지로 이동
 	@GetMapping(path= {"/detail.action"})
-	public String toDetail(int book_no, Model model) {
+	public String toDetail(int book_no, String catName, Model model) {
 		
 		BookInfoVO book = bookService.showBookDetailByBookNo(book_no);
 		
 		if (book == null) return "redirect:list";
 
 		model.addAttribute("book", book);
+		
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("searchType", "C");
+		params.put("searchKey", catName);
+		model.addAttribute("sideBookList", bookService.searchBook(params));
 		return "book/detail";
 
 	}
