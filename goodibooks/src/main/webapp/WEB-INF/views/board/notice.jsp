@@ -36,8 +36,7 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">blog</a></li>
+								<li>NOTICE</li>
 							</ul>
 						</div>
 					</div>
@@ -61,17 +60,6 @@
             </div>
         </div>
 
-        <div >
-            <div >
-                <div >
-
-                    <div >
-                        <div >
-                            <!-- <div >
-                                <strong class="card-title">NOTICE</strong>
-                            </div> -->
-                            
-				          
                             <div class="card-body" style="width: 60%; margin: auto;" >
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
@@ -91,7 +79,7 @@
                                     <c:forEach items="${ boards }" var="board">
                                         <tr>
                                             <td style="text-align: center">${ board.no }</td>
-                                            <td>${ board.title }</td>
+                                            <td><a href="detail.action?no=${board.no}"> ${ board.title }</a></td>
                                             <td style="text-align: center">${ board.regDate }</td>
                                             <td style="text-align: center">${ board.updateDate }</td>
                                         </tr>
@@ -99,18 +87,12 @@
                                      </tbody>
                                 </table>
                             </div>
-                        </div>
-                    </div>
 				<br><br><br><br>
-
-                </div>
-            </div><!-- .animated -->
-        </div><!-- .content -->
-
 		
 		
 		<!-- footer-area-start -->
 		<footer>
+		
 	
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
@@ -123,6 +105,7 @@
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
 	<script type="text/javascript">
+	
 	</script>
 	
 	

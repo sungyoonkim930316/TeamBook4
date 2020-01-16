@@ -9,4 +9,8 @@ public interface BoardService {
 
 	List<BoardVO> findNotice();
 
+	int writeNotice(BoardVO board);
+
+	BoardVO findNoticeByNo(int no);
+
 }

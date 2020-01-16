@@ -13,5 +13,19 @@
 		ORDER BY no DESC
 	</select>
 	
+	<insert id="insertNotice" parameterType="BoardVO">
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+			SELECT board_seq.currval FROM DUAL
+		</selectKey>
+		INSERT INTO board (no, title, content)
+		VALUES (board_seq.nextval, #{title}, #{content})
+	</insert>
+	
+	<select id="selectNoticeByNo" parameterType="int" resultType="BoardVO">
+		SELECT no, title, content, regdate, updatedate
+		FROM board
+		WHERE no = #{ no } AND deleted = '0'
+	</select>
+	
 
 </mapper>

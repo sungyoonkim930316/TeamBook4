@@ -12,6 +12,10 @@ public interface BoardMapper {
 
 	List<BoardVO> selectNotice();
 
+	void insertNotice(BoardVO board);
+
+	BoardVO selectNoticeByNo(int no);
+
 	
 
 	

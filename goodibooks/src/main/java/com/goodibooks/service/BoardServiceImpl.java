@@ -17,6 +17,17 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> findNotice() {
 		return boardMapper.selectNotice();
 	}
+
+	@Override
+	public int writeNotice(BoardVO board) {
+		boardMapper.insertNotice(board);
+		return board.getNo();
+	}
+
+	@Override
+	public BoardVO findNoticeByNo(int no) {
+		return boardMapper.selectNoticeByNo(no);
+	}
 	
 
 }
