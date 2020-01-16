@@ -14,11 +14,11 @@ public interface BookMapper {
 
 	BookInfoVO selectBookByBookNo(int book_no);
 	List<BookImgVO> selectImgByBookNo(int book_no);
-	List<BookInfoVO> selectBooks();
+	List<BookInfoVO> selectBooks(HashMap<String, Object> params);
 	int bookCount();
 	List<CategoryVO> selectCategorys();
 	int bookCountByCategoryNo(int category_no);
 	List<BookInfoVO> searchBook(HashMap<String, Object> params);
-	
+	List<BookInfoVO> searchBookByKey(HashMap<String, Object> params);
 	
 }

@@ -31,3 +31,5 @@
         <script src="/goodibooks/resources/js/plugins.js"></script>
 		<!-- main js -->
         <script src="/goodibooks/resources/js/main.js"></script>
+        
+        <script src="/goodibooks/resources/js/search.js"></script>

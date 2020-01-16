@@ -3,7 +3,7 @@ package com.goodibooks.ui;
 import lombok.Data;
 
 @Data
-public class ThePager {
+public class ThePager2 {
 	
 	private int pageSize;//한 페이지당 데이터 개수
 	private int pagerSize;//번호로 보여주는 페이지 Link 개수
@@ -16,7 +16,7 @@ public class ThePager {
 	
 	private String queryString;
 	
-	public ThePager(int dataCount, int pageNo, 
+	public ThePager2(int dataCount, int pageNo, 
 		int pageSize, int pagerSize, String linkUrl, String queryString) {
 		
 		this.linkUrl = linkUrl;
@@ -42,23 +42,12 @@ public class ThePager {
 		pageCount = 
 			(dataCount / pageSize) + ((dataCount % pageSize) > 0 ? 1 : 0); 
 	}
-
+	
 	public String toString(){
 		StringBuffer linkString = new StringBuffer(2048);
 		
+		if (pageNo > 1) linkString.append(String.format("<li><a href='%s?page_no=%d&%s'>&lt</a></li>", linkUrl, pageNo - 1, queryString));
 		
-		//1. 처음, 이전 항목 만들기
-		if (pageNo > 1) {
-			linkString.append(
-				String.format("[<a href='%s?pageNo=1&%s'>처음</a>]",linkUrl, queryString));
-			linkString.append("&nbsp;");
-			linkString.append("&nbsp;");
-			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>이전</a>]", linkUrl, pageNo - 1, queryString));
-			linkString.append("&nbsp;");
-		}
-		
-		//2. 페이지 번호 Link 만들기
 		int pagerBlock = (pageNo - 1) / pagerSize;
 		int start = (pagerBlock * pagerSize) + 1;
 		int end = start + pagerSize;
@@ -66,24 +55,14 @@ public class ThePager {
 			if (i > pageCount) break;
 			linkString.append("&nbsp;");
 			if(i == pageNo) {
-				linkString.append(String.format("[%d]", i));
+				linkString.append(String.format("<li class='active'> %d </li>", i));
 			} else { 
-				linkString.append(String.format(
-					"<a href='%s?pageNo=%d&%s'>%d</a>", linkUrl, i, queryString, i));
+				linkString.append(String.format("<li><a href='%s?page_no=%d&%s'>%d</a></li>", linkUrl, i, queryString, i));
 			}
 			linkString.append("&nbsp;");
 		}
 		
-		//3. 다음, 마지막 항목 만들기
-		if (pageNo < pageCount) {
-			linkString.append("&nbsp;");
-			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>다음</a>]",linkUrl, pageNo + 1, queryString));
-			linkString.append("&nbsp;");
-			linkString.append("&nbsp;");
-			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>마지막</a>]", linkUrl, pageCount, queryString));
-		}
+		if (pageNo < pageCount) linkString.append(String.format("<li><a href='%s?page_no=%d&%s'>&gt</a></li>", linkUrl, pageNo + 1, queryString));
 		
 		return linkString.toString();
 	}

@@ -9,7 +9,7 @@ import com.goodibooks.vo.CategoryVO;
 public interface BookService {
 
 	BookInfoVO showBookDetailByBookNo(int book_no);
-	List<BookInfoVO> showBookList();
+	List<BookInfoVO> showBookList(HashMap<String, Object> params);
 	List<CategoryVO> getCategoryList();
 	int bookCount();
 	Object searchBook(HashMap<String, Object> params);
