@@ -32,4 +32,5 @@
 		<!-- main js -->
         <script src="/goodibooks/resources/js/main.js"></script>
         
-        <script src="/goodibooks/resources/js/search.js"></script>
+        <!-- 상단바 검색 js -->
+        <script src="/goodibooks/resources/js/topbar_search.js"></script>

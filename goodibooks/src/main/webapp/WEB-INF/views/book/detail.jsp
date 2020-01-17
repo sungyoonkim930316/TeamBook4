@@ -1,5 +1,6 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -82,15 +83,19 @@
 										</div>
 										<div class="product-reviews-summary">
 											<div class="rating-summary">
-												<a href="#"><i class="fa fa-star"></i></a>
-												<a href="#"><i class="fa fa-star"></i></a>
-												<a href="#"><i class="fa fa-star"></i></a>
-												<a href="#"><i class="fa fa-star"></i></a>
-												<a href="#"><i class="fa fa-star"></i></a>
+												<c:if test="${reviews.size() > 0}">
+													<!-- 별점평균 -->
+													<c:set var="aver" value="0"></c:set>
+													<c:forEach var="i" begin="0" end="${reviews.size() - 1}">
+														<input type="hidden" value="${aver = aver + reviews[i].rate}">
+													</c:forEach>
+													
+													<h6>별점 평균 : ${aver/reviews.size()}</h6>
+													
+												</c:if>
 											</div>
 											<div class="reviews-actions">
-												<a href="#">0 Reviews</a>
-												<a href="#" class="view">Add Your Review</a>
+												<a href="#">${reviews.size()} Reviews</a>
 											</div>
 										</div>
 										<div class="product-info-price">
@@ -102,7 +107,7 @@
 										<div class="product-add-form">
 											<form action="#">
 												<div class="quality-button">
-													<input class="qty" type="number" value="1">
+													<input id="bookCount" class="qty" type="number" value="1">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
 												<a id="buyBtn" href="#">바로 구매하기</a>
@@ -118,7 +123,7 @@
 							<!-- Nav tabs -->
 							<ul class="nav">
 								<li><a class="active" href="#Details" data-toggle="tab">책 상세 정보</a></li>
-								<li><a href="#Reviews" data-toggle="tab">Reviews 3</a></li>
+								<li><a href="#Reviews" data-toggle="tab">리뷰 ${reviews.size()}</a></li>
 							</ul>
 							<div class="tab-content">
                                 <div class="tab-pane fade show active" id="Details">
@@ -128,7 +133,7 @@
                                       
                                       <h4>목차</h4><hr>
                                       <p>${book.contents}</p>
-                                     
+
                                     </div>
                                 </div>
                                 
@@ -152,153 +157,34 @@
 							</div>
 							<div class="random-area mb-30">
 								<div class="product-active-2 owl-carousel">
+
 									<div class="product-total-2">
-										<div class="single-most-product bd mb-18">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/20.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
+									
+										 <c:forEach var="product" items="${products}" varStatus="status"> 
+										 	<c:if test="${status.index < 4}">
+											<div class="single-most-product bd mb-18">
+												<div class="most-product-img">
+													<a href="/goodibooks/book/detail.action?book_no=${product.book_no}">
+													<img src="/goodibooks/resources/img/book-img/${product.imgs[0].img}.jpg" alt="book" /></a>
 												</div>
-												<h4><a href="#">Endeavor Daytrip</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$30.00</li>
-														<li class="old-price">$33.00</li>
-													</ul>
+												<div class="most-product-content">
+	
+													<h4><a href="/goodibooks/book/detail.action?book_no=${product.book_no}">${product.name}</a></h4>
+													<div class="product-price">
+														<ul>
+															<li>${product.price}</li>
+														</ul>
+													</div>
 												</div>
 											</div>
-										</div>
-										<div class="single-most-product bd mb-18">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/21.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
-												<h4><a href="#">Savvy Shoulder Tote</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$30.00</li>
-														<li class="old-price">$35.00</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="single-most-product">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/22.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
-												<h4><a href="#">Compete Track Tote</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$35.00</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="product-total-2">
-										<div class="single-most-product bd mb-18">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/23.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
-												<h4><a href="#">Voyage Yoga Bag</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$30.00</li>
-														<li class="old-price">$33.00</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="single-most-product bd mb-18">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/24.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
-												<h4><a href="#">Impulse Duffle</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$70.00</li>
-														<li class="old-price">$74.00</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-										<div class="single-most-product">
-											<div class="most-product-img">
-												<a href="#"><img src="img/product/22.jpg" alt="book" /></a>
-											</div>
-											<div class="most-product-content">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
-												<h4><a href="#">Fusion Backpack</a></h4>
-												<div class="product-price">
-													<ul>
-														<li>$59.00</li>
-													</ul>
-												</div>
-											</div>
-										</div>
-									</div>	
+		
+											</c:if>
+
+										</c:forEach> 
+										</div>	
+									</div>	 
 								</div>
-							</div>
-							<div class="banner-area mb-30">
-								<div class="banner-img-2">
-									<a href="#"><img src="img/banner/33.jpg" alt="banner" /></a>
-								</div>
-							</div>
+
 							<div class="left-title-2">
 								<h2>My Wish List</h2>
 								<p>You have no items in your wish list.</p>
@@ -323,14 +209,35 @@
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
 	<script type="text/javascript">
-		$(function() {
-			$("#cartBtn").on("click", function(event) {
-				if (!confirm("장바구니에 넣을까요?")) return;
+	$(function() {
+		$("#cartBtn").on("click", function(event) {
+			
+		if (!confirm("장바구니에 넣을까요?")) return;
 
-				
+		if (${empty sessionScope.loginuser}) alert("로그인이 필요합니다."); 
+		else {
+			$.ajax({
+				"url" : "/goodibooks/mypage/mycart-insert.action",
+				"method" : "post",
+				"data" : {
+					"cart_count" : $("#bookCount").val(),
+					"book_no" : ${book.book_no},
+					"id" : "${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id}"
+				},
+				"success" : function(data, status, xhr) {
+					alert("상품을 장바구니에 담았습니다.");
+
+					$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
+				},
+				"error" : function(xhr, status, err) {
+					alert(error);
+				}
 			});
-
+			
+		}		
 		});
+
+	});
 			
 	</script>
     </body>

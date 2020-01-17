@@ -20,5 +20,6 @@ public interface BookMapper {
 	int bookCountByCategoryNo(int category_no);
 	List<BookInfoVO> searchBook(HashMap<String, Object> params);
 	List<BookInfoVO> searchBookByKey(HashMap<String, Object> params);
+	List<BookInfoVO> selectDetailProducts(BookInfoVO book);
 	
 }

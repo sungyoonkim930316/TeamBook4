@@ -37,13 +37,19 @@
 	<select id="selectImgByBookNo" parameterType="int" resultType="BookImgVO">
 		select img from book_img where book_no = #{book_no} order by img
 	</select>
+	<!-- 함께구매한책 : 같은 카테고리의 다른 책들 -->
+	<select id="selectDetailProducts" parameterType="BookInfoVO" resultType="BookInfoVO">
+		select b.book_no, b.price, b.name
+		from book_info b, category c
+		where b.book_no != #{book_no} and c.category_no = b.category_no and c.category_name like '${category_name}'
+	</select>
 
+	<!-- 전채첵 리스트 -->
 	<select id="selectBooks" parameterType="hashmap" resultType="BookInfoVO">
 		select * from (
 			<include refid="query"></include>
 		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
 	</select>
-	
 	<!-- 전체 책 개수 -->
 	<select id="bookCount" resultType="int">
 		select count(*) from book_info

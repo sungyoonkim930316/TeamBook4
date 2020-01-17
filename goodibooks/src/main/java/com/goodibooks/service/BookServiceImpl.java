@@ -76,5 +76,19 @@ public class BookServiceImpl implements BookService {
 		
 		return books;
 	}
+
+	// 디테일에서 함께 구매한책 목록
+	@Override
+	public List<BookInfoVO> selectDetailProducts(BookInfoVO book) {
+
+		List<BookInfoVO> books = new ArrayList<>();
+
+		for (BookInfoVO b : bookMapper.selectDetailProducts(book)) {
+			b.setImgs(bookMapper.selectImgByBookNo(b.getBook_no()));
+			books.add(b);
+		}
+		
+		return books;
+	}
 	
 }

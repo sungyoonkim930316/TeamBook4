@@ -9,6 +9,7 @@ import com.goodibooks.vo.CategoryVO;
 public interface BookService {
 
 	BookInfoVO showBookDetailByBookNo(int book_no);
+	List<BookInfoVO> selectDetailProducts(BookInfoVO book);
 	List<BookInfoVO> showBookList(HashMap<String, Object> params);
 	List<CategoryVO> getCategoryList();
 	int bookCount();

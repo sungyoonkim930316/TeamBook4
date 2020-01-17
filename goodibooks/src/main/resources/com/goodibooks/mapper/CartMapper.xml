@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodibooks.mapper.CartMapper">
+
+	<!-- 카트에 정보 저장 -->
+	<insert id="insertCartByMemberId" parameterType="CartListVO">
+		insert into cartlist (cart_no, cart_count, id, book_no) 
+		values (cart_seq.nextval, #{cart_count}, #{id}, #{book_no})
+	</insert>
+	
+	<!-- 아이디로 카트목록 가져오기 -->
+	<select id="selectCartByMemberId" parameterType="String" resultType="CartListVO">
+		select cart_no, cart_count, book_no from cartlist
+		where id = #{id}
+	</select> 
+
+</mapper>
+
+
+

@@ -116,15 +116,6 @@
 											</div>
 										</div>
 										<div class="product-details text-center">
-											<div class="product-rating">
-												<ul>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-												</ul>
-											</div>
 											<h4><a href="#">${b.name}</a></h4>
 											<div class="product-price">
 												<ul>
@@ -167,15 +158,7 @@
 									<div class="col-lg-8 col-md-8 col-12">
 										<div class="product-wrapper-content">
 											<div class="product-details">
-												<div class="product-rating">
-													<ul>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-														<li><a href="#"><i class="fa fa-star"></i></a></li>
-													</ul>
-												</div>
+												
 												<h4><a class="detailBtn" href="detail.action?book_no=${b.book_no}">${b.name}</a></h4>
 												<div class="product-price">
 													<ul>
