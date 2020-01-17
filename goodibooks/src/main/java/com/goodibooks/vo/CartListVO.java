@@ -10,4 +10,5 @@ public class CartListVO {
 	private String id;		
 	private int book_no;	//책번호
 	
+	private BookInfoVO book; //책번호로 가져온 책정보
 }

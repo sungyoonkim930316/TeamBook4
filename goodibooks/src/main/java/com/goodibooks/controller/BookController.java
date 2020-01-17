@@ -79,7 +79,10 @@ public class BookController {
 		if (book == null) return "redirect:list";
 
 		model.addAttribute("book", book);
-
+		
+		// 함께 구매한 책
+		model.addAttribute("products", bookService.selectDetailProducts(book));
+		
 		// 리뷰 조회
 		List<ReviewVO> reviews = reviewService.findReviewWithBookNo(book_no);
 		model.addAttribute("reviews", reviews);
