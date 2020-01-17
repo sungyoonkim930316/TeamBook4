@@ -1,4 +1,4 @@
-<%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+ <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -59,8 +59,12 @@
 				<form id="write-form" role="form" action="askwrite.action"
 					method="post">
 					<div class="form-group">
+						<label>글 번호</label> <input class="form-control" id='no'
+							name='no' value='${ askdetail.no }'>
+					</div>
+					<div class="form-group">
 						<label>제목</label> <input class="form-control" id='title'
-							name='title' value='${ ask.title }'>
+							name='title' value='${ askdetail.title }'>
 					</div>
 					<%-- 
 					<div class="form-group">
@@ -81,33 +85,59 @@
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='content'
-							name='content'>${ ask.content }</textarea>
+							name='content'>${ askdetail.content }</textarea>
 					</div>
 
 					<div class="form-group">
 						<label>작성자</label>
-						<input class="form-control" id='id' name='id' value="${ ask.id }">
+						<input class="form-control" id='id' name='id' value='${ loginuser.id }'>
 					</div>
 					
 					<div class="form-group">
 		            	<label>작성일자</label> 
-		            	<input class="form-control" id='regDate' value='${ board.regDate }'>
+		            	<input class="form-control" id='regDate' value='${ askdetail.regDate }'>
 		            </div>
 		            
 		            <div class="form-group">
 		            	<label>수정일자</label> 
-		            	<input class="form-control" id='updateDate' value='${ board.updateDate }'>
+		            	<input class="form-control" id='updateDate' value='${ askdetail.updateDate }'>
 		            </div>
+		            <br>
 
 					<button id="askwriteedit-button" type="button" class="btn btn-light">수정하기</button>
 					&nbsp
-					<button type="reset" class="btn btn-light">삭제</button>
+					<button id="delete-button" type="reset" class="btn btn-light">삭제</button>
 					&nbsp
 					<button id="toask-button" type="button" class="btn btn-light">목록</button>
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	<br><hr><br><br>
+	
+	<div class="container">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<span class="m-0 font-weight-bold text-default">답변</span>
+			</div>
+			<div class="card-body">
+					<div class="form-group">
+						<label>내용</label>
+						<textarea class="form-control" rows="3" id='ans_content'
+							name='ans_content'>${ askdetail.content }</textarea>
+					</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- 
+	<div class="container">
+	<a href="/goodibooks/board/answerwrite.action" class="btn btn-light pull-right">
+		<span class="text">글쓰기</span></a>
+	</div>
+	 -->
+	
 	
 	<br><br><br>
 	
@@ -130,12 +160,46 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			$('input, textarea').attr({'readonly': 'readonly'})
+			$('input,textarea').attr({'readonly': 'readonly'})
 
 			$('#toask-button').on('click', function(event) {
 				location.href = "ask.action";
 			});
+			$('#delete-button').on('click', function(event) {
+
+				var yes = confirm("${ askdetail.no }번 글을 삭제할까요?");
+				if (!yes) {
+					return;
+				}
+				//location.href = 'delete.action?no=${ askdetail.no }';
+				var form =
+					makeForm('delete.action', ${ askdetail.no });
+				form.submit();
+			});
+			/* $('#askwriteedit-button').on('click', function(event) {
+				//location.href = "update.action?no=${ askdetail.no }";
+				var form =
+					makeForm('update.action', ${ askdetail.no });
+				form.submit();
+			}); */
+
+			function makeForm(action, no, method="get") {
+				var form = $('<form></form>');
+				form.attr({
+					'action': action,
+					'method': method
+				}); 
+				form.append($('<input>').attr({
+					"type": "hidden",
+					"name": "no",
+					"value": no })
+				);
+				form.appendTo("body");
+
+				return form;
+			}
 		});
+
 	</script>
 
 </body>

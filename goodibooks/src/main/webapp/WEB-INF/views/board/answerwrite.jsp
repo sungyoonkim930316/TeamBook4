@@ -46,52 +46,25 @@
 	<!-- breadcrumbs-area-end -->
 
 
-	<!-- mainsection : 1:1 문의 작성 -->
+	<!-- mainsection : 1:1 문의 답변작성 -->
 	
 	<div class="container">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
+				<span class="m-0 font-weight-bold text-default">답변 작성</span>
 			</div>
 			<div class="card-body">
-				<form id="write-form" role="form" action="askwrite.action"
+				<form id="answerwrite-form" role="form" action="answerwrite.action"
 					method="post">
 					<div class="form-group">
-						<label>제목</label> <input class="form-control" id='title'
-							name='title'>
-					</div>
-					<%-- 
-					<div class="form-group">
-						<label>문의유형</label> 
-						<form action="askwrite.action" method="get">
-						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option value="AskCho">선택</option>
-							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
-						</select>
-						</form>
-					</div>
-  --%>
-					<div class="form-group">
 						<label>내용</label>
-						<textarea class="form-control" rows="3" id='content'
-							name='content'></textarea>
+						<textarea class="form-control" rows="3" id='ans_content'
+							name='ans_content'></textarea>
 					</div>
 
-					<div class="form-group">
-						<label>작성자</label>
-						<input class="form-control fixed" id='id' name='id' value="${ loginuser.id }">
-					</div>
-
-					<button id="askwrite-button" type="button" class="btn btn-light">등록</button>
+					<button id="answerwrite-button" type="button" class="btn btn-light">답변 등록</button>
 					&nbsp
 					<button type="reset" class="btn btn-light">다시쓰기</button>
-					&nbsp
-					<button id="toask-button" type="button" class="btn btn-light">목록</button>
 				</form>
 			</div>
 		</div>
@@ -120,23 +93,15 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			$('#toask-button').on('click', function(event) {
-				location.href = "ask.action";
-			});
 
-			$('#askwrite-button').on('click', function(event) {
-				if ($('#title').val() == '') {
-					alert('제목을 입력하세요.');
-					$('#title').focus();
-					return;
-				}
+			$('#answerwrite-button').on('click', function(event) {
 				if ($('#content').val() == '') {
 					alert('내용을 입력하세요');
 					$('#content').focus();
 					return;
 				}
 
-				$('#write-form').submit();
+				$('#answerwrite-form').submit();
 			})
 
 			$('.fixed').attr({'readonly': 'readonly'})

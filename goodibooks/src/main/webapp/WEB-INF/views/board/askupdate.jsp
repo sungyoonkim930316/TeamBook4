@@ -54,11 +54,16 @@
 				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
 			</div>
 			<div class="card-body">
-				<form id="write-form" role="form" action="askwrite.action"
+				<form id="update-form" role="form" action="update.action"
 					method="post">
+					<div class="form-group"> 
+						<input class="form-control" type="hidden" id='no'
+							name='no' value='${ askupdate.no }'>
+					</div>
+					
 					<div class="form-group">
 						<label>제목</label> <input class="form-control" id='title'
-							name='title'>
+							name='title' value='${ askupdate.title }'>
 					</div>
 					<%-- 
 					<div class="form-group">
@@ -79,7 +84,7 @@
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='content'
-							name='content'></textarea>
+							name='content'>'${ askupdate.content }'</textarea>
 					</div>
 
 					<div class="form-group">
@@ -87,9 +92,11 @@
 						<input class="form-control fixed" id='id' name='id' value="${ loginuser.id }">
 					</div>
 
-					<button id="askwrite-button" type="button" class="btn btn-light">등록</button>
+					<button id="askupdate-button" type="button" class="btn btn-light">수정</button>
 					&nbsp
 					<button type="reset" class="btn btn-light">다시쓰기</button>
+					&nbsp
+					<button id="cancel-button" type="button" class="btn btn-light">취소</button>
 					&nbsp
 					<button id="toask-button" type="button" class="btn btn-light">목록</button>
 				</form>
@@ -124,7 +131,7 @@
 				location.href = "ask.action";
 			});
 
-			$('#askwrite-button').on('click', function(event) {
+			$('#askupdate-button').on('click', function(event) {
 				if ($('#title').val() == '') {
 					alert('제목을 입력하세요.');
 					$('#title').focus();
@@ -136,8 +143,12 @@
 					return;
 				}
 
-				$('#write-form').submit();
+				$('#update-form').submit();
 			})
+			
+			$('#cancel-button').on('click', function(event) {
+				history.back();
+			});
 
 			$('.fixed').attr({'readonly': 'readonly'})
 		})

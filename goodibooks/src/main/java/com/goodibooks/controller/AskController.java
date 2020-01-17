@@ -1,5 +1,6 @@
 package com.goodibooks.controller;
 
+import java.net.URLEncoder;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goodibooks.service.AskService;
@@ -26,16 +29,6 @@ public class AskController {
 	@Qualifier("askService")
 	private AskService askService;
 	
-	@PostMapping(path = { "/askwrite.action" })
-	public String askWrite(QnAVO qna, RedirectAttributes attr) { // 글쓰기 처리
-		
-		int newQnaNo = askService.askWriteBoard(qna);
-		log.warn("NEW QNA NO : " + newQnaNo);
-		
-		attr.addFlashAttribute("newNo", newQnaNo); //session에 저장
-		return "redirect:ask.action";
-	}
-	
 	@GetMapping(path= {"/ask.action"})
 	public String toAsk(Model model) {
 		
@@ -51,6 +44,16 @@ public class AskController {
 		return "board/askwrite";
 	}
 	
+	@PostMapping(path = { "/askwrite.action" })
+	public String askWrite(QnAVO qna, RedirectAttributes attr) {
+		
+		int newQnaNo = askService.askWriteBoard(qna);
+		log.warn("NEW QNA NO : " + newQnaNo);
+		
+		attr.addFlashAttribute("newNo", newQnaNo);
+		return "redirect:ask.action";
+	}
+	
 	@GetMapping(path = { "/askdetail.action" })
 	public String showAskDatail(int no, Model model) {
 		
@@ -61,5 +64,48 @@ public class AskController {
 		model.addAttribute("askdetail", askdetail);
 		return "board/askdetail";
 	}
+	
+//	@GetMapping(path = { "/update.action" })
+//	public String showAskUpdateForm(int no, Model model) {
+//		
+//		QnAVO askupdate = askService.updateAskByNo(no);
+//		if (askupdate == null) {
+//			return "redirect:ask.action";
+//		}
+//		
+//		model.addAttribute("askupdate", askupdate);
+//		
+//		return "board/askupdate";
+//	}
+	
+//	@PostMapping(path = { "/update.action" })
+//	public String update(QnAVO ask, @RequestParam(value="no") int no) {
+//		
+//		askService.updateAsk(ask);
+//		
+//		return String.format("redirect:askdetail.action");
+//	}
+	
+	@GetMapping(path = { "/delete.action" })
+	public String deleteAsk(@RequestParam(value="no") int no) {
+		
+		askService.deleteAsk(no);
+		
+		return "redirect:ask.action";
+	}
+	
+//	@PostMapping(path = { "/update.action" })
+//	public String update(QnAVO ask, RedirectAttributes attr) {
+//		
+//		askService.updateAsk(ask);
+//	
+//		//return String.format("redirect:askdetail.action?no=${ ask.no }");
+//		//return "redirect:askdetail.action?no=" + ask;
+//		
+//		ModelAndView mv = new ModelAndView("redirect:/board/askdetail");
+//		mv.addObject("no", ask.getNo());
+//		return mv;
+//		
+//	}
 
 }

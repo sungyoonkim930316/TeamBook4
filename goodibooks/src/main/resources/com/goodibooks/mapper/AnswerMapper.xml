@@ -4,8 +4,14 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.goodibooks.mapper.AskMapper">
+<mapper namespace="com.goodibooks.mapper.AnswerMapper">
 	  
+	  <insert id="answerWriteBoard" parameterType="AnswerVO">
+	  	INSERT INTO answer (ans_no,  ans_content)
+	  	VALUES (qna_a_seq.nextval, #{ans_content})
+	  </insert>
+	  
+	  <!-- 
 	  <insert id="askWriteBoard" parameterType="QnaVO">
 	  	INSERT INTO qna (no, title, content, id)
 	  	VALUES (qna_q_seq.nextval, #{title}, #{content}, #{id})
@@ -29,7 +35,7 @@
 		SET deleted = '1' 
 		WHERE no = #{ no }
 	  </update>
-	  <!-- 
+	  
 	  <select id="selectAskUpdateByNo" parameterType="int" resultType="QnaVO">
 		SELECT no, title, content, regdate, updatedate
 		FROM qna
@@ -42,4 +48,5 @@
 		WHERE no = #{ no }
 	  </update>
 	    -->
+	   
 </mapper>

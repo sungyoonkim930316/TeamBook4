@@ -61,12 +61,14 @@
 		</thead>
 		<tbody>
 		<c:forEach items="${ askList }" var="ask">
+		<c:if test="${ loginuser.id == ask.id }">
 		<tr>
 			<td>${ ask.no }</td>
-			<td><a href="askdetail.action?no=${ask.no}" style="color:black"> ${ ask.title }</td>
+			<td><a href="askdetail.action?no=${ask.no}" style="color:black"> ${ ask.title }</a></td>
 			<td>${ ask.id }</td>
 			<td>${ ask.regDate }</td>
 		</tr>
+		</c:if>
 		</c:forEach>
 		</tbody>
 	</table>

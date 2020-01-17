@@ -12,4 +12,12 @@ public interface AskService {
 
 	QnAVO findAskDetailByNo(int no);
 
+	void deleteAsk(int no);
+
+//	QnAVO updateAskByNo(int no);
+
+//	void updateAsk(QnAVO ask);
+
+//	void updateAsk(QnAVO ask);
+
 }

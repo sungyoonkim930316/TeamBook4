@@ -15,4 +15,12 @@ public interface AskMapper {
 
 	QnAVO selectAskDetailByNo(int no);
 
+	void deleteAsk(int no);
+
+//	QnAVO selectAskUpdateByNo(int no);
+
+//	void updateAsk(QnAVO ask);
+
+//	void updateAsk(QnAVO ask);
+
 }
