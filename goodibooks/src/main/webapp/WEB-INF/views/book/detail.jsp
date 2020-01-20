@@ -90,7 +90,7 @@
 														<input type="hidden" value="${aver = aver + reviews[i].rate}">
 													</c:forEach>
 													
-													<h6>별점 평균 : ${aver/reviews.size()}</h6>
+													<h6>별점 평균 : <fmt:formatNumber value="${aver/reviews.size()}" pattern=".00"/></h6>
 													
 												</c:if>
 											</div>
@@ -201,6 +201,7 @@
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
 	</footer>
+<<<<<<< HEAD
 	
 	                                    <!-- Modal -->
 									<div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
@@ -265,6 +266,9 @@
 									<!-- /.modal -->
 	
 	
+	<!-- Modal end -->
+	<input type="hidden" id="loginuser">
+
 	<!-- all js here -->
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
@@ -273,7 +277,9 @@
 	$(function() {
 		$("#cartBtn").on("click", function(event) {
 			
-		if (!confirm("장바구니에 넣을까요?")) return;
+		if (!confirm("장바구니에 넣을까요?")) {
+			event.preventDefault(); return;
+		}
 
 		if (${empty sessionScope.loginuser}) alert("로그인이 필요합니다."); 
 		else {
@@ -283,18 +289,18 @@
 				"data" : {
 					"cart_count" : $("#bookCount").val(),
 					"book_no" : ${book.book_no},
-					"id" : "${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id}"
+					"id" : "${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id }"
 				},
 				"success" : function(data, status, xhr) {
 					alert("상품을 장바구니에 담았습니다.");
 
 					$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
+					location.reload();// 새로고침
 				},
 				"error" : function(xhr, status, err) {
-					alert(error);
+					alert("장바구니 추가 실패");
 				}
 			});
-			
 		}		
 		});
 
@@ -383,10 +389,11 @@
 			
 		});
 
-		
 
+		$("#bookCount").change(function(event) {
+			if ($(this).val() < 1) $(this).val("1");
+		});
 		
-
 	});
 			
 	</script>

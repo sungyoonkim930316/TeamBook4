@@ -43,7 +43,21 @@ public class MyPageController {
 	@ResponseBody
 	public String addCart(CartListVO cart, HttpSession session) {
 		
-		cartService.insertCartByMemberId(cart);
+		List<CartListVO> carts = (List<CartListVO>)session.getAttribute("cartlist");
+		
+		if (carts == null) {
+			cartService.insertCartByMemberId(cart);
+		} else {
+			for (int i = 0; i < carts.size(); i ++) {
+				if (carts.get(i).getBook_no() == cart.getBook_no()) {
+					cart.setCart_count(carts.get(i).getCart_count() + cart.getCart_count());
+					cartService.deleteCartByCartNo(carts.get(i).getCart_no());
+					carts.remove(i);
+				}
+			}
+			
+			cartService.insertCartByMemberId(cart);
+		}
 		
 		return "success";
 	}
@@ -52,14 +66,19 @@ public class MyPageController {
 	@GetMapping("/cartlist/{id}")
 	public String cartList(@PathVariable String id, HttpSession session) {
 		
-		//session.setAttribute("cartlist", cartService.showCartListByMemberId(id));
 		List<CartListVO> carts = cartService.showCartListByMemberId(id);
-		for(CartListVO c : carts) {
-			System.out.println(c.toString());
-		}
 		session.setAttribute("cartlist", carts);
 		
 		return "/goodibooks/modules/cartlist";
 	}
 
+	//장바구니에서 삭제
+	@PostMapping("/mycart-delete.action")
+	@ResponseBody
+	public String deleteCart(int cart_no) {
+
+		cartService.deleteCartByCartNo(cart_no);
+		
+		return "success";
+	}
 }

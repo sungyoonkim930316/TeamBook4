@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.goodibooks.service.CartService;
 import com.goodibooks.service.MemberService;
 import com.goodibooks.vo.MemberVO;
 
@@ -25,6 +26,10 @@ public class AccountController {
 	@Autowired
 	@Qualifier("memberService")
 	private MemberService memberService;
+	
+	@Autowired
+	@Qualifier("cartService")
+	private CartService cartService;
 	
 	// 회원가입 페이지 이동
 	@GetMapping(path = {"/register.action"})
@@ -54,6 +59,8 @@ public class AccountController {
 	
 	@PostMapping(path = {"/login.action"})
 	public String login(MemberVO member, HttpSession session, Model model, RedirectAttributes attr) {
+		
+		session.removeAttribute("cartlist");
 		
 		MemberVO member2 = memberService.findMemberByIdAndPasswd(member);
 		if (member2 == null) {

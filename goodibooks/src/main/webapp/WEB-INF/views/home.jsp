@@ -1148,11 +1148,14 @@
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
 	<script type="text/javascript">
-	$(function(){
-
-		
 	
-	</script>
+		$(function() { 
+			//topbar 장바구니 가져오기
+			if (${not empty loginuser}) {
+				$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
+			}
+		});
+</script>
 </body>
 
 </html>

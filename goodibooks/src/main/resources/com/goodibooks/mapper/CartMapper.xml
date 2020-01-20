@@ -18,6 +18,10 @@
 		where id = #{id}
 	</select> 
 
+	<!-- 카트번호로 카트 삭제 -->
+	<delete id="deleteCartByCartNo" parameterType="int">
+		delete cartlist where cart_no = #{cart_no}
+	</delete>
 </mapper>
 
 

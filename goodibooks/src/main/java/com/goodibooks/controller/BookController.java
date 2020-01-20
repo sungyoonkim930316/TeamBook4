@@ -43,12 +43,13 @@ public class BookController {
 			HttpServletRequest req) {
 
 		//페이징
-		int pageSize = 3;
-		int pagerSize = 3;
+		int pageSize = 4;
+		int pagerSize = 5;
 		int start = (page_no - 1) * pageSize + 1;
 		int end = start + pageSize;
 		int total = bookService.bookCount();
-		ThePager2 pager = new ThePager2(total, page_no, pageSize, pagerSize, "list.action", req.getQueryString());
+		
+		//System.out.println("start : " + start + " / end : " + end);
 		
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("start", start);
@@ -63,6 +64,7 @@ public class BookController {
 			model.addAttribute("books", bookService.searchBook(params));
 		}
 
+		ThePager2 pager = new ThePager2(total, page_no, pageSize, pagerSize, "list.action", req.getQueryString());
 		model.addAttribute("pager", pager);
 		model.addAttribute("categorys", bookService.getCategoryList());
 		model.addAttribute("totalBook", total);
