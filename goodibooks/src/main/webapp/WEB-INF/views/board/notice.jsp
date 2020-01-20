@@ -81,9 +81,11 @@
                                       </c:forEach>
                                      </tbody>
                                 </table>
+                                <c:if test="${ loginuser.userType == true }">
                                <a href="write.action" class="btn btn-dark btn-sm" > 
 				              	<span class="text">글 쓰기</span>
 				              </a>
+				               </c:if>
                             </div>
 				<br><br><br><br>
 		
