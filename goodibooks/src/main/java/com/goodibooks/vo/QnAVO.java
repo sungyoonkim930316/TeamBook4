@@ -15,4 +15,5 @@ public class QnAVO {
 	private boolean deleted;
 	private String id;
 	private String qnaType;
+	private boolean ans_check;
 }

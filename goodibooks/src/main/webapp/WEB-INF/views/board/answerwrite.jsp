@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -14,40 +15,14 @@
 
 <!-- all css here -->
 <!-- bootstrap v3.3.6 css -->
-<jsp:include page="/WEB-INF/views/modules/common-css.jsp" />
-
-<script src="/goodibooks/resources/js/vendor/modernizr-2.8.3.min.js"></script>
 
 </head>
 <body class="blog">
-	<!-- header-area-start -->
-	<header>
-
-		<jsp:include page="/WEB-INF/views/modules/topbar.jsp" />
-
-
-	</header>
-	<!-- header-area-end -->
-	<!-- breadcrumbs-area-start -->
-	<div class="breadcrumbs-area mb-70">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="breadcrumbs-menu">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li>자주 묻는 질문</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- breadcrumbs-area-end -->
-
 
 	<!-- mainsection : 1:1 문의 답변작성 -->
 	
+	<c:choose>
+	<c:when test="${ loginuser.userType == true }">
 	<div class="container">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
@@ -61,31 +36,21 @@
 						<textarea class="form-control" rows="3" id='ans_content'
 							name='ans_content'></textarea>
 					</div>
-
-					<button id="answerwrite-button" type="button" class="btn btn-light">답변 등록</button>
-					&nbsp
-					<button type="reset" class="btn btn-light">다시쓰기</button>
+					<button id="answerwrite-button" type="button" class="btn btn-light">
+						답변등록
+					</button>
 				</form>
 			</div>
 		</div>
 	</div>
+	</c:when>
+	</c:choose>
 
 	<br>
 	<br>
 	<br>
 
 	<!-- end of mainsection -->
-
-
-
-	<!-- footer-area-start -->
-	<footer>
-
-		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
-
-	</footer>
-	<!-- Modal end -->
-
 
 	<!-- all js here -->
 	<!-- jquery latest version -->
@@ -95,16 +60,32 @@
 		$(function() {
 
 			$('#answerwrite-button').on('click', function(event) {
+
+				event.preventDefault();
+				event.stopPropagation();
+				
 				if ($('#content').val() == '') {
-					alert('내용을 입력하세요');
+					alert('답변 내용을 입력하세요');
 					$('#content').focus();
 					return;
 				}
 
-				$('#answerwrite-form').submit();
+				var values = $('#answerwrite-form').serialize();
+
+				$.ajax({
+					"url" : "/goodibooks/board/answerwrite",
+					"method" : "post",
+					"data" : values,
+					"success" : function(data, status, xhr) {
+						alert("답변이 등록됐습니다.")
+					},
+					"error" : function(xhr, status, err) {
+						alert("답변 등록 실패")
+					}
+
+				});
 			})
 
-			$('.fixed').attr({'readonly': 'readonly'})
 		})
 	</script>
 

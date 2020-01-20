@@ -65,26 +65,26 @@ public class AskController {
 		return "board/askdetail";
 	}
 	
-//	@GetMapping(path = { "/update.action" })
-//	public String showAskUpdateForm(int no, Model model) {
-//		
-//		QnAVO askupdate = askService.updateAskByNo(no);
-//		if (askupdate == null) {
-//			return "redirect:ask.action";
-//		}
-//		
-//		model.addAttribute("askupdate", askupdate);
-//		
-//		return "board/askupdate";
-//	}
+	@GetMapping(path = { "/update.action" })
+	public String showAskUpdateForm(int no, Model model) {
+		
+		QnAVO askupdate = askService.updateAskByNo(no);
+		if (askupdate == null) {
+			return "redirect:ask.action";
+		}
+		
+		model.addAttribute("askupdate", askupdate);
+		
+		return "board/askupdate";
+	}
 	
-//	@PostMapping(path = { "/update.action" })
-//	public String update(QnAVO ask, @RequestParam(value="no") int no) {
-//		
-//		askService.updateAsk(ask);
-//		
-//		return String.format("redirect:askdetail.action");
-//	}
+	@PostMapping(path = { "/update.action" })
+	public String update(QnAVO ask, @RequestParam(value="no") int no) {
+		
+		askService.updateAsk(ask);
+		
+		return String.format("redirect:ask.action");
+	}
 	
 	@GetMapping(path = { "/delete.action" })
 	public String deleteAsk(@RequestParam(value="no") int no) {
@@ -93,19 +93,5 @@ public class AskController {
 		
 		return "redirect:ask.action";
 	}
-	
-//	@PostMapping(path = { "/update.action" })
-//	public String update(QnAVO ask, RedirectAttributes attr) {
-//		
-//		askService.updateAsk(ask);
-//	
-//		//return String.format("redirect:askdetail.action?no=${ ask.no }");
-//		//return "redirect:askdetail.action?no=" + ask;
-//		
-//		ModelAndView mv = new ModelAndView("redirect:/board/askdetail");
-//		mv.addObject("no", ask.getNo());
-//		return mv;
-//		
-//	}
 
 }

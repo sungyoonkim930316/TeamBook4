@@ -110,7 +110,7 @@
 													<input id="bookCount" class="qty" type="number" value="1">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
-												<a id="buyBtn" href="#">바로 구매하기</a>
+												<a id="buyBtn" href="/goodibooks/purchase/purchase.action">바로 구매하기</a>
 											</form>
 										</div>
 									</div>
@@ -236,6 +236,10 @@
 			
 		}		
 		});
+
+		/* $("#buyBtn").on("click", function(event) {
+
+		}) */
 
 	});
 			

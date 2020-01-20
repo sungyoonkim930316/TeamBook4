@@ -17,9 +17,9 @@ public interface AskMapper {
 
 	void deleteAsk(int no);
 
-//	QnAVO selectAskUpdateByNo(int no);
+	QnAVO selectAskUpdateByNo(int no);
 
-//	void updateAsk(QnAVO ask);
+	void updateAsk(QnAVO ask);
 
 //	void updateAsk(QnAVO ask);
 

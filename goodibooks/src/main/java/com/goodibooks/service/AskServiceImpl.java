@@ -38,25 +38,17 @@ public class AskServiceImpl implements AskService {
 		
 	}
 
-//	@Override
-//	public QnAVO updateAskByNo(int no) {
-//		
-//		return askMapper.selectAskUpdateByNo(no);
-//	}
+	@Override
+	public QnAVO updateAskByNo(int no) {
+		
+		return askMapper.selectAskUpdateByNo(no);
+	}
 
-//	@Override
-//	public void updateAsk(QnAVO ask) {
-//		
-//		askMapper.updateAsk(ask);
-//		
-//	}
-
-
-//	@Override
-//	public void updateAsk(QnAVO ask) {
-//		
-//		askMapper.updateAsk(ask);
-//		
-//	}
+	@Override
+	public void updateAsk(QnAVO ask) {
+		
+		askMapper.updateAsk(ask);
+		
+	}
 
 }

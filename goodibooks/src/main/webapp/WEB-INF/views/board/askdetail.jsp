@@ -59,11 +59,11 @@
 				<form id="write-form" role="form" action="askwrite.action"
 					method="post">
 					<div class="form-group">
-						<label>글 번호</label> <input class="form-control" id='no'
+						<label>글 번호</label> <input class="form-control fixed" id='no'
 							name='no' value='${ askdetail.no }'>
 					</div>
 					<div class="form-group">
-						<label>제목</label> <input class="form-control" id='title'
+						<label>제목</label> <input class="form-control fixed" id='title'
 							name='title' value='${ askdetail.title }'>
 					</div>
 					<%-- 
@@ -84,23 +84,23 @@
   --%>
 					<div class="form-group">
 						<label>내용</label>
-						<textarea class="form-control" rows="3" id='content'
+						<textarea class="form-control fixed" rows="3" id='content'
 							name='content'>${ askdetail.content }</textarea>
 					</div>
 
 					<div class="form-group">
 						<label>작성자</label>
-						<input class="form-control" id='id' name='id' value='${ loginuser.id }'>
+						<input class="form-control fixed" id='id' name='id' value='${ loginuser.id }'>
 					</div>
 					
 					<div class="form-group">
 		            	<label>작성일자</label> 
-		            	<input class="form-control" id='regDate' value='${ askdetail.regDate }'>
+		            	<input class="form-control fixed" id='regDate' value='${ askdetail.regDate }'>
 		            </div>
 		            
 		            <div class="form-group">
 		            	<label>수정일자</label> 
-		            	<input class="form-control" id='updateDate' value='${ askdetail.updateDate }'>
+		            	<input class="form-control fixed" id='updateDate' value='${ askdetail.updateDate }'>
 		            </div>
 		            <br>
 
@@ -116,27 +116,13 @@
 	
 	<br><hr><br><br>
 	
-	<div class="container">
-		<div class="card shadow mb-4">
-			<div class="card-header py-3">
-				<span class="m-0 font-weight-bold text-default">답변</span>
-			</div>
-			<div class="card-body">
-					<div class="form-group">
-						<label>내용</label>
-						<textarea class="form-control" rows="3" id='ans_content'
-							name='ans_content'>${ askdetail.content }</textarea>
-					</div>
+	<div id="reply-list-container" class="panel-body">
 
-			</div>
-		</div>
+		<jsp:include page="/WEB-INF/views/board/answerlist.jsp" />
+
 	</div>
-	<!-- 
-	<div class="container">
-	<a href="/goodibooks/board/answerwrite.action" class="btn btn-light pull-right">
-		<span class="text">글쓰기</span></a>
-	</div>
-	 -->
+	
+		<jsp:include page="/WEB-INF/views/board/answerwrite.jsp" />
 	
 	
 	<br><br><br>
@@ -160,7 +146,7 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			$('input,textarea').attr({'readonly': 'readonly'})
+			$('.fixed').attr({'readonly': 'readonly'})
 
 			$('#toask-button').on('click', function(event) {
 				location.href = "ask.action";
@@ -176,12 +162,12 @@
 					makeForm('delete.action', ${ askdetail.no });
 				form.submit();
 			});
-			/* $('#askwriteedit-button').on('click', function(event) {
+			$('#askwriteedit-button').on('click', function(event) {
 				//location.href = "update.action?no=${ askdetail.no }";
 				var form =
 					makeForm('update.action', ${ askdetail.no });
 				form.submit();
-			}); */
+			});
 
 			function makeForm(action, no, method="get") {
 				var form = $('<form></form>');
