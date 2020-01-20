@@ -124,9 +124,6 @@
 											</div>
 										</div>
 										<div class="product-link">
-											<div class="product-button">
-												<a href="/goodibooks/mypage/mycart.action" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
 											<div class="add-to-link">
 												<ul>
 													<li><a href="product-details.html" title="Details"><i class="fa fa-external-link"></i></a></li>

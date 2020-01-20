@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% request.setCharacterEncoding("utf-8"); %>
-
+	<input type="hidden" id="loginuser" value="${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id }">
 <!-- header-top-area-start -->
 		<div class="header-top-area">
 			<div class="container">

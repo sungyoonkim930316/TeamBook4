@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -57,6 +58,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!-- entry-header-area-end -->
 		<!-- cart-main-area-start -->
 		<div class="cart-main-area mb-70">
@@ -77,22 +79,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="img/cart/1.jpg" alt="man" /></a></td>
-											<td class="product-name"><a href="#">Vestibulum suscipit</a></td>
-											<td class="product-price"><span class="amount">£165.00</span></td>
-											<td class="product-quantity"><input type="number" value="1"></td>
-											<td class="product-subtotal">£165.00</td>
-											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-										</tr>
-										<tr>
-											<td class="product-thumbnail"><a href="#"><img src="img/cart/2.jpg" alt="man" /></a></td>
-											<td class="product-name"><a href="#">Vestibulum dictum magna</a></td>
-											<td class="product-price"><span class="amount">£50.00</span></td>
-											<td class="product-quantity"><input type="number" value="1"></td>
-											<td class="product-subtotal">£50.00</td>
-											<td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-										</tr>
+										<c:choose>
+											<c:when test="${not empty cartlist}">
+											<c:forEach var="c" items="${cartlist}">
+											<tr class="cart-products"  cartNo="${c.cart_no}">
+												<td class="product-thumbnail"><img src="/goodibooks/resources/img/book-img/${c.book.imgs[0].img}.jpg" style="height:120px !important;" /></td>
+												<td class="product-name"><a href="#">${c.book.name}</a></td>
+												<td class="product-price" ><span class="amount">${c.book.price}</span></td>
+												<td class="product-quantity"><input cartNo="${c.cart_no}" price="${c.book.price} "type="number" value="${c.cart_count}"></td>
+												<td class="product-subtotal">${total = (c.book.price * c.cart_count)}원</td>
+												<td class="deleteCartBtn" cartNo="${c.cart_no}"><a href=""><i class="fa fa-times"></i></a></td>
+												
+											</tr>
+											</c:forEach>	
+											</c:when>
+											<c:otherwise>
+											<tr>
+												<td colspan="6">담긴 상품이 없습니다.</td>
+											</tr>
+											</c:otherwise>
+										</c:choose>
+										
 									</tbody>
 								</table>
 							</div>
@@ -124,7 +131,7 @@
                                     <tr class="cart-subtotal">
                                         <th>Subtotal</th>
                                         <td>
-                                            <span class="amount">£215.00</span>
+                                            <span  class="amount subtotal"></span>
                                         </td>
                                     </tr>
                                     <tr class="shipping">
@@ -150,7 +157,7 @@
                                         <th>Total</th>
                                         <td>
                                             <strong>
-                                                <span class="amount">£215.00</span>
+                                                <span class="amount subtotal"></span>
                                             </strong>
                                         </td>
                                     </tr>
@@ -174,6 +181,10 @@
 		<!-- footer-area-end -->
 		
 		<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
-		
+<script>
+$(function() {
+	$().priceTotal();
+});
+</script>
     </body>
 </html>
