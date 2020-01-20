@@ -29,7 +29,7 @@
 		SET deleted = '1' 
 		WHERE no = #{ no }
 	  </update>
-	  <!-- 
+	  
 	  <select id="selectAskUpdateByNo" parameterType="int" resultType="QnaVO">
 		SELECT no, title, content, regdate, updatedate
 		FROM qna
@@ -41,5 +41,5 @@
 		SET title = #{ title }, content = #{ content }, updatedate = sysdate 
 		WHERE no = #{ no }
 	  </update>
-	    -->
+	   
 </mapper>

@@ -54,29 +54,39 @@
 		<thead>
 		<tr>
 			<th>번호</th>
+			<th>문의유형</th>
 			<th>제목</th>
 			<th>작성자</th>
-			<th>작성일</th>
+			<th>문의일시</th>
+			<th>답변여부</th>
 		</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${ askList }" var="ask">
-		<c:if test="${ loginuser.id == ask.id }">
+		<c:if test="${ loginuser.id == ask.id || loginuser.userType == true }">
 		<tr>
 			<td>${ ask.no }</td>
+			<td>${ ask.qnaType }</td>
 			<td><a href="askdetail.action?no=${ask.no}" style="color:black"> ${ ask.title }</a></td>
 			<td>${ ask.id }</td>
 			<td>${ ask.regDate }</td>
+			<td>${ ask.ans_check }</td>
 		</tr>
 		</c:if>
 		</c:forEach>
 		</tbody>
 	</table>
 	<hr/>
+	
+	<c:choose>
+	<c:when test="${ loginuser.userType == false }">
 	<a href="/goodibooks/board/askwrite.action" class="btn btn-light pull-right">
 		<span class="text">글쓰기</span>
 	</a>
+	</c:when>
+	</c:choose>
 	</div>
+	
 	
 	<br><br><br>
 	

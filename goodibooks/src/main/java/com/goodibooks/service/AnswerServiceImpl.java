@@ -1,5 +1,7 @@
 package com.goodibooks.service;
 
+import java.util.List;
+
 import com.goodibooks.mapper.AnswerMapper;
 import com.goodibooks.vo.AnswerVO;
 
@@ -17,4 +19,11 @@ public class AnswerServiceImpl implements AnswerService {
 		return ans.getAns_no();
 	}
 
+	@Override
+	public List<AnswerVO> getAnswerListByAnsNo() {
+		
+		return answerMapper.selectAnswerByAnsNo();
+	}
+
+	
 }

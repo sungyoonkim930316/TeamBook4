@@ -29,5 +29,19 @@ public class AdminController {
 		
 		return "account/admin";
 	}
+	
+	// 책 등록 페이지로 이동
+	@GetMapping(path = {"/register.action"})
+	public String toRegister() {
+			
+		return "admin/register";
+	}
+	
+	// 책 등록 예비
+	@GetMapping(path= {"/bookRegister"})
+	public String bookRegister() {
+			
+		return "/admin/book-register";
+	}
 
 }
