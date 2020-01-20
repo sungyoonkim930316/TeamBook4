@@ -1,5 +1,7 @@
 package com.goodibooks.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.goodibooks.vo.MemberVO;
@@ -14,5 +16,7 @@ public interface MemberMapper {
 	void selectMemberByPasswd(MemberVO member);
 
 	void updateMember(MemberVO member);
+
+	int checkPw(Map<String, String> map);
 
 }

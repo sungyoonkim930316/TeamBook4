@@ -11,7 +11,8 @@
                                         	<p>소감을 남기려면 <a href="/goodibooks/account/login.action">로그인</a> 해주세요</p>
                                         </c:if>
                                         <c:if test="${ loginuser != null }">
-                                        <form action="/goodibooks/review/review.action?book_no=${ param.book_no }" method="post">
+                                        <%-- <form action="/goodibooks/review/review.action?book_no=${ param.book_no }" method="post"> --%>
+                                        <form id="reviewRegister-form" >
                                         <input type="hidden" name="id" value="${ loginuser.id }">
                                         <!-- <input type="hidden" name="rate" value="7"> -->
                                         <input type="hidden" name="book_no" value="${ book.book_no }">
@@ -48,18 +49,19 @@
 									  	</div>
                                        
                                         <div class="review-form-button">
-                                        	<button type="submit" class="btn btn-outline-dark">리뷰 남기기</button>
+                                        	<button type="button" id="register" class="btn btn-outline-dark">리뷰 남기기</button>
                                         </div>
                                         </form>
                                         </c:if>
                                         
                                         <hr>
                                         <!-- 리뷰 리스트 -->
+                                        <div id="review-content-container">
                                         <c:if test="${ empty reviews }">
                                         <p class="text-center">아직 등록된 리뷰가 없지 뭐얌?</p>
                                         </c:if>
                                         <c:forEach items="${ reviews }" var="review">
-											
+										
 											<div>
 											<h5>${ review.title }</h5>
 											<p>${ review.id } | ${ review.writeDate } | 
@@ -83,8 +85,18 @@
 											<div>
 											<p>${ review.content }</p>
 											</div>
+											<c:if test="${ loginuser.id == review.id }" >
+									          <button data-reno='${ review.re_no }' id="edit-button" type="button" class="btn btn-success review-edit">수정</button>
+									          <button data-reno='${ review.re_no }' id="delete-button" type="button" class="btn btn-success review-delete">삭제</button>
+									        </c:if>
 											<hr>
                                         </c:forEach>
+                                        </div>
                                         
                                     </div>
+                                    
+                                    
+                                    
+
+                                        
                                 

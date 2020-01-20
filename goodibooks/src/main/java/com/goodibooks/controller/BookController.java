@@ -91,11 +91,4 @@ public class BookController {
 
 	}
 	
-	// 책 등록 페이지로 이동
-	@GetMapping(path = {"/register.action"})
-	public String toRegister() {
-		
-		return "book/register";
-	}
-	
 }

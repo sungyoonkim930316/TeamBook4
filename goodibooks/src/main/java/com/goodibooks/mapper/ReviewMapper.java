@@ -13,4 +13,8 @@ public interface ReviewMapper {
 
 	List<ReviewVO> findReviewWithBookNo(int book_no);
 
+	void updateReview(ReviewVO review);
+
+	void deleteReview(int re_no);
+
 }

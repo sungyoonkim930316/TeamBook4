@@ -201,9 +201,70 @@
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
 	</footer>
-	<!-- Modal end -->
-
-
+	
+	                                    <!-- Modal -->
+									<div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="reply-modal-label">한줄평 수정하기</h5>
+													<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								            			<span aria-hidden="true">×</span>
+								          			</button>					
+												</div>
+												<div class="modal-body">
+												<form id="edit-form">
+									                <input type="hidden" name="id" value="${ loginuser.id }">
+									                <label for="exampleInputEmail1">점수</label><br>
+								                   &nbsp;<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="rate" value="1">
+														  <!-- <label class="form-check-label" for="inlineRadio1">좋음</label> -->
+														  <i class="fa fa-star"></i>
+														</div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="rate" value="2">
+														  <i class="fa fa-star"></i><i class="fa fa-star"></i>
+														</div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="rate" value="3">
+														  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+														</div>
+														<div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="rate" value="4">
+														  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+														 </div>
+														  <div class="form-check form-check-inline">
+														  <input class="form-check-input" type="radio" name="rate" value="5">
+														  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+														</div>
+													<br><br>
+												
+													<div class="form-group">
+														<label>제목</label>
+														<input class="form-control" name='title' id="re_title">
+													</div>
+													<div class="form-group">
+														<label>내용</label>
+														<textarea class="form-control" name="content" id="re_content" rows="3"></textarea>
+													</div>
+								 						<input type="hidden" name="book_no" value="${ book.book_no }">
+														<input type="hidden" id="review_re_no" name="re_no">
+												</form>
+												</div>
+												<div class="modal-footer">
+													<button id='modalModBtn' type="button" class="btn btn-success" data-dismiss="modal">수정</button>
+													<!-- <button id='modalRemoveBtn' type="button" class="btn btn-success">Remove</button>
+													<button id='modalRegisterBtn' type="button" class="btn btn-success">Register</button> -->
+													<button id='modalCloseBtn' type="button" class="btn btn-success">취소</button>
+												</div>
+											</div>
+											<!-- /.modal-content -->
+										</div>
+										<!-- /.modal-dialog -->
+									</div>
+									<!-- /.modal -->
+	
+	
 	<!-- all js here -->
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
@@ -236,6 +297,95 @@
 			
 		}		
 		});
+
+		// 리뷰 등록
+		$("#register").on("click", function(event) {
+
+			var values = $("#reviewRegister-form").serializeArray();
+
+			$.ajax({
+				"url" : "/goodibooks/review/reviewRegister.action" ,
+				"method" : "post" ,
+				"data" : values ,
+				"success" : function(data, status, xhr) {
+					$("#Reviews").load("/goodibooks/review/reviewContent/${ book.book_no }");
+				},
+				"error" : function(xhr, status, err) {
+					alert("실패");
+				}
+			})
+		});
+
+		// 모달 창 닫기
+		$("#Reviews").on("click", "#modalCloseBtn", function(event){
+			$("#review-modal").modal('hide');
+		});
+
+		$('#Reviews').on('click', '.review-edit', function(event) {
+			// 수정버튼을 눌렀을때, 해당되는 re_no을 저장시킨다
+			var re_no = $(this).attr("data-reno");
+
+			$("#edit-form input[name=re_no]").val(re_no);
+			
+			$("#review-modal").modal("show");
+		});
+
+		// 리뷰 수정 버튼으로 모달 팝업발생시 데이터 저장
+		$("#Reviews").on("click", "#modalModBtn", function(event){
+
+			event.preventDefault();
+			event.stopPropagation();
+			
+			// 수정버튼을 눌렀을 때, 저장된 re_no 을 불러온드아~~
+			var data = {			
+			"re_no" : $("#edit-form input[name=re_no]").val() , 
+			"rate" : $("#edit-form input[name=rate]").val() , 
+			"title" : $("#edit-form input[name=title]").val() , 
+			"content" : $("#edit-form textarea[name=content]").val()
+			};
+			
+			$.ajax({
+				"url" : "/goodibooks/review/editReview",
+				"method" : "put",
+				"data" : JSON.stringify(data),
+				"contentType" : "application/json",
+				"success" : function(result, status, xhr){
+					$("#review-modal").modal("hide");
+					$("#Reviews").load("/goodibooks/review/reviewContent/${ book.book_no }");
+				},
+				"error" : function(xhr, status, err){
+					alert("수정하는데 실패해버렸지 뭐얌?");
+				}
+			});
+			
+		});
+		
+
+		// 리뷰 삭제
+		$('#Reviews').on('click', '.review-delete', function(event) {
+
+			//var re_no = $(this).attr('data-re_no');
+			var re_no = $(this).attr('data-reno');
+
+			if (!confirm("후기를 삭제할까요?")) return;
+
+			$.ajax({
+				"url": "/goodibooks/review/delete/" + re_no,
+				"method": "delete",
+				"data": { "re_no" : re_no },
+				"success": function(data, status, xhr) {
+					$("#Reviews").load("/goodibooks/review/reviewContent/${ book.book_no }");
+				},
+				"error": function(xhr, status, err) {
+					alert("삭제에 실패해버렸지뭐얌?");
+				}
+			});
+			
+		});
+
+		
+
+		
 
 	});
 			

@@ -6,13 +6,29 @@
 
 <mapper namespace="com.goodibooks.mapper.ReviewMapper">
 
+	<!-- 
 	<insert id="insertReview" parameterType="ReviewVO">
 		insert into review (re_no, rate, title, content, book_no, id ) 
 		values ( review_seq.nextval, #{ rate }, #{ title }, #{ content }, #{ book_no }, #{ id } )
 	</insert>
+	-->
 	
 	<select id="findReviewWithBookNo" parameterType="int" resultType="ReviewVO">
-		select * from review where book_no = #{ book_no } and deleted ='0'
+		select * from review where book_no = #{ book_no } and deleted ='0' order by re_no DESC
 	</select>
-
+	
+	<!--  TEST  -->
+	<insert id="insertReview" parameterType="ReviewVO">
+		insert into review (re_no, rate, book_no, title, content, id ) 
+		values ( review_seq.nextval, #{ rate }, #{book_no}, #{ title }, #{ content }, #{ id } )
+	</insert>
+	
+	<update id="updateReview" parameterType="ReviewVO">
+		update review set rate=#{rate}, title=#{title}, content=#{content}, writedate=sysdate where re_no=#{re_no}
+	</update>
+	
+	<update id="deleteReview" parameterType="int">
+		delete from review where re_no=#{re_no}
+	</update>
+	
 </mapper>
