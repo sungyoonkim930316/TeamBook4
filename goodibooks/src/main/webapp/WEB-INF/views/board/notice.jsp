@@ -68,11 +68,6 @@
                                             <th>제목</th>
                                             <th style="width:120px">작성일자</th>
                                             <th style="width:120px">수정일자</th>
-                                             <th style="width:120px" >
-                                             <a href="write.action" class="btn btn-dark btn-sm" > 
-								              	<span class="text">글 쓰기</span>
-								              </a>
-                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,6 +81,9 @@
                                       </c:forEach>
                                      </tbody>
                                 </table>
+                               <a href="write.action" class="btn btn-dark btn-sm" > 
+				              	<span class="text">글 쓰기</span>
+				              </a>
                             </div>
 				<br><br><br><br>
 		

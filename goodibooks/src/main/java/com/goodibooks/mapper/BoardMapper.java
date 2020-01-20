@@ -16,6 +16,10 @@ public interface BoardMapper {
 
 	BoardVO selectNoticeByNo(int no);
 
+	void deleteNotice(int no);
+
+	void updateNotice(BoardVO board);
+
 	
 
 	

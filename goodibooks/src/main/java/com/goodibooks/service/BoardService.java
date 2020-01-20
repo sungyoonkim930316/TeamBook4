@@ -13,4 +13,8 @@ public interface BoardService {
 
 	BoardVO findNoticeByNo(int no);
 
+	void deleteNotice(int no);
+
+	void updateNotice(BoardVO board);
+
 }

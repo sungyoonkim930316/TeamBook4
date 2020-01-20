@@ -35,8 +35,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">blog</a></li>
+								<li>book register</li>
+								
 							</ul>
 						</div>
 					</div>

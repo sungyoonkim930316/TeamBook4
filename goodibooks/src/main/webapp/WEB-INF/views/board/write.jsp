@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Koparion – Book Shop HTML5 Template</title>
+        <title>GoodiBooks 공지사항</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -34,8 +34,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li>NOTICE</li>
-								
+								<li><a href="#">Home</a></li>
+								<li><a href="#" class="active">Notice</a></li>
 							</ul>
 						</div>
 					</div>
@@ -76,8 +76,6 @@
 		            <label>내용</label>
 		            <textarea style="height:300px;" class="form-control" rows="3" id='content' name='content'></textarea>
 		          </div>
-		
-		         
 		          
 		          <button id="write-button" type="button" class="btn btn-dark">등록</button>
 		          <button type="reset" class="btn btn-dark">다시쓰기</button>
@@ -105,7 +103,7 @@
 		});
 
 		$('#write-button').on('click', function(event) {
-			//1. 유효성 검사
+			
 			if ($('#title').val() == '') {
 				alert('제목을 입력하세요');
 				$('#title').focus();
@@ -117,7 +115,6 @@
 				return;
 			}
 
-			//2. 오류가 없다면 서버로 전송
 			$('#write-form').submit();
 		});
 	});

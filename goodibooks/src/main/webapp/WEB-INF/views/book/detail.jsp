@@ -110,7 +110,7 @@
 													<input id="bookCount" class="qty" type="number" value="1">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
-												<a id="buyBtn" href="#">바로 구매하기</a>
+												<a id="buyBtn" href="/goodibooks/purchase/purchase.action">바로 구매하기</a>
 											</form>
 										</div>
 									</div>
@@ -201,9 +201,13 @@
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
 	</footer>
+<<<<<<< HEAD
 	<!-- Modal end -->
 	<input type="hidden" id="loginuser">
 
+=======
+	
+>>>>>>> branch 'master' of https://github.com/sungyoonkim930316/TeamBook4.git
 	                                    <!-- Modal -->
 									<div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
 										<div class="modal-dialog" role="document">
@@ -267,6 +271,12 @@
 									<!-- /.modal -->
 	
 	
+<<<<<<< HEAD
+=======
+	<!-- Modal end -->
+	<input type="hidden" id="loginuser">
+
+>>>>>>> branch 'master' of https://github.com/sungyoonkim930316/TeamBook4.git
 	<!-- all js here -->
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
@@ -302,9 +312,16 @@
 		}		
 		});
 
+<<<<<<< HEAD
 		$("#bookCount").change(function(event) {
 			if ($(this).val() < 1) $(this).val("1");
 		});
+=======
+		/* $("#buyBtn").on("click", function(event) {
+
+		}) */
+
+>>>>>>> branch 'master' of https://github.com/sungyoonkim930316/TeamBook4.git
 		// 리뷰 등록
 		$("#register").on("click", function(event) {
 
@@ -390,6 +407,10 @@
 			
 		});
 
+		$("#bookCount").change(function(event) {
+			if ($(this).val() < 1) $(this).val("1");
+		});
+		
 	});
 			
 	</script>

@@ -1,5 +1,7 @@
 package com.goodibooks.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.goodibooks.vo.AnswerVO;
@@ -8,5 +10,7 @@ import com.goodibooks.vo.AnswerVO;
 public interface AnswerMapper {
 
 	void answerWriteBoard(AnswerVO ans);
+
+	List<AnswerVO> selectAnswerByAnsNo();
 
 }
