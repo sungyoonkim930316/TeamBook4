@@ -65,7 +65,7 @@ public class AskController {
 		return "board/askdetail";
 	}
 	
-	@GetMapping(path = { "/update.action" })
+	@GetMapping(path = { "/askupdate.action" })
 	public String showAskUpdateForm(int no, Model model) {
 		
 		QnAVO askupdate = askService.updateAskByNo(no);
@@ -78,7 +78,7 @@ public class AskController {
 		return "board/askupdate";
 	}
 	
-	@PostMapping(path = { "/update.action" })
+	@PostMapping(path = { "/askupdate.action" })
 	public String update(QnAVO ask, @RequestParam(value="no") int no) {
 		
 		askService.updateAsk(ask);
@@ -86,7 +86,7 @@ public class AskController {
 		return String.format("redirect:ask.action");
 	}
 	
-	@GetMapping(path = { "/delete.action" })
+	@GetMapping(path = { "/askdelete.action" })
 	public String deleteAsk(@RequestParam(value="no") int no) {
 		
 		askService.deleteAsk(no);
