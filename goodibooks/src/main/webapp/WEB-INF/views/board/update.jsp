@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>GoodiBooks 공지사항</title>
+        <title>Koparion – Book Shop HTML5 Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,8 +36,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">Notice</a></li>
+								<li>NOTICE</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -65,15 +65,12 @@
           
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <span class="m-0 font-weight-bold text-dark">공지사항</span>
+              <span class="m-0 font-weight-bold text-dark">글 수정</span>
             </div>
             
             <div class="card-body">
-               	  <div class="form-group">
-		            <label>글번호</label> 
-		            <input class="form-control" id='no' name='no' value='${ board.no }'>
-		          </div>
-		          
+               <form id="update-form" role="form" action="update.action" method="post">
+		          <input type="hidden" name="no" value="${ board.no }">
 		          <div class="form-group">
 		            <label>제목</label> 
 		            <input class="form-control" id='title' name='title' value='${ board.title }'>
@@ -81,54 +78,63 @@
 		
 		          <div class="form-group">
 		            <label>내용</label>
-		            <textarea style="height:300px;" class="form-control" rows="3" id='content' name='content'>${ board.content }</textarea>
+		            <textarea class="form-control" rows="3" id='content' name='content'>${ board.content }</textarea>
 		          </div>
 
-		          <div class="form-group">
-		            <label>작성일자</label> 
-		            <input class="form-control" id='regDate' value='${ board.regDate }'>
-		          </div>
-		          
-		          <div class="form-group">
-		            <label>수정일자</label> 
-		            <input class="form-control" id='updateDate' value='${ board.updateDate }'>
-		          </div>
-		          <button id="edit-button" type="button" class="btn btn-dark">수정</button>
-		          <button id="delete-button" type="button" class="btn btn-dark">삭제</button>
+		          <button id="update-button" type="button" class="btn btn-dark">수정</button>
+		          <button type="reset" class="btn btn-dark">다시쓰기</button>
+		          <button id="cancel-button" type="button" class="btn btn-dark">취소</button>
 		          <button id="tolist-button" type="button" class="btn btn-dark">목록</button>
-		       
+		        </form>
             </div>
           </div>
 
-		
-		<br><br><br><br><br>
-
         </div>
+        <!-- /.container-fluid -->
 
 
   <%@include file="/WEB-INF/views/modules/common-js.jsp" %>
   
   <script type="text/javascript">
-  $(function() {
-	  $('input, textarea').attr({'readonly': 'readonly'})
+	$(function() {
 		$('#tolist-button').on('click', function(event) {
 			location.href = "notice.action";
 		});
-		$('#delete-button').on('click', function(event) {
 
-			var yes = confirm("${ board.no }번 글을 삭제할까요?");
-			if (!yes) {
+		$('#update-button').on('click', function(event) {
+			
+			if ($('#title').val() == '') {
+				alert('제목을 입력하세요');
+				$('#title').focus();
 				return;
 			}
-			location.href = 'delete2.action?no=${ board.no }';
+			if ($('#contet').val() == '') {
+				alert('내용를 입력하세요');
+				$('#content').focus();
+				return;
+			}
+
+			$('#update-form').submit();
 		});
-		$('#edit-button').on('click', function(event) {
-			location.href = "update.action?no=${ board.no }";
-			
+
+		$('#cancel-button').on('click', function(event) {
+			location.href = 'detail.action?no=${ board.no }';
 		});
-  });
+	});
   </script>
   
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

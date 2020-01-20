@@ -28,6 +28,16 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO findNoticeByNo(int no) {
 		return boardMapper.selectNoticeByNo(no);
 	}
+
+	@Override
+	public void deleteNotice(int no) {
+		boardMapper.deleteNotice(no);
+	}
+
+	@Override
+	public void updateNotice(BoardVO board) {
+		boardMapper.updateNotice(board);
+	}
 	
 
 }

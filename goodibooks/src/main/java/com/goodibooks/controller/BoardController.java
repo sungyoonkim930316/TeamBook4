@@ -54,7 +54,28 @@ public class BoardController {
 		model.addAttribute("board", board);
 		return "board/detail";
 	}
-	
+	@GetMapping(path = { "/delete2.action" })
+	public String deleteNotice(int no) {
+		boardService.deleteNotice(no);
+		
+		return "redirect:notice.action";
+	}
+	@GetMapping(path = { "/update.action" })
+		public String showUpdateForm(int no, Model model) {
+		
+		BoardVO board = boardService.findNoticeByNo(no);
+		if (board == null) {
+			return "redirect:notice.action";
+		}
+		model.addAttribute("board", board);
+		return "board/update";
+	}
+	@PostMapping(path = { "/update.action" })
+	public String update(BoardVO board, int no) {
+		boardService.updateNotice(board);
+		return String.format(
+				"redirect:detail.action?no=%d", no);
+	}
 	
 	
 	@GetMapping(path= {"/qna.action"})

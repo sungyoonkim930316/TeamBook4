@@ -27,5 +27,16 @@
 		WHERE no = #{ no } AND deleted = '0'
 	</select>
 	
+	<update id="deleteNotice" parameterType="int">
+		UPDATE board
+		SET deleted = '1'
+		WHERE no = #{ no }
+	</update>
+	
+	<update id="updateNotice" parameterType="BoardVO">
+		UPDATE board
+		SET title = #{ title }, content = #{ content }, updatedate = sysdate
+		WHERE no = #{ no }
+	</update>
 
 </mapper>
