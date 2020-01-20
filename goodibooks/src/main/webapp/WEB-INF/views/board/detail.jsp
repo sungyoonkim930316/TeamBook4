@@ -93,8 +93,10 @@
 		            <label>수정일자</label> 
 		            <input class="form-control" id='updateDate' value='${ board.updateDate }'>
 		          </div>
+		          <c:if test="${ loginuser.userType == true }">
 		          <button id="edit-button" type="button" class="btn btn-dark">수정</button>
 		          <button id="delete-button" type="button" class="btn btn-dark">삭제</button>
+		          </c:if>
 		          <button id="tolist-button" type="button" class="btn btn-dark">목록</button>
 		       
             </div>
