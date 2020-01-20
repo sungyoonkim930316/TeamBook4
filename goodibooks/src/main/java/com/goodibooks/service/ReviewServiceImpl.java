@@ -24,5 +24,19 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewMapper.findReviewWithBookNo(book_no);
 	}
+
+
+	@Override
+	public void editReivew(ReviewVO review) {
+
+		reviewMapper.updateReview(review);
+	}
+
+	@Override
+	public void deleteReive(int re_no) {
+
+		reviewMapper.deleteReview(re_no);
+	}
+
 	
 }
