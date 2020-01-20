@@ -165,7 +165,7 @@
 			$('#askwriteedit-button').on('click', function(event) {
 				//location.href = "update.action?no=${ askdetail.no }";
 				var form =
-					makeForm('update.action', ${ askdetail.no });
+					makeForm('askupdate.action', ${ askdetail.no });
 				form.submit();
 			});
 
