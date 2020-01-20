@@ -30,9 +30,8 @@
 	
 	<!-- 책 상세 보기 -->
 	<select id="selectBookByBookNo" parameterType="int" resultType="BookInfoVO">
-		select book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
-		from book_info b, publisher p, category c 
-		where book_no = #{book_no} and b.pub_no = p.pub_no and c.category_no = b.category_no
+		<include refid="query"></include> and
+		book_no = #{book_no}
 	</select>
 	<select id="selectImgByBookNo" parameterType="int" resultType="BookImgVO">
 		select img from book_img where book_no = #{book_no} order by img
@@ -48,7 +47,7 @@
 	<select id="selectBooks" parameterType="hashmap" resultType="BookInfoVO">
 		select * from (
 			<include refid="query"></include>
-		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
+		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
 	</select>
 	<!-- 전체 책 개수 -->
 	<select id="bookCount" resultType="int">
@@ -69,7 +68,7 @@
 		select * from (
 			<include refid="query"></include> and 
 			<include refid="searchCondition"></include>
-		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
+		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
 	</select>
 	
 	<!-- topbar 검색 -->
@@ -78,7 +77,7 @@
 			select * from (
 				<include refid="query"></include> 
 			) where name like '%'||#{searchKey}||'%' or writer like '%'||#{searchKey}||'%' or pub_name like '%'||#{searchKey}||'%'
-		) where <![CDATA[#{start} <= idx and idx <= #{end}]]>
+		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
 	</select>
 	
 </mapper>

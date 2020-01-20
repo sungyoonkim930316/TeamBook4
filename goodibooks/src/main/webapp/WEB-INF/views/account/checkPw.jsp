@@ -38,8 +38,8 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">로그인</a></li>
+								<li><a href="#">정보 수정</a></li>
+								<li><a href="#" class="active">패스워드 확인</a></li>
 							</ul>
 						</div>
 					</div>
@@ -53,22 +53,22 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="login-title text-center mb-30">
-							<h2>로그인</h2>
+							<h2>패스워드 확인</h2>
 						</div>
 					</div>
 					<div class="offset-lg-3 col-lg-6 col-md-12 col-12">
-						<form id="login-form" action="login.action" method="post">
+						<form id="checkpw-form" action="edit.action" method="post">
 							<div class="login-form">
 								<div class="single-login">
 									<label>ID<span>*</span></label>
-									<input type="text" id="id" name="id"/>
+									<input type="text" id="id" name="id" value="${ loginuser.id }"/>
 								</div>
 								<div class="single-login">
 									<label>패스워드 <span>*</span></label>
 									<input type="password" id="passwd" name="passwd"/>
 								</div>
 								<div class="single-login single-login-2">
-									<button type="button" id="login" class="btn btn-primary">로그인</button>
+									<button type="button" id="checkpw" class="btn btn-primary">확인</button>
 									<!-- <button type="submit" >로그인</button> -->
 								</div>
 								<!-- <a href="#">Lost your password?</a> -->
@@ -110,26 +110,17 @@
 		<script type="text/javascript">
 	$(function(){
 
-		var newId = '${ newId }'; 
-		var loginFalse = '${ loginFalse }'; 
+		var checkFalse = '${ checkFalse }'; 
 		
-		if (newId && !history.state) {
-			$('#messageModal .modal-body').text("회원가입이 완료 되었습니다.")
-			$('#messageModal').modal('show');
-		} else if( loginFalse && !history.state ){
-			$('#messageModal .modal-body').text("로그인 실패 하였습니다.")
+		if (checkFalse && !history.state) {
+			$('#messageModal .modal-body').text("패스워드가 일치하지 않습니다.")
 			$('#messageModal').modal('show');
 		}
 		history.replaceState({}, null, null);
 
 
-		$("#login").on("click" , function(event) {
+		$("#checkpw").on("click" , function(event) {
 			// 1. 유효성 검사
-			if($("#id").val() == '' ){
-				alert("아이디를 입력하세요!");
-				$("#id").focus();
-				return;
-			}
 			if($("#passwd").val() == '' ){
 				alert("패스워드를 입력하세요!");
 				$("#passwd").focus();
@@ -137,7 +128,7 @@
 			}
 			
 			// 2. 오류가 없다면 서버로 전송
-			$("#login-form").submit();
+			$("#checkpw-form").submit();
 		});
 
 		

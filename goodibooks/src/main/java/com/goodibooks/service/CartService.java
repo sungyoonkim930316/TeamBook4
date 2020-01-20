@@ -8,4 +8,6 @@ public interface CartService {
 
 	void insertCartByMemberId(CartListVO cart);
 	List<CartListVO> showCartListByMemberId(String id);
+	void deleteCartByCartNo(int cart_no);
+	
 }

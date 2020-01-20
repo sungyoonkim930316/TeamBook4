@@ -20,4 +20,8 @@
 		update member set phone=#{ phone }, email=#{email}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3} where id=#{ id } 
 	</update>
 	
+	<select id="checkPw" parameterType="hashmap" resultType="int">
+		select count(*) from member where id=#{id} and passwd=#{passwd}
+	</select>
+	
 </mapper>

@@ -4,7 +4,16 @@
 						<div class="my-cart">
 							<ul>
 								<li><a href="/goodibooks/mypage/mycart.action"><i class="fa fa-shopping-cart"></i>장바구니</a>
-									<span>${sessionScope.cartlist.size()}</span>
+									<span>
+										<c:choose>
+											<c:when test="${sessionScope.cartlist.size() > 0}">
+												${cartlist.size()}
+											</c:when>
+											<c:otherwise>
+												0
+											</c:otherwise>
+										</c:choose>
+									</span>
 									<div class="mini-cart-sub">
 										<div id="" class="cart-product">
 										
@@ -12,23 +21,21 @@
 										
 											<div class="single-cart">
 												<div class="cart-img">
-													<a href="#"><img src="/goodibooks/resources/img/product/1.jpg" alt="book" /></a>
+													<a href="/goodibooks/book/detail.action?book_no=${c.book_no}">
+													<img src="/goodibooks/resources/img/book-img/${c.book.imgs[0].img}.jpg" alt="book" />
+													</a>
 												</div>
 												<div class="cart-info">
-													<h5><a href="#">${c.book.name}</a></h5>
-													<p>${c.book.price }</p>
+													<h5><a href="/goodibooks/book/detail.action?book_no=${c.book_no}" >${c.book.name}</a></h5>
+													<p>${c.book.price} x ${c.cart_count} 개 </p>
+													<p class="product-subtotal">${c.book.price * c.cart_count}원</p>
 												</div>
 												<div class="cart-icon">
-													<a href="#"><i class="fa fa-remove"></i></a>
+													<a class="deleteCartBtn" cartNo="${c.cart_no}" href="#"><i class="fa fa-remove"></i></a>
 												</div>
 											</div>
 										</c:forEach>
-											
-																						
-											
-										</div>
-										<div class="cart-totals">
-											<h5>Total <span>전체 가격</span></h5>
+		
 										</div>
 										<div class="cart-bottom">
 											<a class="view-cart" href="/goodibooks/mypage/mycart.action">장바구니 이동</a>

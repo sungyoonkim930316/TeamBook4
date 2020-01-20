@@ -34,3 +34,5 @@
         
         <!-- 상단바 검색 js -->
         <script src="/goodibooks/resources/js/topbar_search.js"></script>
+        <!-- 상단바 cartlist -->
+		<script src="/goodibooks/resources/js/topbar_cart.js"></script>
