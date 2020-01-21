@@ -68,8 +68,7 @@
 							  <input type="text" class="form-control" id="id" name="id">
 						  </div>
 						  <div class="form-group" style="width:360px;">
-							   <button type="button" class="btn btn-primary mb-2" id="id-check">중복 확인</button><p id="id-check-result" style="display: inline; margin-left: 20px;"></p>
-							   
+							   <button type="button" class="btn btn-primary mb-2" id="id-check">중복 확인</button><p id="id-check-result" style="display: inline; margin-left: 20px;"></p> 
 						  </div>
 						    
 						  <div class="form-row">
@@ -80,7 +79,9 @@
 						    <div class="form-group col-md-6">
 						      <label for="inputPassword4">패스워드 확인</label>
 						      <input type="password" class="form-control" id="confirm" >
+						      <p id="pw-check-result" style="display: inline;"></p>
 						    </div>
+						    
 						  </div>
 						  
 						  <div class="form-group" style="width:360px;">
@@ -284,6 +285,13 @@
 				"error" : function(xhr, status, err) { alert("아이디 중복체크 실패"); }
 			});
 
+		});
+
+		// 비밀번호 confirm
+		$("#confirm").change(function(event) {
+			var pw = $("#passwd").val();
+			if ($(this).val() != pw) $("#pw-check-result").text("비밀번호가 일치하지 않습니다.");
+			else $("#pw-check-result").text("");
 		});
 		
 		
