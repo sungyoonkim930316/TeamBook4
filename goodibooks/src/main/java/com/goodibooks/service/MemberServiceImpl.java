@@ -45,6 +45,11 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.updateMember(member);
 		
 	}
+	@Override
+	public void deleteMember(MemberVO member) {
+
+		memberMapper.deleteMember(member);
+	}
 
 	@Override
 	public boolean chekPw(Map<String, String> map) {

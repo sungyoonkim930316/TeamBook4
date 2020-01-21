@@ -30,5 +30,10 @@
 		select count(*) from member where id=#{id} and passwd=#{passwd}
 	</select>
 	
+	<update id="deleteMember" parameterType="memberVO">
+		update member 
+		set deleted = '1', deletedate = sysdate
+		where id=#{id}
+	</update>
 
 </mapper>

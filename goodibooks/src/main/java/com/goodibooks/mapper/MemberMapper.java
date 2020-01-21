@@ -21,4 +21,6 @@ public interface MemberMapper {
 	
 	MemberVO selectMemberById(String id);
 
+	void deleteMember(MemberVO member);
+
 }

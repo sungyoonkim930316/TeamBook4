@@ -137,6 +137,15 @@ public class AccountController {
 //		}
 		
 	}
+	@GetMapping(path = {"/deleteMember.action"})
+	public String deleteMember(MemberVO member) {
+		
+		
+        memberService.deleteMember(member);
+       
+        
+		return "redirect:/account/logout.action";
+	}
 	
 	// 결제 페이지로 이동
 	@GetMapping(path = {"/checkout.action"})
