@@ -19,7 +19,7 @@
 	  </select>
 	  
 	  <select id="selectAskDetailByNo" parameterType="int" resultType="QnaVO">
-		SELECT no, title, content, regdate, updatedate
+		SELECT no, title, content, regdate, updatedate, ans_check
 		FROM qna
 		WHERE no = #{ no } AND deleted = '0'
 	  </select>
@@ -31,7 +31,7 @@
 	  </update>
 	  
 	  <select id="selectAskUpdateByNo" parameterType="int" resultType="QnaVO">
-		SELECT no, title, content, regdate, updatedate
+		SELECT no, title, content, regdate, updatedate, ans_check
 		FROM qna
 		WHERE no = #{ no } AND deleted = '0'
 	  </select>

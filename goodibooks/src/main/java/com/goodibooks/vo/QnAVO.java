@@ -1,6 +1,8 @@
 package com.goodibooks.vo;
 
 import java.util.Date;
+import java.util.List;
+
 
 import lombok.Data;
 
@@ -16,4 +18,6 @@ public class QnAVO {
 	private String id;
 	private String qnaType;
 	private boolean ans_check;
+	
+	private List<AnswerVO> replies;
 }

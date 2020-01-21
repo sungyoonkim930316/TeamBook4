@@ -67,39 +67,27 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="coupon-accordion">
-						<h3>회원 주문 <span id="showlogin">로그인 클릭</span></h3>
+						<h3>로그인이 필요한 서비스 입니다. <span id="showlogin" style="color:orange">로그인 </span>하기</h3>
 						<div class="coupon-content" id="checkout-login">
 							<div class="coupon-info">
-								<p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
 								<form action="#">
 									<p class="form-row-first">
-										<label>Username or email <span class="required">*</span></label>
+										<label>ID <span class="required">*</span></label>
 										<input type="text">
 									</p>
 									<p class="form-row-last">
-										<label>Password  <span class="required">*</span></label>
+										<label>패스워드  <span class="required">*</span></label>
 										<input type="text">
 									</p>
 									<p class="form-row">					
-										<input type="submit" value="Login">
+										<input type="submit" value="로그인">
 										<label>
 											<input type="checkbox">
-											 Remember me 
+											 로그인 상태 유지
 										</label>
 									</p>
 									<p class="lost-password">
-										<a href="#">Lost your password?</a>
-									</p>
-								</form>
-							</div>
-						</div>
-						<h3>쿠폰이 있으신가요? <span id="showcoupon">쿠폰 번호를 입력해 주세요.</span></h3>
-						<div class="coupon-checkout-content" id="checkout_coupon">
-							<div class="coupon-info">
-								<form action="#">
-									<p class="checkout-coupon">
-										<input type="text" placeholder="Coupon code">
-										<input type="submit" value="Apply Coupon">
+										<a href="#">아이디 / 비밀번호 찾기</a>
 									</p>
 								</form>
 							</div>
@@ -115,80 +103,57 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-				    <form action="#">
+				    <form id="loginuser-purchase-form" action="/goodibooks/purchase/loginuserpurchase.action" method="post">
                            <div class="row">
                                <div class="col-lg-6 col-md-12 col-12">
                                <div class="checkbox-form">						
                                    <h3>주문 상세</h3>
                                    <div class="row">
-                                       <div class=" col-lg-12">
-                                           <div class="country-select">
-                                               <label>Country <span class="required">*</span></label>
-                                               <select>
-                                                 <option value="volvo">대한민국</option>
-                                                 <option value="saab">日本</option>
-                                                 <option value="mercedes">中文版</option>
-                                                 <option value="audi">Россия</option>
-                                                 <option value="audi2">USA</option>
-                                                 <option value="audi3">إيران</option>
-                                                 <option value="audi4">Україна</option>
-                                                 <option value="audi5">Hrvatska</option>
-                                               </select> 										
-                                           </div>
-                                       </div>
                                        <%-- <c:forEach var="member" items="${ list }"> --%>
                                        <div class="col-lg-12 col-md-12 col-12">
                                            <div class="checkout-form-list">
+                                           	<div class="form-group">
                                                <label>이름 <span class="required">*</span></label>										
-                                               <input type="text" placeholder="">
-                                           </div>
-                                       </div>
-                                       <div class="col-lg-12 col-md-12 col-12">
-                                           <div class="checkout-form-list">
-                                               <label>회사명</label>
-                                               <input type="text" placeholder="">
+                                               <input type="text" placeholder="" class="form-control" id="name" name="name" value="${ loginuser.name }">
+                                            </div>  
                                            </div>
                                        </div>
                                        <div class="col-lg-12 col-md-12 col-12">
                                            <div class="checkout-form-list">
                                                <label>주소 <span class="required">*</span></label>
-                                               <input type="text" placeholder="도로명 주소">
+                                               <input type="text" class="form-control" id="addr2" name="addr2" value="${ loginuser.addr2 }">
                                            </div>
                                        </div>
                                        <div class="col-lg-12 col-md-12 col-12">
                                            <div class="checkout-form-list">									
-                                               <input type="text" placeholder="상세주소 (선택)">
-                                           </div>
-                                       </div>
-                                       <div class="col-lg-12 col-md-12 col-12">
-                                           <div class="checkout-form-list">
-                                               <label>Town / City <span class="required">*</span></label>
-                                               <input type="text" placeholder="시/도/군">
+                                               <input type="text" class="form-control" id="addr3" name="addr3" value="${ loginuser.addr3 }">
                                            </div>
                                        </div>
                                        <div class="col-lg-6 col-md-6 col-12">
                                            <div class="checkout-form-list">
+                                            <div class="form-group">
                                                <label>우편번호 <span class="required">*</span></label>										
-                                               <input type="text" placeholder="Postcode / Zip">
+                                               <input type="text" id="addr1" name="addr1" class="form-control" value="${ loginuser.addr1 }">
+                                            </div>
                                            </div>
                                        </div>
                                        <div class="col-lg-6 col-md-6 col-12">
                                            <div class="checkout-form-list">
                                                <label>Email 주소 <span class="required">*</span></label>										
-                                               <input type="email" placeholder="">
+                                               <input type="email" class="form-control" id="email" name="email" value="${ loginuser.email }">
                                            </div>
                                        </div>
                                        <div class="col-lg-6 col-md-6 col-12">
                                            <div class="checkout-form-list">
                                                <label>전화번호  <span class="required">*</span></label>										
-                                               <input type="text" placeholder="하이픈(-) 없이 입력하세요">
+                                               <input type="text" class="form-control" id="phone" name="phone" value="${ loginuser.phone }">
                                            </div>
                                        </div>
                                        <%-- </c:forEach> --%>
                                        <div class="col-lg-12 col-md-12 col-12">
                                            <div class="checkout-form-list create-acc">	
                                                <input type="checkbox" id="cbox">
-                                               <label>Create an account?</label>
+                                               <label><a href="/goodibooks/account/register.action" style="color:black">계정을 생성하시겠습니까?</a></label>
                                            </div>
                                            <div class="checkout-form-list create-account" id="cbox_info" style="display: none;">
                                                <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
@@ -205,78 +170,42 @@
                                                </h3>
                                            </div>
                                        <div class="row" id="ship-box-info" style="display: none;">
-                                           <div class="col-lg-12">
-                                               <div class="country-select">
-                                                   <label>Country <span class="required">*</span></label>
-                                                   <select>
-                                                     <option value="volvo">bangladesh</option>
-                                                     <option value="saab">Algeria</option>
-                                                     <option value="mercedes">Afghanistan</option>
-                                                     <option value="audi">Ghana</option>
-                                                     <option value="audi2">Albania</option>
-                                                     <option value="audi3">Bahrain</option>
-                                                     <option value="audi4">Colombia</option>
-                                                     <option value="audi5">Dominican Republic</option>
-                                                   </select> 										
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                <div class="checkout-form-list">
-                                                   <label>First Name <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>Last Name <span class="required">*</span></label>										
+                                                   <label>이름 <span class="required">*</span></label>										
                                                    <input type="text" placeholder="">
                                                </div>
                                            </div>
                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                <div class="checkout-form-list">
-                                                   <label>Company Name</label>
-                                                   <input type="text" placeholder="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>Address <span class="required">*</span></label>
-                                                   <input type="text" placeholder="Street address">
+                                                   <label>주소 <span class="required">*</span></label>
+                                                   <input type="text" placeholder="도로명 주소" id="addr02">
                                                </div>
                                            </div>
                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                <div class="checkout-form-list">									
-                                                   <input type="text" placeholder="Apartment, suite, unit etc. (optional)">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>Town / City <span class="required">*</span></label>
-                                                   <input type="text" placeholder="Town / City">
+                                                   <input type="text" placeholder="상세주소">
                                                </div>
                                            </div>
                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                <div class="checkout-form-list">
-                                                   <label>State / County <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="">
+                                                   <label>우편번호 <span class="required">*</span></label>										
+                                                   <input type="text" placeholder="우편번호" id="addr01">
+                                                   <div>
+                                                   <button type="button" class="btn btn-primary mb-2" id="btn">우편번호 찾기</button>
+                                                   </div>
                                                </div>
                                            </div>
                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                <div class="checkout-form-list">
-                                                   <label>Postcode / Zip <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="Postcode / Zip">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>Email Address <span class="required">*</span></label>										
+                                                   <label>Email 주소 <span class="required">*</span></label>										
                                                    <input type="email" placeholder="">
                                                </div>
                                            </div>
                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                <div class="checkout-form-list">
-                                                   <label>Phone  <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="Postcode / Zip">
+                                                   <label>전화번호  <span class="required">*</span></label>										
+                                                   <input type="text" placeholder="하이픈(-) 제외">
                                                </div>
                                            </div>								
                                        </div>
@@ -422,13 +351,28 @@
 
 
 	<!-- all js here -->
+	
+	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+	
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
 	
 	<script type="text/javascript">
 		$(function() {
-			
+			$("#id, #name, #addr1, #addr2, #addr3, #phone, #email").attr({"readonly": "readonly" });
 		})
+		
+		$("#btn").on("click", function(event) {
+			 new daum.Postcode({
+			        oncomplete: function(data) {
+
+						$("#addr01").val(data.postcode);
+						$("#addr02").val(data.roadAddress);
+						//$("#jibunAddress").val(data.jibunAddress);
+	                   	
+			        }
+			    }).open();
+		});
 	</script>
 
 </body>

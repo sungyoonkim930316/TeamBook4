@@ -47,4 +47,5 @@
 	<import resource="answer-context.xml"/>
 	<import resource="review-context.xml"/>
 	<import resource="cart-context.xml"/>
+	<import resource="purchase-context.xml"/>
 </beans>

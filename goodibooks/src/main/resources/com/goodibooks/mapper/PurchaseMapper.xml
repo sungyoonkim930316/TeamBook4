@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+		   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goodibooks.mapper.PurchaseMapper">
+
+	<insert id="orderInfo">
+		INSERT INTO order_info (no, payDate, id, af_price)
+		VALUES (#{no}, #{payDate}, #{id}, #{af_price})
+	</insert>
+	
+	<insert id="orderDetail">
+		INSERT INTO order_detail (detail_no, book_no, no2, detail_cnt, detail_price)
+		SELECT order_detail_seq.nextval, #{book_no}, #{no2}, #{detail_cnt}, #{detail_price}
+		FROM book_info
+	</insert>
+	   
+</mapper>

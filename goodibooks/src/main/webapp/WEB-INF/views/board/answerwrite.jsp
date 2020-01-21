@@ -29,8 +29,8 @@
 				<span class="m-0 font-weight-bold text-default">답변 작성</span>
 			</div>
 			<div class="card-body">
-				<form id="answerwrite-form" role="form" action="answerwrite.action"
-					method="post">
+				<form id="answerwrite-form" role="form">
+						<input type="hidden" name='no' value="${ askdetail.no }"></input>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='ans_content'
@@ -51,43 +51,6 @@
 	<br>
 
 	<!-- end of mainsection -->
-
-	<!-- all js here -->
-	<!-- jquery latest version -->
-	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
-	
-	<script type="text/javascript">
-		$(function() {
-
-			$('#answerwrite-button').on('click', function(event) {
-
-				event.preventDefault();
-				event.stopPropagation();
-				
-				if ($('#content').val() == '') {
-					alert('답변 내용을 입력하세요');
-					$('#content').focus();
-					return;
-				}
-
-				var values = $('#answerwrite-form').serialize();
-
-				$.ajax({
-					"url" : "/goodibooks/board/answerwrite",
-					"method" : "post",
-					"data" : values,
-					"success" : function(data, status, xhr) {
-						alert("답변이 등록됐습니다.")
-					},
-					"error" : function(xhr, status, err) {
-						alert("답변 등록 실패")
-					}
-
-				});
-			})
-
-		})
-	</script>
 
 </body>
 </html>
