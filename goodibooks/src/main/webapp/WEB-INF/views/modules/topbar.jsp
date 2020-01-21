@@ -44,7 +44,7 @@
 					<div class="col-lg-6 col-md-5 col-12">
 						<div class="header-search">
 							<form id="searchForm" method="get">
-								<input type="text" placeholder="Search entire store here..." />
+								<input type="text" placeholder="검색할 내용을 입력하세요" />
 								<a id="searchBtn"><i class="fa fa-search"></i></a>
 							</form>
 						</div>

@@ -67,6 +67,10 @@
 							  <label for="inputAddress">아이디</label>
 							  <input type="text" class="form-control" id="id" name="id">
 						  </div>
+						  <div class="form-group" style="width:360px;">
+							   <button type="button" class="btn btn-primary mb-2" id="id-check">중복 확인</button><p id="id-check-result" style="display: inline; margin-left: 20px;"></p>
+							   
+						  </div>
 						    
 						  <div class="form-row">
 						    <div class="form-group col-md-6">
@@ -204,6 +208,8 @@
 	<script type="text/javascript">
 	$(function(){
 
+		$("#addr1, #addr2").attr({"readonly": "readonly" });
+
 		$("#btn").on("click", function(event) {
 			 new daum.Postcode({
 			        oncomplete: function(data) {
@@ -261,7 +267,26 @@
 			$("#register-form").submit();
 		});
 
+		// id 중복체크
+		$("#id-check").on("click", function(event) {
+			
+			$.ajax({
+				"url" : "checkId.action",
+				"method" : "get",
+				"data" : { "id" : $("#id").val() },
+				"success" : function(result, status, xhr) {
+					if (result == "success") $("#id-check-result").text("사용 가능한 아이디 입니다.");
+					else {
+						$("#id-check-result").text("중복된 아이디 입니다.");
+						$("#id").focus().val("");
+					}
+				},
+				"error" : function(xhr, status, err) { alert("아이디 중복체크 실패"); }
+			});
 
+		});
+		
+		
 	});
 	</script>
 

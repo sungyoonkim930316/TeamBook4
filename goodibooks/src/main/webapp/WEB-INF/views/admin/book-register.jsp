@@ -1,4 +1,5 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -58,22 +59,42 @@
 					<!-- <div class="billing-fields"> -->
 					
 					<!-- form 변경 -->
-					<form id="register-form" action="register.action" method="post">
+					<form id="register-form" action="/goodibooks/admin/bookRegister" method="post">
+						
 						<div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
-					      <select id="inputState" class="form-control">
-					        <option selected>1번 카테고리</option>
-					        <option>2번 카테고리</option>
+					      <select id="category_no" name="category_no" class="form-control">
+					        <option selected value="9">경제/경영</option>
+					        <option value="10">과학</option>
+					        <option value="11">만화</option>
+					        <option value="12">소설</option>
+					        <option value="13">수험서/자격증</option>
+					        <option value="14">예술</option>
+					        <option value="15">자기계발</option>
+					        <option value="16">컴퓨터</option>
 					      </select>
 					    </div>
 					    
+					    <%-- <div class="form-group" style="width:360px;">
+					      <label for="inputState">카테고리</label>
+					      <select id="inputState" class="form-control">
+					        <!-- <option selected>--------</option> -->
+							<c:forEach items="${ categorys }" var=category>
+							<option value="${ category.category_no }">${ category.category_name }</option>				        
+					        </c:forEach>
+					      </select>
+					    </div> --%>
+					    
 						<div class="form-group" style="width:360px;">
 					      <label for="inputState">출판사</label>
-					      <select id="inputState" class="form-control">
-					        <option selected>1번 출판사</option>
-					        <option>2번 출판사</option>
+					      <select id="pub_no" name="pub_no" class="form-control">
+					        <option selected value="1">웨일북</option>
+					        <option value="2">샘터사</option>
+					        <option value="3">사이언스북스</option>
 					      </select>
 						</div>
+						
+						
 						 <div class="form-group" style="width:360px;">
 							  <label for="inputAddress">책이름</label>
 							  <input type="text" class="form-control" id="name" name="name">
@@ -86,23 +107,27 @@
 						    <label for="inputAddress">지은지</label>
 						    <input type="text" class="form-control" id="writer" name="writer">
 						  </div>
-						  <div class="form-group" style="width:360px;">
-						    <label for="inputAddress">옮긴이</label>
-						    <input type="email" class="form-control" id="translator" name="translator">
-						  </div>
 						  <div class="form-group">
 						    <label for="exampleFormControlTextarea1">책소개</label>
 						    <textarea class="form-control" id="intro" name="intro" rows="8"></textarea>
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleFormControlTextarea1">내용</label>
+						    <textarea class="form-control" id="contents" name="contents" rows="8"></textarea>
 						  </div>
 						  <div class="form-row">
 						    <label for="exampleFormControlFile1">책 이미지1</label>
 						    <input type="file" class="form-control-file" id="bookimg1">
 							<label for="exampleFormControlFile1">책 이미지2</label>
 						    <input type="file" class="form-control-file" id="bookimg2">
+						    <label for="exampleFormControlFile1">책 이미지3</label>
+						    <input type="file" class="form-control-file" id="bookimg3">
+						    <label for="exampleFormControlFile1">책 이미지4</label>
+						    <input type="file" class="form-control-file" id="bookimg4">
 						  </div>
 						  
 						  <br><br>
-						  <button type="button" id="register" class="btn btn-primary">책등록</button>
+						  <button type="submit" class="btn btn-primary">책등록</button>
 						</form>
 					
 					</div>
