@@ -65,5 +65,11 @@ public class MemberServiceImpl implements MemberService {
 		return false;
 	}
 
+	@Override
+	public MemberVO findMemberById(String id) {
+		
+		return memberMapper.selectMemberById(id);
+	}
+
 
 }

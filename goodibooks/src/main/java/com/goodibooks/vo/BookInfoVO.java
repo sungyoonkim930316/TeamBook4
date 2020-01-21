@@ -13,9 +13,8 @@ public class BookInfoVO {
 	private int price;
 	private String intro;
 	private String writer;
-	private String translator;
-	private String pub_name;	// 번호로 이름 가져오기
-	private String category_name;// 번호로 이름 가져오기
+	private String pub_name;	
+	private String category_name;
 	private String contents;
 	
 	private int pub_no;

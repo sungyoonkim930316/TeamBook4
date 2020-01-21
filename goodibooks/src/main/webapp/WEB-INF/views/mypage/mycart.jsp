@@ -110,16 +110,15 @@
                     <div class="col-lg-8 col-md-6 col-12">
                         <div class="buttons-cart mb-30">
                             <ul>
-                                <li><a href="#">Update Cart</a></li>
-                                <li><a href="#">Continue Shopping</a></li>
+                                <li><a href="javascript:history.back()">Continue Shopping</a></li>
                             </ul>
                         </div>
                         <div class="coupon">
                             <h3>Coupon</h3>
                             <p>Enter your coupon code if you have one.</p>
-                            <form action="#">
+                            <form id="coupon" action="#">
                                 <input type="text" placeholder="Coupon code">
-                                <a href="#">Apply Coupon</a>
+                                <a>Apply Coupon</a>
                             </form>
                         </div>
                     </div>
