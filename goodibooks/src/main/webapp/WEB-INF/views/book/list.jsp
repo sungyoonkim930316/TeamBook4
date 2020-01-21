@@ -165,9 +165,7 @@
 												<p>${b.contents}</p>
 												</div>
 											<div class="product-link">
-												<div class="product-button">
-													<a href="/goodibooks/mypage/mycart.action" title="Add to cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
+
 												<div class="add-to-link">
 													<ul>
 														<li>Show Details <a href="/goodibooks/book/detail.action?book_no=${b.book_no}" title="Details"><i class="fa fa-external-link"></i></a></li>

@@ -99,6 +99,7 @@
 											</div>
 										</div>
 										<div class="product-info-price">
+											가격 : 
 											<div class="price-final">
 												<span> ${book.price} 원 &nbsp;</span>
 												<span class="old-price">${book.price + 10000} 원</span>
@@ -201,8 +202,9 @@
 		<jsp:include page="/WEB-INF/views/modules/footbar.jsp" />
 		
 	</footer>
-	
-	                                    <!-- Modal -->
+	<!-- Modal end -->
+	<input type="hidden" id="loginuser">
+
 									<div class="modal fade" id="review-modal" tabindex="-1" role="dialog" aria-labelledby="reply-modal-label" aria-hidden="true">
 										<div class="modal-dialog" role="document">
 											<div class="modal-content">
@@ -303,6 +305,9 @@
 		}		
 		});
 
+		$("#bookCount").change(function(event) {
+			if ($(this).val() < 1) $(this).val("1");
+		});
 		/* $("#buyBtn").on("click", function(event) {
 
 		}) */
@@ -391,7 +396,6 @@
 			});
 			
 		});
-
 
 		$("#bookCount").change(function(event) {
 			if ($(this).val() < 1) $(this).val("1");

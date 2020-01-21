@@ -71,7 +71,7 @@ public class AccountController {
 			session.setAttribute("loginuser", member2);
 			model.addAttribute("member", member2);
 			//attr.addFlashAttribute("login", member2.getId());
-			
+
 			return "redirect:/";
 		}
 	}
