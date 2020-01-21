@@ -1,5 +1,6 @@
 <%@page import="com.goodibooks.vo.MemberVO"%>
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <% MemberVO member = new MemberVO(); %>
 
@@ -24,6 +25,26 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+		    <div class="modal-dialog" role="document">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <h5 class="modal-title" id="modalTitle">알림</h5>
+		          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		            <span aria-hidden="true">×</span>
+		          </button>
+		        </div>
+		        <div class="modal-body"></div>
+		        <div class="modal-footer">
+		          <button class="btn btn-secondary" type="button" data-dismiss="modal">확인</button>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		  
+		  <!-- Modal -->
+
 
         <!-- Add your site or application content here -->
 		<!-- header-area-start -->
@@ -322,13 +343,18 @@
                                             <div class="tab-pane fade" id="edit-info" role="tabpanel">
                                                 <div class="myaccount-content">
 											<!-- user-login-area-start -->
-												<div class="user-login-area mb-70">
-													<div class="container">
-														<div class="row">
-															<div class="col-lg-12">
-																<div class="login-title text-center mb-30">
-																	<h2>회원정보 수정</h2>
+												
+												<c:choose>
+													<c:when test="${pwcheck == true}">
+														<div class="user-login-area mb-70">
+														<div class="container">
+															<div class="row">
+																<div class="col-lg-12">
+																	<div class="login-title text-center mb-30">
+																		<h2>회원정보 수정</h2>
+																	</div>
 																</div>
+
 															</div>
 															<div class="offset-lg-2 col-lg-8 col-md-12 col-12">
 															
@@ -379,14 +405,81 @@
 																  </div>
 																  <br>
 																  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
-															</form>
+																  </form>
+																  <br><br><br>
+																 
+																  <form id="delete-form" >
+																  <div class="form-group" style="width:360px;">
+																    <label for="inputAddress">패스워드</label>
+																    <input type="password" class="form-control" id="passwd2" name="passwd">
+																  </div>
+																  <div class="form-group" style="width:360px;">
+																    <label for="inputAddress">패스워드 확인</label>
+																    <input type="password" class="form-control" id="confirm2">
+																  </div>
+																  <button type="button" id="delete" class="btn btn-danger">탈퇴하기</button>
+																</form>
 															
 															
 															</div>
 														</div>
 													</div>
-													</div>
-												</div>
+														
+													</c:when>
+												
+													<c:otherwise>
+														<div class="container">
+																<div class="row">
+																	<div class="col-lg-12">
+																		<div class="login-title text-center mb-30">
+																			<h3>패스워드 확인</h3><br>
+																		</div>
+																	</div>
+																	<div class="offset-lg-3 col-lg-6 col-md-12 col-12">
+																		<form id="checkpw-form" action="/goodibooks/account/checkpw.action" method="post">
+																			<div class="login-form">
+																				<div class="single-login">
+																					<label>ID<span>*</span></label>
+																					<input type="text" id="id" name="id" value="${ loginuser.id }" readonly="readonly"/>
+																				</div>
+																				<div class="single-login">
+																					<label>패스워드 <span>*</span></label>
+																					<input type="password" id="passwd" name="passwd"/>
+																				</div>
+																				<div class="single-login single-login-2">
+																					<button type="button" id="checkpw" class="btn btn-primary">확인</button>
+																					<!-- <button type="submit" >로그인</button> -->
+																				</div>
+																				<!-- <a href="#">Lost your password?</a> -->
+																			</div>
+																		</form>
+																	</div>
+																</div>
+															</div>
+														
+														<!-- user-login-area-end -->
+														
+														<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+														    <div class="modal-dialog" role="document">
+														      <div class="modal-content">
+														        <div class="modal-header">
+														          <h5 class="modal-title" id="modalTitle">알림</h5>
+														          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+														            <span aria-hidden="true">×</span>
+														          </button>
+														        </div>
+														        <div class="modal-body"></div>
+														        <div class="modal-footer">
+														          <button class="btn btn-secondary" type="button" data-dismiss="modal">확인</button>
+														        </div>
+														      </div>
+														    </div>
+														  </div>
+													</c:otherwise>
+												</c:choose>
+											
+											
+												
 												<!-- user-login-area-end -->
                                                 
                                                 
@@ -401,24 +494,10 @@
                 </div>
             </div>
         </div>
+        </div>
         <!-- my account wrapper end -->
         
-        <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-		    <div class="modal-dialog" role="document">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <h5 class="modal-title" id="modalTitle">알림</h5>
-		          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-		            <span aria-hidden="true">×</span>
-		          </button>
-		        </div>
-		        <div class="modal-body"></div>
-		        <div class="modal-footer">
-		          <button class="btn btn-secondary" type="button" data-dismiss="modal">확인</button>
-		        </div>
-		      </div>
-		    </div>
-		  </div>
+        
         
 		<!-- footer-area-start -->
 		
@@ -438,7 +517,7 @@
 	
 	<script type="text/javascript">
 	$(function(){
-
+	
 		$("#btn").on("click", function(event) {
 			 new daum.Postcode({
 			        oncomplete: function(data) {
@@ -453,7 +532,7 @@
 		
 		var updateMember = '${ updateMember }'; 
 		if (updateMember && !history.state) {
-			$('#messageModal .modal-body').text("회원정보가 수정 되었습니다.")
+			$('#messageModal .modal-body').text("회원정보가 수정 되었습니다.");
 			$('#messageModal').modal('show');
 		}
 		history.replaceState({}, null, null);
@@ -472,6 +551,8 @@
 		$("#addr1, #addr2").attr({"readonly": "readonly" });
 
 		$("#edit").on("click" , function(event) {
+
+			
 			// 1. 유효성 검사
 			if($("#id").val() == '' ){
 				alert("아이디를 입력하세요!");
@@ -516,10 +597,65 @@
 			$("#edit-form").submit();
 
 		});
-		
+		$('#delete').on('click', function(event) {
+			
+			if($("#passwd2").val() == '' ){
+				alert("패스워드를 입력하세요!");
+				$("#passwd2").focus();
+				return;
+			}
+			if($("#confirm2").val() == '' ){
+				alert("패스워드 확인을 입력하세요!");
+				$("#confirm2").focus();
+				return;
+			}
+			
+			var yes = confirm("회원을 탈퇴하시겠습니까?");
+			if (!yes) {
+				return;
+			}
+			
+			location.href="/goodibooks/account/deleteMember.action?id=${loginuser.id}";
 
-	})
+		});
+	});
+	</script>
+	
+	<script type="text/javascript">
+	$(function(){
+
+		var checkFalse = '${ checkFalse }'; 
+		
+		if (checkFalse && !history.state) {
+			$('#messageModal .modal-body').text("패스워드가 일치하지 않습니다.");
+			$('#messageModal').modal('show');
+		}
+		history.replaceState({}, null, null);
+
+
+		$("#checkpw").on("click" , function(event) {
+
+			
+			// 1. 유효성 검사
+			if($("#passwd").val() == '' ){
+				alert("패스워드를 입력하세요!");
+				$("#passwd").focus();
+				return;
+			}
+			
+			// 2. 오류가 없다면 서버로 전송
+			$("#checkpw-form").submit();
+		});
+
+		if (${not empty pwcheck}) {
+			if ('${pwcheck}' == 'false') alert("비밀번호가 틀렸습니다.");
+			
+			$("a[href='#edit-info']").click();
+		}
+	});
 	</script>
 		
     </body>
+    
+
 </html>

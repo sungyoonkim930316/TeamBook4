@@ -3,7 +3,7 @@
     	 pageEncoding="utf-8" %>
 
  <!-- bootstrap v3.3.6 css -->
-        <link rel="stylesheet" href="/goodibooks/resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		<!-- animate css -->
         <link rel="stylesheet" href="/goodibooks/resources/css/animate.css">
 		<!-- meanmenu css -->

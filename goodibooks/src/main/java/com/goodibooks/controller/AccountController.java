@@ -1,8 +1,5 @@
 package com.goodibooks.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,41 +80,49 @@ public class AccountController {
 		return "/account/checkPw";
 	}
 	
+//	@PostMapping(path= {"/checkpw.action"})
+//	public String checkPw(MemberVO member, RedirectAttributes attr) {
+//		
+//		// 기존회원의 PW 확인
+//		Map<String, String> map = new HashMap<String, String>();
+//		map.put("id", member.getId());
+//		map.put("passwd", member.getPasswd());
+//				
+//		boolean result = memberService.chekPw(map);
+//		        
+//		if( result ) {	// PW 일치했을 때
+//		
+//			return "account/checkpw";
+//			
+//		} else {
+//			attr.addFlashAttribute("checkFalse", member);
+//			return "redirect:/account/checkPw.action";
+//		}
+//	}
+	
 	@PostMapping(path= {"/checkpw.action"})
-	public String checkPw(MemberVO member, RedirectAttributes attr) {
+	public String checkPw(MemberVO member, RedirectAttributes attr, Model model) {
 		
-		// 기존회원의 PW 확인
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", member.getId());
-		map.put("passwd", member.getPasswd());
-				
-		boolean result = memberService.chekPw(map);
-		        
-		if( result ) {	// PW 일치했을 때
+		if (memberService.findMemberByIdAndPasswd(member) != null) attr.addFlashAttribute("pwcheck", true);	
+		else attr.addFlashAttribute("pwcheck", false);
 		
-			return "account/checkpw";
-			
-		} else {
-			attr.addFlashAttribute("checkFalse", member);
-			return "redirect:/account/checkPw.action";
-		}
+		return "redirect:/mypage/mypage.action";
 	}
 	
 	// 회원정보 수정
 	@PostMapping(path = {"/edit.action"})
 	public String toEdit(MemberVO member, RedirectAttributes attr) {
 		
-		// 기존회원의 PW 확인
-		Map<String, String> map = new HashMap<String, String>();
-        map.put("id", member.getId());
-        map.put("passwd", member.getPasswd());
+//		// 기존회원의 PW 확인
+//		Map<String, String> map = new HashMap<String, String>();
+//        map.put("id", member.getId());
+//        map.put("passwd", member.getPasswd());
 		
-        boolean result = memberService.chekPw(map);
-        
-        System.out.println(result);
+//        boolean result = memberService.chekPw(map);
         
         memberService.updateMember(member);
 		attr.addFlashAttribute("updateMember", member);
+		
         
 		return "redirect:/mypage/mypage.action";
 		
@@ -136,6 +140,15 @@ public class AccountController {
 //			return "redirect:/mypage/mypage.action";
 //		}
 		
+	}
+	@GetMapping(path = {"/deleteMember.action"})
+	public String deleteMember(MemberVO member) {
+		
+		
+        memberService.deleteMember(member);
+       
+        
+		return "redirect:/account/logout.action";
 	}
 	
 	// 결제 페이지로 이동
