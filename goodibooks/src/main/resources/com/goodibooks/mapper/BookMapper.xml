@@ -10,7 +10,7 @@
 	<sql id="query">
 		select rownum idx, book_no, name, price, intro, writer, p.pub_name, c.category_name, contents
 		from book_info b, publisher p, category c 
-		where b.pub_no = p.pub_no and c.category_no = b.category_no
+		where b.pub_no = p.pub_no and c.category_no = b.category_no and b.deleted = '0'
 	</sql>
 	<sql id="searchCondition">
 		<trim suffix=" like '%'||#{searchKey}||'%'">

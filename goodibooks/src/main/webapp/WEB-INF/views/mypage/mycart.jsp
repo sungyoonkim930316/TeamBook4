@@ -110,7 +110,7 @@
                     <div class="col-lg-8 col-md-6 col-12">
                         <div class="buttons-cart mb-30">
                             <ul>
-                                <li><a href="javascript:history.back()">Continue Shopping</a></li>
+                                <li><a href="javascript:history.back()">쇼핑 계속하기</a></li>
                             </ul>
                         </div>
                         <div class="coupon">
