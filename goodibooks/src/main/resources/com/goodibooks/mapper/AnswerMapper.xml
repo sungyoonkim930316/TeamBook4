@@ -7,14 +7,15 @@
 <mapper namespace="com.goodibooks.mapper.AnswerMapper">
 
 	  <insert id="answerWriteBoard" parameterType="AnswerVO">
-	  	INSERT INTO answer (ans_no,  ans_content)
-	  	VALUES (qna_a_seq.nextval, #{ans_content})
+	  	INSERT INTO answer (ans_no,  ans_content, no)
+	  	VALUES (qna_a_seq.nextval, #{ans_content}, #{no})
 	  </insert>
 	   
-	  <select id="selectAnswerByAnsNo" resultType="AnswerVO" parameterType="int">
-		SELECT ans_no, ans_content
+	  <select id="selectAnswerByAskNo" resultType="AnswerVO" parameterType="int">
+		SELECT ans_no, ans_content, no
 		FROM answer
-		WHERE ans_no = #{ ans_no }
+		WHERE no = #{ no }
+		ORDER BY ans_no DESC
 	  </select>
 	   
 </mapper>

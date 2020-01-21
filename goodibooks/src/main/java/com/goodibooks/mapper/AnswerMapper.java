@@ -11,6 +11,6 @@ public interface AnswerMapper {
 
 	void answerWriteBoard(AnswerVO ans);
 
-	List<AnswerVO> selectAnswerByAnsNo();
+	AnswerVO selectAnswerByAskNo(int no);
 
 }

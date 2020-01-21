@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.goodibooks.service.AnswerService;
 import com.goodibooks.service.AskService;
+import com.goodibooks.vo.AnswerVO;
 import com.goodibooks.vo.BoardVO;
 import com.goodibooks.vo.QnAVO;
 
@@ -28,6 +31,10 @@ public class AskController {
 	@Autowired
 	@Qualifier("askService")
 	private AskService askService;
+	
+	@Autowired
+	@Qualifier("answerService")
+	private AnswerService answerService;
 	
 	@GetMapping(path= {"/ask.action"})
 	public String toAsk(Model model) {
@@ -62,8 +69,20 @@ public class AskController {
 			return "redirect:ask.action";
 		}
 		model.addAttribute("askdetail", askdetail);
+		
+		AnswerVO answers = answerService.getAnswerListByAskNo(no);
+		model.addAttribute("answers", answers);
+		
 		return "board/askdetail";
 	}
+	
+//	@GetMapping(path= {"/reviewContent/{no}"})
+//	public String ReviewContent(@PathVariable int no, Model model) {
+//		
+//		
+//		
+//		return "/board/askdetail";
+//	}
 	
 	@GetMapping(path = { "/askupdate.action" })
 	public String showAskUpdateForm(int no, Model model) {

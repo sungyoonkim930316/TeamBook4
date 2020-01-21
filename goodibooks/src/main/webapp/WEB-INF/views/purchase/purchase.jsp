@@ -115,7 +115,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-				    <form action="#">
+				    <form action="#" method="post">
                            <div class="row">
                                <div class="col-lg-6 col-md-12 col-12">
                                <div class="checkbox-form">						

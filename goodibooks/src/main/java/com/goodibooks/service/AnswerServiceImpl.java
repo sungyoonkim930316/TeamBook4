@@ -20,9 +20,9 @@ public class AnswerServiceImpl implements AnswerService {
 	}
 
 	@Override
-	public List<AnswerVO> getAnswerListByAnsNo() {
+	public AnswerVO getAnswerListByAskNo(int no) {
 		
-		return answerMapper.selectAnswerByAnsNo();
+		return answerMapper.selectAnswerByAskNo(no);
 	}
 
 	

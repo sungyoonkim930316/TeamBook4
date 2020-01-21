@@ -8,6 +8,6 @@ public interface AnswerService {
 
 	int answerWriteBoard(AnswerVO ans);
 
-	List<AnswerVO> getAnswerListByAnsNo();
+	AnswerVO getAnswerListByAskNo(int no);
 
 }

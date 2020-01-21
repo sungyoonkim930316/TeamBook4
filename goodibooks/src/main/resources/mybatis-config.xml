@@ -16,6 +16,8 @@
 		<typeAlias type="com.goodibooks.vo.AnswerVO" alias="AnswerVO" />
 		<typeAlias type="com.goodibooks.vo.ReviewVO" alias="ReviewVO" />
 		<typeAlias type="com.goodibooks.vo.CartListVO" alias="CartListVO" />
+		<typeAlias type="com.goodibooks.vo.OrderDetailVO" alias="OrderDetailVO" />
+		<typeAlias type="com.goodibooks.vo.OrderInfoVO" alias="OrderInfoVO" />
 	</typeAliases>
 	
 	

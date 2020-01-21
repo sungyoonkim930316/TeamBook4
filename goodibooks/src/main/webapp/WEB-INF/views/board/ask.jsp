@@ -70,7 +70,7 @@
 			<td><a href="askdetail.action?no=${ask.no}" style="color:black"> ${ ask.title }</a></td>
 			<td>${ ask.id }</td>
 			<td>${ ask.regDate }</td>
-			<td>${ ask.ans_check }</td>
+			<td>${ ask.ans_check ? '답변완료' : '답변대기' }</td>
 		</tr>
 		</c:if>
 		</c:forEach>

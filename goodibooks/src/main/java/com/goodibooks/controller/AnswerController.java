@@ -17,6 +17,7 @@ import com.goodibooks.service.AnswerService;
 import com.goodibooks.service.AskService;
 import com.goodibooks.vo.AnswerVO;
 import com.goodibooks.vo.QnAVO;
+import com.goodibooks.vo.ReviewVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -39,14 +40,13 @@ public class AnswerController {
 		return "success";
 	}
 	
-	@GetMapping(path = { "/board/answerlist" })
-	public String listByBno(Model model) {
-		
-		List<AnswerVO> answers = answerService.getAnswerListByAnsNo();
-		
-		model.addAttribute("answers",answers);
-		
-		return "board/answerlist";
-	}
+//	@GetMapping(path= {"/reviewContent/{no}"})
+//	public String ReviewContent(@PathVariable int no, Model model) {
+//		
+//		List<AnswerVO> answers = answerService.getAnswerListByAnsNo(no);
+//		model.addAttribute("answers", answers);
+//		
+//		return "/board/askdetail";
+//	}
 
 }

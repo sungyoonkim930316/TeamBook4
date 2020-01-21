@@ -102,6 +102,11 @@
 		            	<label>수정일자</label> 
 		            	<input class="form-control fixed" id='updateDate' value='${ askdetail.updateDate }'>
 		            </div>
+		            
+		            <div class="form-group">
+		            	<label>답변여부</label> 
+		            	<input class="form-control fixed" id='ans_check' value='${ askdetail.ans_check }'>
+		            </div>
 		            <br>
 
 					<button id="askwriteedit-button" type="button" class="btn btn-light">수정하기</button>
@@ -116,10 +121,25 @@
 	
 	<br><hr><br><br>
 	
-	<div id="reply-list-container" class="panel-body">
-
-		<jsp:include page="/WEB-INF/views/board/answerlist.jsp" />
-
+	<div id="reply-list-container Answers" class="panel-body">
+	<div class="container">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<span class="m-0 font-weight-bold text-default">답변</span>
+			</div>
+			<div class="card-body">
+					<div class="form-group">
+						<input type="hidden" class="form-control fixed" rows="3" id='ans_no'
+							name='ans_no' value="${ answers.ans_no }">
+					</div>
+					<div class="form-group">
+						<label>내용</label>
+						<textarea class="form-control fixed" rows="3" id='ans_content'
+							name='ans_content'>${ answers.ans_content }</textarea>
+					</div>
+			</div>
+		</div>
+	</div>
 	</div>
 	
 		<jsp:include page="/WEB-INF/views/board/answerwrite.jsp" />
@@ -184,6 +204,33 @@
 
 				return form;
 			}
+
+			$('#answerwrite-button').on('click', function(event) {
+
+				/* event.preventDefault();
+				event.stopPropagation(); */
+				
+				if ($('#content').val() == '') {
+					alert('답변 내용을 입력하세요');
+					$('#content').focus();
+					return;
+				}
+
+				var values = $('#answerwrite-form').serialize();
+
+				$.ajax({
+					"url" : "/goodibooks/board/answerwrite",
+					"method" : "post",
+					"data" : values,
+					"success" : function(data, status, xhr) {
+						$("#Answers").load("/goodibooks/board/answerContent/${ askdetail.no }");
+					},
+					"error" : function(xhr, status, err) {
+						alert("답변 등록 실패")
+					}
+
+				});
+			})
 		});
 
 	</script>
