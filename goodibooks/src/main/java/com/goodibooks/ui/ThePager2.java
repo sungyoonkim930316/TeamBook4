@@ -25,7 +25,7 @@ public class ThePager2 {
 		if (queryString != null && queryString.length() > 0) {
 			String[] queryList = queryString.split("&");
 			for (String query : queryList) {
-				if (!query.contains("pageNo=")) {
+				if (!query.contains("page_no=")) {
 					if (this.queryString.length() > 0) {
 						this.queryString += "&" + query;
 					} else { 
