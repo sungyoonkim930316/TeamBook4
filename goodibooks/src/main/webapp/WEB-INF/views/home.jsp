@@ -1153,6 +1153,18 @@ $(function() {
 	if (${not empty loginuser}) {
 		$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
 	}
+
+	var newOrderInfoNo = '${ newOrderInfoNo }'; 
+	var purchasefail = '${ purchasefail }';
+
+	if (newOrderInfoNo && !history.state) {
+		$('#messageModal .modal-body').text("결제가 완료되었습니다.")
+		$('#messageModal').modal('show');
+	} else if( purchasefail && !history.state ){
+		$('#messageModal .modal-body').text("결제 실패.")
+		$('#messageModal').modal('show');
+	}
+	history.replaceState({}, null, null);
 });
 </script>
 </body>

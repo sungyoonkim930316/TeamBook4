@@ -6,15 +6,14 @@
 
 <mapper namespace="com.goodibooks.mapper.PurchaseMapper">
 
-	<insert id="orderInfo">
-		INSERT INTO order_info (no, payDate, id, af_price)
-		VALUES (#{no}, #{payDate}, #{id}, #{af_price})
+	<insert id="orderInfoPlus" parameterType="OrderInfoVO">
+	  	INSERT INTO order_info (no, id, af_price)
+	  	VALUES (order_seq.nextval, #{id}, #{af_price})
 	</insert>
-	
-	<insert id="orderDetail">
-		INSERT INTO order_detail (detail_no, book_no, no2, detail_cnt, detail_price)
-		SELECT order_detail_seq.nextval, #{book_no}, #{no2}, #{detail_cnt}, #{detail_price}
-		FROM book_info
+	<!-- 
+	<insert id="orderDetailPlus" parameterType="OrderDetailVO">
+	  	INSERT INTO order_info (detail_no, book_no, no2, detail_cnt, detail_price)
+	  	VALUES (order_detail_seq.nextval, #{book_no}, #{no2}, #{detail_cnt}, #{detail_price})
 	</insert>
-	   
+	    -->
 </mapper>
