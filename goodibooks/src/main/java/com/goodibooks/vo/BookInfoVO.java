@@ -18,6 +18,9 @@ public class BookInfoVO {
 	private String category_name;// 번호로 이름 가져오기
 	private String contents;
 	
+	private int pub_no;
+	private int category_no;
+	
 	private List<BookImgVO> imgs = new ArrayList<>();
 	
 }

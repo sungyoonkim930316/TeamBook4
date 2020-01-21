@@ -204,6 +204,8 @@
 	<script type="text/javascript">
 	$(function(){
 
+		$("#addr1, #addr2").attr({"readonly": "readonly" });
+
 		$("#btn").on("click", function(event) {
 			 new daum.Postcode({
 			        oncomplete: function(data) {

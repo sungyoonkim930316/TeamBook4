@@ -469,6 +469,7 @@
 		})
 
 		$("#id, #name").attr({"readonly": "readonly" });
+		$("#addr1, #addr2").attr({"readonly": "readonly" });
 
 		$("#edit").on("click" , function(event) {
 			// 1. 유효성 검사
