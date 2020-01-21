@@ -18,5 +18,7 @@ public interface MemberMapper {
 	void updateMember(MemberVO member);
 
 	int checkPw(Map<String, String> map);
+	
+	MemberVO selectMemberById(String id);
 
 }

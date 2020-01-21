@@ -8,7 +8,7 @@
 
 	<!-- 여러번 사용되는 쿼리 -->
 	<sql id="query">
-		select rownum idx, book_no, name, price, intro, writer, translator, p.pub_name, c.category_name, contents
+		select rownum idx, book_no, name, price, intro, writer, p.pub_name, c.category_name, contents
 		from book_info b, publisher p, category c 
 		where b.pub_no = p.pub_no and c.category_no = b.category_no
 	</sql>

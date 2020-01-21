@@ -95,7 +95,7 @@
 												</c:if>
 											</div>
 											<div class="reviews-actions">
-												<a href="#">${reviews.size()} Reviews</a>
+												<a href="#Reviews">${reviews.size()} Reviews</a>
 											</div>
 										</div>
 										<div class="product-info-price">
