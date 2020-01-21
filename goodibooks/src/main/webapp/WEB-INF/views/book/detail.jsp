@@ -95,7 +95,7 @@
 												</c:if>
 											</div>
 											<div class="reviews-actions">
-												<a href="#">${reviews.size()} Reviews</a>
+												<a href="#Reviews">${reviews.size()} Reviews</a>
 											</div>
 										</div>
 										<div class="product-info-price">
@@ -345,10 +345,11 @@
 		});
 
 		// 리뷰 수정 버튼으로 모달 팝업발생시 데이터 저장
-		$("#Reviews").on("click", "#modalModBtn", function(event){
+		//$("#Reviews").on("click", "#modalModBtn", function(event){
+		$("#modalModBtn").on("click", function(event){
 
-			event.preventDefault();
-			event.stopPropagation();
+			/* event.preventDefault();
+			event.stopPropagation(); */
 			
 			// 수정버튼을 눌렀을 때, 저장된 re_no 을 불러온드아~~
 			var data = {			

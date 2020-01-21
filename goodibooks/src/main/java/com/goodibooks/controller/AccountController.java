@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goodibooks.service.CartService;
@@ -151,6 +152,15 @@ public class AccountController {
 		session.removeAttribute("loginuser");
 		
 		return "redirect:/";
+	}
+	
+	// 아이디 중복체크
+	@GetMapping("/checkId.action")
+	@ResponseBody
+	public String checkId(String id) {
+		MemberVO member = memberService.findMemberById(id);
+		if (member == null) return "success";
+		else return "error";
 	}
 	
 }

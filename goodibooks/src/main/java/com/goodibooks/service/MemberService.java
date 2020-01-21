@@ -13,5 +13,7 @@ public interface MemberService {
 	void updateMember(MemberVO member);
 
 	boolean chekPw(Map<String, String> map);
+	
+	MemberVO findMemberById(String id);
 
 }

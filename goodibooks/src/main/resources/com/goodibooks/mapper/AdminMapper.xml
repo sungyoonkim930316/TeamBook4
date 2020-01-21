@@ -7,9 +7,20 @@
 <mapper namespace="com.goodibooks.mapper.AdminMapper">
 
 	<select id="showMemberList" resultType="MemberVO">
-		SELECT id, name, phone, addr1, email, regDate
-		FROM member
-		WHERE deleted = '0'
+		SELECT id, name, phone, addr1, email, regDate FROM member WHERE deleted = '0'
+	</select>
+	
+	<insert id="insertBook" parameterType="BookInfoVO">
+		insert into book_info (book_no, name, price, intro, writer, pub_no, category_no, contents )
+		values ( book_seq.nextval, #{name}, #{price}, #{intro}, #{writer}, #{pub_no}, #{category_no}, #{contents} )
+	</insert>
+
+	<select id="selectCategory" resultType="CategoryVO">
+		select * from category order by category_no ASC
+	</select>
+	
+	<select id="selectPublisher" resultType="PublisherVO">
+		select * from publisher order by pub_no ASC
 	</select>
 
 </mapper>
