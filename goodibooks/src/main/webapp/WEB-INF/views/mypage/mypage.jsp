@@ -379,6 +379,7 @@
 																  </div>
 																  <br>
 																  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
+																  <button type="button" id="" class="btn btn-danger">탈퇴하기</button>
 															</form>
 															
 															
