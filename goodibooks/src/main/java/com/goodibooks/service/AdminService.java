@@ -21,4 +21,6 @@ public interface AdminService {
 
 	void bookRegister(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs);
 
+	void pubRegist(PublisherVO publisher);
+
 }

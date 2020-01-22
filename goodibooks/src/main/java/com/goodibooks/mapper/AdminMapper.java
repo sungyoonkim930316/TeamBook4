@@ -22,6 +22,8 @@ public interface AdminMapper {
 	List<PublisherVO> selectPublisher();
 
 	void insertBookImg(BookImgVO bookImg);
+
+	void insertPub(PublisherVO publisher);
 	
 	
 
