@@ -406,21 +406,11 @@
 																  <br>
 																  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
 																  </form>
-																  <br><br><br>
-																 
-																  <form id="delete-form" >
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">패스워드</label>
-																    <input type="password" class="form-control" id="passwd2" name="passwd">
-																  </div>
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">패스워드 확인</label>
-																    <input type="password" class="form-control" id="confirm2">
-																  </div>
+																  <br><br><br><br>
+																  
+																  
 																  <button type="button" id="delete" class="btn btn-danger">탈퇴하기</button>
-																</form>
-															
-															
+																  
 															</div>
 														</div>
 													</div>
@@ -552,7 +542,6 @@
 
 		$("#edit").on("click" , function(event) {
 
-			
 			// 1. 유효성 검사
 			if($("#id").val() == '' ){
 				alert("아이디를 입력하세요!");
@@ -597,28 +586,19 @@
 			$("#edit-form").submit();
 
 		});
-		$('#delete').on('click', function(event) {
-			
-			if($("#passwd2").val() == '' ){
-				alert("패스워드를 입력하세요!");
-				$("#passwd2").focus();
-				return;
-			}
-			if($("#confirm2").val() == '' ){
-				alert("패스워드 확인을 입력하세요!");
-				$("#confirm2").focus();
-				return;
-			}
+		
+			$("#delete").on("click" , function(event) {
 			
 			var yes = confirm("회원을 탈퇴하시겠습니까?");
 			if (!yes) {
 				return;
 			}
-			
+				
 			location.href="/goodibooks/account/deleteMember.action?id=${loginuser.id}";
-
+			
 		});
 	});
+	
 	</script>
 	
 	<script type="text/javascript">
