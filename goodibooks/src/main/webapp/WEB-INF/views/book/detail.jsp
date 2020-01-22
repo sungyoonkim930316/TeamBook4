@@ -121,7 +121,7 @@
 										<div class="product-add-form">
 											<form action="#">
 												<div class="quality-button">
-													<input bookNo="${book.book_no}" price="${book.price} id="bookCount" class="qty" type="number" value="1">
+													<input id="bookCount" class="qty" type="number" value="1">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
 												<a id="buyBtn" href="/goodibooks/purchase/purchase.action?book_no=${book.book_no}">바로 구매하기</a>
