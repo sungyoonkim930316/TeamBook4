@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodibooks.service.AdminService;
@@ -63,6 +64,7 @@ public class AdminController {
 		
 		return "/admin/book-register";
 	}
+	
 	// 책등록 실행
 	@PostMapping(path= {"/bookRegister"})
 	public String bookRegist(BookInfoVO bookinfo, @RequestParam("bookImg") MultipartFile[] files, HttpServletRequest req) {
@@ -102,6 +104,35 @@ public class AdminController {
 		adminService.bookRegister(bookinfo, BookImgs);
 		
 		return "redirect:/book/list.action";
+	}
+	
+	// 출판사 등록 페이지로 이동
+	@GetMapping(path= {"/toPubRegist"})
+	public String toPubRegist(Model model) {
+		
+		List<PublisherVO> publishers = adminService.showPublisher();
+		model.addAttribute("publishers", publishers);
+		
+		return "admin/pub-regist";
+	}
+
+	// 출판사 등록
+	@PostMapping(path= {"/pubRegist"})
+	@ResponseBody
+	public String pubRegist(PublisherVO publisher) {
+		
+		adminService.pubRegist(publisher);
+		
+		return "success";
+	}
+	
+	@GetMapping(path= {"/showPub"})
+	public String ShowPub(Model model) {
+		
+		List<PublisherVO> publishers = adminService.showPublisher();
+		model.addAttribute("publishers", publishers);
+		
+		return "admin/pub-list";
 	}
 	
 

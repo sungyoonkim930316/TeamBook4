@@ -26,5 +26,9 @@
 	<insert id="insertBookImg" parameterType="BookImgVO">
 		insert into book_img (img_no, book_no, img) values (bookimg_seq.nextval, book_seq.currval, #{img} )
 	</insert>
+	
+	<insert id="insertPub" parameterType="PublisherVO">
+	 insert into publisher (pub_no, pub_name) values (pub_seq.nextval, #{pub_name} )
+	</insert>
 
 </mapper>

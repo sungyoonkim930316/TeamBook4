@@ -61,7 +61,7 @@
 					<!-- form 변경 -->
 					<form id="register-form" action="/goodibooks/admin/bookRegister" method="post" enctype="multipart/form-data">
 						
-						<div class="form-group" style="width:360px;">
+						<!-- <div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
 					      <select id="category_no" name="category_no" class="form-control">
 					        <option value="9">경제/경영</option>
@@ -73,27 +73,34 @@
 					        <option value="15">자기계발</option>
 					        <option value="16">컴퓨터</option>
 					      </select>
-					    </div>
+					    </div> -->
 					    
-					    <%-- <div class="form-group" style="width:360px;">
+					    <div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
 					      <select id="category_no" name="category_no" class="form-control">
-					        <!-- <option selected>--------</option> -->
-							<c:forEach items="${ categorys }" var=category >
+							<c:forEach items="${ categorys }" var="category">
 							<option value="${ category.category_no }">${ category.category_name }</option>				        
 					        </c:forEach>
 					      </select>
-					    </div> --%>
+					    </div>
 					    
-						<div class="form-group" style="width:360px;">
+						<!-- <div class="form-group" style="width:360px;">
 					      <label for="inputState">출판사</label>
 					      <select id="pub_no" name="pub_no" class="form-control">
 					        <option value="1">웨일북</option>
 					        <option value="2">샘터사</option>
 					        <option value="3">사이언스북스</option>
 					      </select>
-						</div>
+						</div> -->
 						
+						<div class="form-group" style="width:360px;">
+					      <label for="inputState">출판사</label>
+					      <select id="pub_no" name="pub_no" class="form-control">
+							<c:forEach items="${ publishers }" var="publisher">
+							<option value="${ publisher.pub_no }">${ publisher.pub_name }</option>				        
+					        </c:forEach>
+					      </select>
+					    </div>
 						
 						 <div class="form-group" style="width:360px;">
 							  <label for="inputAddress">책이름</label>
@@ -104,7 +111,7 @@
 							  <input type="text" class="form-control" id="price" name="price">
 						  </div>
 						  <div class="form-group" style="width:360px;">
-						    <label for="inputAddress">지은지</label>
+						    <label for="inputAddress">지은이</label>
 						    <input type="text" class="form-control" id="writer" name="writer">
 						  </div>
 						  <div class="form-group">
@@ -112,7 +119,7 @@
 						    <textarea class="form-control" id="intro" name="intro" rows="8"></textarea>
 						  </div>
 						  <div class="form-group">
-						    <label for="exampleFormControlTextarea1">내용</label>
+						    <label for="exampleFormControlTextarea1">목차</label>
 						    <textarea class="form-control" id="contents" name="contents" rows="8"></textarea>
 						  </div>
 						  <div class="form-row">
