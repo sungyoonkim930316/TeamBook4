@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
 import com.goodibooks.vo.MemberVO;
@@ -19,5 +20,9 @@ public interface AdminMapper {
 	List<CategoryVO> selectCategory();
 
 	List<PublisherVO> selectPublisher();
+
+	void insertBookImg(BookImgVO bookImg);
+	
+	
 
 }

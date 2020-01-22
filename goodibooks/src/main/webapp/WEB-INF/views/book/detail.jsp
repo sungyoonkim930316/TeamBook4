@@ -60,11 +60,24 @@
 									
 										<!-- 사진 슬라이드 -->
 										<ul class="slides">
-										<c:forEach var="b" items="${book.imgs}">
-											<li data-thumb="/goodibooks/resources/img/book-img/${b.img}.jpg">
-											  <img src="/goodibooks/resources/img/book-img/${b.img}.jpg" />
+										<%-- <c:forEach var="b" items="${book.imgs}">
+											<li data-thumb="/goodibooks/resources/file/bookImg/${b.img}">
+											  <img src="/goodibooks/resources/file/bookImg/${b.img}" />
 											</li>
-										</c:forEach>
+										</c:forEach> --%>
+										
+											<li data-thumb="/goodibooks/resources/file/bookImg/${book.imgs[0].img}">
+											  <img src="/goodibooks/resources/file/bookImg/${book.imgs[0].img}" />
+											</li>
+											<li data-thumb="/goodibooks/resources/file/bookImg/${book.imgs[1].img}">
+											  <img src="/goodibooks/resources/file/bookImg/${book.imgs[1].img}" />
+											</li>
+											<li data-thumb="/goodibooks/resources/file/bookImg/${book.imgs[2].img}">
+											  <img src="/goodibooks/resources/file/bookImg/${book.imgs[2].img}" />
+											</li>
+											<li data-thumb="/goodibooks/resources/file/bookImg/${book.imgs[3].img}">
+											  <img src="/goodibooks/resources/file/bookImg/${book.imgs[3].img}" />
+											</li>
 
 										</ul>
 									</div>

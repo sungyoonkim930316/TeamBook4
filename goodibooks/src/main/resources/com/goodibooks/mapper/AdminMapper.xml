@@ -22,5 +22,9 @@
 	<select id="selectPublisher" resultType="PublisherVO">
 		select * from publisher order by pub_no ASC
 	</select>
+	
+	<insert id="insertBookImg" parameterType="BookImgVO">
+		insert into book_img (img_no, book_no, img) values (bookimg_seq.nextval, book_seq.currval, #{img} )
+	</insert>
 
 </mapper>

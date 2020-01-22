@@ -147,7 +147,7 @@
 										<div class="product-wrapper-2">
 											<div class="product-img">
 												<a href="detail.action?book_no=${b.book_no}">
-													<img src="/goodibooks/resources/img/book-img/${b.imgs[0].img}.jpg" alt="book" class="primary" />
+													<img src="/goodibooks/resources/file/bookImg/${ b.imgs[0].img }" alt="book" class="primary" />
 												</a>
 											</div>
 										</div>

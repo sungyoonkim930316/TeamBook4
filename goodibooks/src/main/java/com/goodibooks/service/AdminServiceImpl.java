@@ -1,8 +1,10 @@
 package com.goodibooks.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.goodibooks.mapper.AdminMapper;
+import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
 import com.goodibooks.vo.MemberVO;
@@ -21,11 +23,11 @@ public class AdminServiceImpl implements AdminService {
 		return adminMapper.showMemberList();
 	}
 
-	@Override
-	public void bookRegist(BookInfoVO bookinfo) {
-
-		adminMapper.insertBook(bookinfo);
-	}
+//	@Override
+//	public void bookRegist(BookInfoVO bookinfo) {
+//
+//		adminMapper.insertBook(bookinfo);
+//	}
 
 	@Override
 	public List<CategoryVO> showCategory() {
@@ -37,6 +39,25 @@ public class AdminServiceImpl implements AdminService {
 	public List<PublisherVO> showPublisher() {
 
 		return adminMapper.selectPublisher();
+	}
+
+	@Override
+	public void bookRegister(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs) {
+		
+		// 텍스트 정보 입력
+		adminMapper.insertBook(bookinfo);
+		
+		// img 정보 입력
+		int book_no = bookinfo.getBook_no();
+		
+		for(BookImgVO bookImg : bookImgs) {
+			bookImg.setBook_no(book_no);
+			adminMapper.insertBookImg(bookImg);
+		}
+		
+		
+		
+		
 	}
 
 }

@@ -1,6 +1,11 @@
 package com.goodibooks.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,8 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.goodibooks.service.AdminService;
+import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
 import com.goodibooks.vo.MemberVO;
@@ -57,11 +65,43 @@ public class AdminController {
 	}
 	// 책등록 실행
 	@PostMapping(path= {"/bookRegister"})
-	public String bookRegist(BookInfoVO bookinfo) {
+	public String bookRegist(BookInfoVO bookinfo, @RequestParam("bookImg") MultipartFile[] files, HttpServletRequest req) {
 		
-		adminService.bookRegist(bookinfo);
+		// bookInfo 정보 DB저장
+		//adminService.bookRegist(bookinfo);
 		
-		return "redirect:/";
+		// 이미지 파일 DB저장
+		
+		ArrayList<BookImgVO> BookImgs = new ArrayList<BookImgVO>();
+		
+		ServletContext application = req.getServletContext();
+		String path = application.getRealPath("/resources/file/bookImg");
+		
+		for (MultipartFile file : files) {
+			
+			BookImgVO bookImg = new BookImgVO();
+			
+			String fileName = file.getOriginalFilename();
+			System.out.println(fileName);
+			
+			try {
+				File f = new File(path, fileName);
+				if (f.exists()) {
+					f.delete();
+				}
+				file.transferTo( f ); //파일 저장
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+			bookImg.setImg(fileName);
+			BookImgs.add(bookImg);
+			
+		}
+		
+		adminService.bookRegister(bookinfo, BookImgs);
+		
+		return "redirect:/book/list.action";
 	}
 	
 
