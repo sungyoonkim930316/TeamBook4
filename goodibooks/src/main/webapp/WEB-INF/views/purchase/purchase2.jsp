@@ -229,7 +229,7 @@
                                                </tr>							
                                            </thead>
                                            <tbody>
-										   		<tr class="cart_item">
+                                               <tr class="cart_item">
                                                    <td class="product-name">
                                                        ${ book.name } <strong class="product-quantity"> × 1</strong>
                                                    </td>
@@ -237,19 +237,27 @@
                                                        <span class="amount">${ book.price } 원</span>
                                                    </td>
                                                </tr>
-                                               <tr class="cart-subtotal">
-                                                   <th>소계</th>
-                                                   <td><span class="amount">${ book.price } 원</span></td>
-                                               </tr>  
+                                               <tr class="cart_item">
+                                                   <td class="product-name">
+                                                       Vestibulum suscipit	<strong class="product-quantity"> × 1</strong>
+                                                   </td>
+                                                   <td class="product-total">
+                                                       <span class="amount">£50.00</span>
+                                                   </td>
+                                               </tr>
                                            </tbody>
                                            <tfoot>
+                                               <tr class="cart-subtotal">
+                                                   <th>소계</th>
+                                                   <td><span class="amount">£215.00</span></td>
+                                               </tr>
                                                <tr class="shipping">
                                                    <th>배송비</th>
                                                    <td><span class="shipping">1000원</span></td>
                                                </tr>
                                                <tr class="order-total">
                                                    <th>총 주문금액</th>
-                                                   <td><strong><span class="amount">${ book.price + 1000 } 원</span></strong>
+                                                   <td><strong><span class="amount">£215.00</span></strong>
                                                    </td>
                                                </tr>								
                                            </tfoot>
@@ -263,13 +271,13 @@
                                                        <div class="panel-heading" role="tab" id="headingOne">
                                                            <h4 class="panel-title">
                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                 	직접 은행 송금
+                                                                 Direct Bank Transfer
                                                                </a>
                                                            </h4>
                                                        </div>
                                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                                            <div class="panel-body">
-                                                               <p>은행 계좌로 직접 결제하십시오. 결제 참조로 주문 ID를 사용하십시오. Google 계정에서 금액이 결제 될 때까지 주문 상품이 배송되지 않습니다.</p>
+                                                               <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
                                                            </div>
                                                        </div>
                                                    </div>
@@ -277,13 +285,13 @@
                                                        <div class="panel-heading" role="tab" id="headingTwo">
                                                            <h4 class="panel-title">
                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                 	수표 결제
+                                                                 Cheque Payment
                                                                </a>
                                                            </h4>
                                                        </div>
                                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                                            <div class="panel-body">
-                                                               <p>구디북스 우편 번호로 수표를 보내십시오.</p>
+                                                               <p>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
                                                            </div>
                                                        </div>
                                                    </div>
@@ -291,13 +299,13 @@
                                                        <div class="panel-heading" role="tab" id="headingThree">
                                                            <h4 class="panel-title">
                                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                                PayPal
+                                                                PayPal <img src="img/2.png" alt="payment" />
                                                                </a>
                                                            </h4>
                                                        </div>
                                                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                                                          <div class="panel-body">
-                                                               <p>PayPal 결제 : PayPal 계정이 없으면 신용 카드로 결제 할 수 있습니다.</p>
+                                                               <p>Pay via PayPal; you can pay with your credit card if you don’t have a PayPal account.</p>
                                                          </div>
                                                        </div>
                                                    </div>

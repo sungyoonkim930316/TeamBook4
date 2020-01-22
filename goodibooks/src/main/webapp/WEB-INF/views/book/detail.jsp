@@ -124,7 +124,7 @@
 													<input id="bookCount" class="qty" type="number" value="1">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
-												<a id="buyBtn" href="/goodibooks/purchase/purchase.action">바로 구매하기</a>
+												<a id="buyBtn" href="/goodibooks/purchase/purchase.action?book_no=${book.book_no}">바로 구매하기</a>
 											</form>
 										</div>
 									</div>
@@ -321,10 +321,31 @@
 		$("#bookCount").change(function(event) {
 			if ($(this).val() < 1) $(this).val("1");
 		});
-		/* $("#buyBtn").on("click", function(event) {
 
-		}) */
+		// 바로 결제
+		/* 
+		$("#buyBtn").on("click", function(event) {
+			
+				$.ajax({
+					"url" : "/goodibooks/purchase/purchase-insert.action",
+					"method" : "post",
+					"data" : {
+						"detail_cnt" : $("#bookCount").val(),
+						"book_no" : ${book.book_no},
+						"id" : "${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id }"
+					},
+					"success" : function(data, status, xhr) {
+						alert("상품을 장바구니에 담았습니다.");
 
+					$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
+						location.reload();// 새로고침
+					},
+					"error" : function(xhr, status, err) {
+						alert("장바구니 추가 실패");
+					}
+				});
+		})
+ */
 		// 리뷰 등록
 		$("#register").on("click", function(event) {
 

@@ -77,12 +77,4 @@ public class BoardController {
 				"redirect:detail.action?no=%d", no);
 	}
 	
-	
-	@GetMapping(path= {"/qna.action"})
-	public String toQna() {
-		
-		return "board/qna";
-	}
-	
-	
 }

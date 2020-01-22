@@ -10,5 +10,6 @@ public class OrderInfoVO {
 	private int no;
 	private Date payDate;
 	private int af_price;
+	private String id;
 	
 }
