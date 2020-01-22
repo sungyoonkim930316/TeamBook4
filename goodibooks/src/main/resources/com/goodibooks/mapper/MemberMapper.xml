@@ -25,12 +25,8 @@
 	<update id="updateMember" parameterType="memberVO">
 		update member set passwd = #{passwd}, phone=#{ phone }, email=#{email}, addr1=#{addr1}, addr2=#{addr2}, addr3=#{addr3} where id=#{ id } 
 	</update>
-
-	<select id="checkPw" parameterType="hashmap" resultType="int">
-		select count(*) from member where id = #{id} and passwd = #{passwd}
-	</select>
 	
-	<update id="deleteMember" parameterType="memberVO">
+	<update id="deleteMember" parameterType="MemberVO" >
 		update member 
 		set deleted = '1', deletedate = sysdate
 		where id=#{id}

@@ -90,5 +90,18 @@ public class BookServiceImpl implements BookService {
 		
 		return books;
 	}
+
+	@Override
+	public List<BookInfoVO> showBookListNoPaging() {
+		
+		List<BookInfoVO> books = new ArrayList<>();
+		
+		for (BookInfoVO b : bookMapper.selectBooksNoPaging()) {
+			b.setImgs(bookMapper.selectImgByBookNo(b.getBook_no()));
+			books.add(b);
+		}
+		
+		return books;
+	}
 	
 }

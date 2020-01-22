@@ -56,9 +56,7 @@ public class AccountController {
 	
 	@PostMapping(path = {"/login.action"})
 	public String login(MemberVO member, HttpSession session, Model model, RedirectAttributes attr) {
-		
-		session.removeAttribute("cartlist");
-		
+
 		MemberVO member2 = memberService.findMemberByIdAndPasswd(member);
 		if (member2 == null) {
 			attr.addFlashAttribute("loginFalse", member);
@@ -66,6 +64,7 @@ public class AccountController {
 		} else {
 			// 로그인 처리
 			session.setAttribute("loginuser", member2);
+			session.setAttribute("cartlist", cartService.showCartListByMemberId(member2.getId()));
 			model.addAttribute("member", member2);
 			//attr.addFlashAttribute("login", member2.getId());
 
@@ -163,6 +162,7 @@ public class AccountController {
 	public String logout(HttpSession session) {
 		
 		session.removeAttribute("loginuser");
+		session.removeAttribute("cartlist");
 		
 		return "redirect:/";
 	}

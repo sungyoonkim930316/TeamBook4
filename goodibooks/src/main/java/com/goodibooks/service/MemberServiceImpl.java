@@ -1,9 +1,6 @@
 package com.goodibooks.service;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.goodibooks.common.Util;
 import com.goodibooks.mapper.MemberMapper;
 import com.goodibooks.vo.MemberVO;
@@ -51,24 +48,6 @@ public class MemberServiceImpl implements MemberService {
 		memberMapper.deleteMember(member);
 	}
 
-	@Override
-	public boolean chekPw(Map<String, String> map) {
-		
-		int result = 0;
-		
-		try {
-			result = memberMapper.checkPw(map);
-			System.out.println(result);
-			if(result > 0) {
-				return true;
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return false;
-	}
 
 	@Override
 	public MemberVO findMemberById(String id) {

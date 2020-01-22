@@ -1,5 +1,7 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!doctype html>
 <html class="no-js" lang="ko">
 
@@ -162,7 +164,16 @@
 														판매가 &nbsp;&nbsp;<li>${b.price}</li>
 													</ul>
 												</div>
-												<p>${b.contents}</p>
+												<p>
+												<c:choose>
+												 <c:when test="${fn:length(b.intro) > 100}">
+            										<c:out value="${fn:substring(b.intro,0,100)}"/>....
+           										</c:when>
+           										<c:otherwise>
+           											${b.intro}
+           										</c:otherwise>
+           										</c:choose>
+												</p>
 												</div>
 											<div class="product-link">
 

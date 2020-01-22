@@ -12,12 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodibooks.service.BookService;
 import com.goodibooks.service.ReviewService;
-import com.goodibooks.ui.ThePager;
 import com.goodibooks.ui.ThePager2;
-
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.ReviewVO;
 
@@ -90,7 +89,6 @@ public class BookController {
 		model.addAttribute("reviews", reviews);
 
 		return "book/detail";
-
 	}
 	
 }

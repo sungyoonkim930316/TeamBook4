@@ -150,36 +150,15 @@
 						</div>
 						<div class="col-md-7 col-sm-7 col-xs-12">
 							<div class="modal-pro-content">
-								<h3>Chaz Kangeroo Hoodie3</h3>
+								<h3 id="bookDetailName"></h3>
 								<div class="price">
-									<span>$70.00</span>
+									<span>name</span>
 								</div>
-								<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet.</p>
-								<div class="quick-view-select">
-									<div class="select-option-part">
-										<label>Size*</label>
-										<select class="select">
-											<option value="">S</option>
-											<option value="">M</option>
-											<option value="">L</option>
-										</select>
-									</div>
-									<div class="quickview-color-wrap">
-										<label>Color*</label>
-										<div class="quickview-color">
-											<ul>
-												<li class="blue">b</li>
-												<li class="red">r</li>
-												<li class="pink">p</li>
-											</ul>
-										</div>
-									</div>
-								</div>
+								<p>price</p>
 								<form action="#">
 									<input type="number" value="1" />
 									<button>Add to cart</button>
 								</form>
-								<span><i class="fa fa-check"></i> In stock</span>
 							</div>
 						</div>
 					</div>
@@ -187,3 +166,4 @@
 			</div>
 		</div>
 	</div>
+	

@@ -14,5 +14,6 @@ public interface BookService {
 	List<CategoryVO> getCategoryList();
 	int bookCount();
 	Object searchBook(HashMap<String, Object> params);
+	List<BookInfoVO> showBookListNoPaging();
 	
 }
