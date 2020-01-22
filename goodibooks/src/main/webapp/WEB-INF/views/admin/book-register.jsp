@@ -59,12 +59,12 @@
 					<!-- <div class="billing-fields"> -->
 					
 					<!-- form 변경 -->
-					<form id="register-form" action="/goodibooks/admin/bookRegister" method="post">
+					<form id="register-form" action="/goodibooks/admin/bookRegister" method="post" enctype="multipart/form-data">
 						
 						<div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
 					      <select id="category_no" name="category_no" class="form-control">
-					        <option selected value="9">경제/경영</option>
+					        <option value="9">경제/경영</option>
 					        <option value="10">과학</option>
 					        <option value="11">만화</option>
 					        <option value="12">소설</option>
@@ -77,9 +77,9 @@
 					    
 					    <%-- <div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
-					      <select id="inputState" class="form-control">
+					      <select id="category_no" name="category_no" class="form-control">
 					        <!-- <option selected>--------</option> -->
-							<c:forEach items="${ categorys }" var=category>
+							<c:forEach items="${ categorys }" var=category >
 							<option value="${ category.category_no }">${ category.category_name }</option>				        
 					        </c:forEach>
 					      </select>
@@ -88,7 +88,7 @@
 						<div class="form-group" style="width:360px;">
 					      <label for="inputState">출판사</label>
 					      <select id="pub_no" name="pub_no" class="form-control">
-					        <option selected value="1">웨일북</option>
+					        <option value="1">웨일북</option>
 					        <option value="2">샘터사</option>
 					        <option value="3">사이언스북스</option>
 					      </select>
@@ -117,13 +117,13 @@
 						  </div>
 						  <div class="form-row">
 						    <label for="exampleFormControlFile1">책 이미지1</label>
-						    <input type="file" class="form-control-file" id="bookimg1">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="1">
 							<label for="exampleFormControlFile1">책 이미지2</label>
-						    <input type="file" class="form-control-file" id="bookimg2">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="2">
 						    <label for="exampleFormControlFile1">책 이미지3</label>
-						    <input type="file" class="form-control-file" id="bookimg3">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="3">
 						    <label for="exampleFormControlFile1">책 이미지4</label>
-						    <input type="file" class="form-control-file" id="bookimg4">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="4">
 						  </div>
 						  
 						  <br><br>
@@ -148,7 +148,25 @@
 	<!-- all js here -->
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
-	
+	<script type="text/javascript">
+	$(function() {
+		$('input[name=bookImg]').on('change', function(event) {
+			var idx = $(this).attr('data-idx');
+
+			if (this.files && this.files[0]) { //파일선택기의 파일 선택 확인
+				var reader = new FileReader();
+
+				//파일을 다 읽었을 때 호출할 함수 지정
+				reader.onload = function(e) {
+					$('#bookImg' + idx).attr('src', e.target.result);
+				};
+
+				reader.readAsDataURL(this.files[0]); // 파일 읽기
+			}
+			
+		});
+	});
+	</script>
 	
     </body>
 </html>
