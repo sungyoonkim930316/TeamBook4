@@ -13,5 +13,6 @@ public interface CartMapper {
 	void insertCartByMemberId(CartListVO cart);
 	List<CartListVO> selectCartByMemberId(String id);
 	void deleteCartByCartNo(int cart_no);
+//	void deleteCartById(String id);
 	
 }

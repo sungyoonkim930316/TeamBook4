@@ -18,6 +18,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 //	@Override
+//	public void deleteOrder(int no) {
+//		purchaseMapper.deleteOrder(no);
+//		
+//	}
+
+//	@Override
 //	public int orderDetailPlus(OrderDetailVO order_detail) {
 //		purchaseMapper.orderDetailPlus(order_detail);
 //		return order_detail.getDetail_no();

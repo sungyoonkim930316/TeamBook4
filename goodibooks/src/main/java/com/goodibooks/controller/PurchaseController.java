@@ -11,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goodibooks.service.BookService;
+import com.goodibooks.service.CartService;
 import com.goodibooks.service.PurchaseService;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CartListVO;
@@ -29,6 +31,10 @@ public class PurchaseController {
 	@Autowired
 	@Qualifier("purchaseService")
 	private PurchaseService purchaseService;
+	
+	@Autowired
+	@Qualifier("cartService")
+	private CartService cartService;
 	
 	@Autowired
 	@Qualifier("bookService")
@@ -54,6 +60,14 @@ public class PurchaseController {
 		
 		return "redirect:/";
 	}
+	
+//	@GetMapping(path = { "/loginuserpurchase.action" })
+//	public String deleteOrder(@RequestParam(value="id") String id) {
+//		
+//		cartService.deleteCartById(id);
+//		
+//		return "redirect:/";
+//	}
 	
 //	@PostMapping(path = { "/loginuserpurchase.action" })
 //	public String orderDetail(OrderDetailVO order_detail, RedirectAttributes attr) {
