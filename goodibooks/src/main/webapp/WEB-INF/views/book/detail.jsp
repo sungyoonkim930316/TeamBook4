@@ -290,12 +290,15 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#cartBtn").on("click", function(event) {
-			
+
 			if (!confirm("장바구니에 넣을까요?")) {
 				preventDefault(); return;
 			}
+
+			if (${empty sessionScope.loginuser}) {
+				alert("로그인이 필요합니다."); preventDefault(); return;
+			} 
 	
-			if (${empty sessionScope.loginuser}) alert("로그인이 필요합니다."); 
 			else {
 				$.ajax({
 					"url" : "/goodibooks/mypage/mycart-insert.action",

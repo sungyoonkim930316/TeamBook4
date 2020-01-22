@@ -21,5 +21,6 @@ public interface BookMapper {
 	List<BookInfoVO> searchBook(HashMap<String, Object> params);
 	List<BookInfoVO> searchBookByKey(HashMap<String, Object> params);
 	List<BookInfoVO> selectDetailProducts(BookInfoVO book);
+	List<BookInfoVO> selectBooksNoPaging();	// home 에서 사용할 페이징없는 책리스트
 	
 }

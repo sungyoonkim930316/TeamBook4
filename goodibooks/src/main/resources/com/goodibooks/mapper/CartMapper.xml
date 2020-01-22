@@ -15,7 +15,7 @@
 	<!-- 아이디로 카트목록 가져오기 -->
 	<select id="selectCartByMemberId" parameterType="String" resultType="CartListVO">
 		select cart_no, cart_count, book_no from cartlist
-		where id = #{id}
+		where id = #{id} order by cart_no desc
 	</select> 
 
 	<!-- 카트번호로 카트 삭제 -->
