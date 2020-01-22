@@ -175,12 +175,6 @@
 			
 		});
 
-/* 		$("#formSubmit").on("click", function(event) {
-			$("#intro").val().replace(/\n/g, "<br>");
-			$("#contents").val().replace(/\n/g, "<br>");
-
-			$("#register-form").submit();
-		}); */
 	});
 	</script>
 	
