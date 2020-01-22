@@ -36,6 +36,12 @@ public class AskController {
 	@Qualifier("answerService")
 	private AnswerService answerService;
 	
+	@GetMapping(path = {"/qna.action"})
+	public String toQna() {
+		
+		return "board/qna";
+	}
+	
 	@GetMapping(path= {"/ask.action"})
 	public String toAsk(Model model) {
 		

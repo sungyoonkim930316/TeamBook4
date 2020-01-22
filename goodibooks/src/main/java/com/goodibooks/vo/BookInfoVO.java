@@ -20,6 +20,8 @@ public class BookInfoVO {
 	private int pub_no;
 	private int category_no;
 	
+	private int book_count;
+	
 //	private List<BookImgVO> imgs = new ArrayList<>();
 	private List<BookImgVO> imgs;
 	

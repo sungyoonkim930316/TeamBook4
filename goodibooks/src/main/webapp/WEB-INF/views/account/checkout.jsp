@@ -54,50 +54,15 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="entry-header-title">
-						<h2>Checkout</h2>
+						<h2>CheckOut</h2>
+						<br><br><br><br>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<!-- entry-header-area-end -->
-	<!-- coupon-area-area-start -->
-	<div class="coupon-area mb-70">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="coupon-accordion">
-						<h3>로그인이 필요한 서비스 입니다. <span id="showlogin" style="color:orange">로그인 </span>하기</h3>
-						<div class="coupon-content" id="checkout-login">
-							<div class="coupon-info">
-								<form action="#">
-									<p class="form-row-first">
-										<label>ID <span class="required">*</span></label>
-										<input type="text">
-									</p>
-									<p class="form-row-last">
-										<label>패스워드  <span class="required">*</span></label>
-										<input type="text">
-									</p>
-									<p class="form-row">					
-										<input type="submit" value="로그인">
-										<label>
-											<input type="checkbox">
-											 로그인 상태 유지
-										</label>
-									</p>
-									<p class="lost-password">
-										<a href="#">아이디 / 비밀번호 찾기</a>
-									</p>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- coupon-area-area-end -->
 	<!-- checkout-area-start -->
 	<div class="checkout-area mb-70">
 		<div class="container">
@@ -355,7 +320,16 @@
 
 			$('#cartorder-button').on('click', function(event) {
 
-				$('#loginuser-purchase-form').submit();
+				/* $('#loginuser-purchase-form').submit(); */
+
+				event.preventDefault();
+				
+				if(${ not empty loginuser }) {
+					$('#loginuser-purchase-form').submit();
+				} else {
+					alert("로그인이 필요한 서비스 입니다.")
+					location.href = "/goodibooks/account/login.action";
+				}
 			})
 		})
 		

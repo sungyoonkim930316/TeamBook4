@@ -61,14 +61,6 @@ public class PurchaseController {
 		return "redirect:/";
 	}
 	
-//	@GetMapping(path = { "/loginuserpurchase.action" })
-//	public String deleteOrder(@RequestParam(value="id") String id) {
-//		
-//		cartService.deleteCartById(id);
-//		
-//		return "redirect:/";
-//	}
-	
 //	@PostMapping(path = { "/loginuserpurchase.action" })
 //	public String orderDetail(OrderDetailVO order_detail, RedirectAttributes attr) {
 //		

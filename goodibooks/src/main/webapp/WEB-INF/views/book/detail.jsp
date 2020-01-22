@@ -114,8 +114,8 @@
 										<div class="product-info-price">
 											가격 : 
 											<div class="price-final">
-												<span> ${book.price} 원 &nbsp;</span>
-												<span class="old-price">${book.price + 10000} 원</span>
+												<span> ${total = (book.price)} 원 &nbsp;</span>
+												<span class="old-price">${(book.price + 10000)} 원</span>
 											</div>
 										</div>
 										<div class="product-add-form">
@@ -322,30 +322,6 @@
 			if ($(this).val() < 1) $(this).val("1");
 		});
 
-		// 바로 결제
-		/* 
-		$("#buyBtn").on("click", function(event) {
-			
-				$.ajax({
-					"url" : "/goodibooks/purchase/purchase-insert.action",
-					"method" : "post",
-					"data" : {
-						"detail_cnt" : $("#bookCount").val(),
-						"book_no" : ${book.book_no},
-						"id" : "${ empty sessionScope.loginuser ? '' : sessionScope.loginuser.id }"
-					},
-					"success" : function(data, status, xhr) {
-						alert("상품을 장바구니에 담았습니다.");
-
-					$('#topbar-cart').load("/goodibooks/mypage/cartlist/${loginuser.id}");
-						location.reload();// 새로고침
-					},
-					"error" : function(xhr, status, err) {
-						alert("장바구니 추가 실패");
-					}
-				});
-		})
- */
 		// 리뷰 등록
 		$("#register").on("click", function(event) {
 
@@ -363,6 +339,8 @@
 				}
 			})
 		});
+
+		$().priceTotal();
 
 		// 모달 창 닫기
 		$("#Reviews").on("click", "#modalCloseBtn", function(event){

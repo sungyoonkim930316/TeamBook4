@@ -36,7 +36,7 @@
 					<div class="breadcrumbs-menu">
 						<ul>
 							<li><a href="#">Home</a></li>
-							<li>자주 묻는 질문</li>
+							<li>자주 하는 질문</li>
 						</ul>
 					</div>
 				</div>

@@ -60,53 +60,20 @@
 						<label>제목</label> <input class="form-control" id='title'
 							name='title'>
 					</div>
-					<%-- 
 					<div class="form-group">
 						<label>문의유형</label> 
 						<form action="askwrite.action" method="get">
 						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							https://maketh.tistory.com/113참고 <option value="AskCho"selected>선택</option>
-							<%
-							Connection con = null;
-							PreparedStatement pstmt = null;
-							ResultSet rs = null;
-							try {
-								con = DBConnection.getCon();
-								String sql = "SELECT 칼럼명 FROM 테이블명 GROUP BY 칼럼명 ORDER BY 칼럼명";
-								
-								pstmt = con.prepareStatement(sql);
-								rs = pstmt.executeQuery();
-								while (rs.next()) {
-									String BMT_CP = rs.getString("BMT_CP");
-							%>
-							<option value=<%=칼럼명 %>><%=칼럼명 %></option>
-							<%
-							}
-							} catch (SQLException ex) {
-								System.out.println(ex.getMessage());
-							} finally {
-								try {
-									if (rs != null)
-										rs.close();
-									if (pstmt != null)
-										pstmt.close();
-									if (con != null)
-										con.close();
-								} catch (SQLException ex) {
-									System.out.println(ex.getMessage());
-								}
-							}
-							%>
-							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
+							<option value="AskCho"selected>선택</option>
+							<option id="AccAsk" value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
+							<option id="SysAsk" value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
+							<option id="PayAsk" value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
+							<option id="EveAsk" value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
+							<option id="SugAsk" value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
+							<option id="EtcAsk" value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
 						</select>
 						</form>
 					</div>
-   --%>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='content'

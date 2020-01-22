@@ -7,6 +7,7 @@
 	
 	<bean id="purchaseService" class="com.goodibooks.service.PurchaseServiceImpl">
 		<property name="purchaseMapper" ref="purchaseMapper"></property>
+		<property name="cartMapper" ref="cartMapper"></property>
 	</bean>
 		
 </beans>

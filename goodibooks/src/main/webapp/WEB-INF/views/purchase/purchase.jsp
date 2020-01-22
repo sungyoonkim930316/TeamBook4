@@ -67,31 +67,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="coupon-accordion">
-						<h3>로그인이 필요한 서비스 입니다. <span id="showlogin" style="color:orange">로그인 </span>하기</h3>
-						<div class="coupon-content" id="checkout-login">
-							<div class="coupon-info">
-								<form action="#">
-									<p class="form-row-first">
-										<label>ID <span class="required">*</span></label>
-										<input type="text">
-									</p>
-									<p class="form-row-last">
-										<label>패스워드  <span class="required">*</span></label>
-										<input type="text">
-									</p>
-									<p class="form-row">					
-										<input type="submit" value="로그인">
-										<label>
-											<input type="checkbox">
-											 로그인 상태 유지
-										</label>
-									</p>
-									<p class="lost-password">
-										<a href="#">아이디 / 비밀번호 찾기</a>
-									</p>
-								</form>
-							</div>
-						</div>
+						<h3>로그인이 필요한 서비스 입니다. <a href="/goodibooks/account/login.action" style="color:orange">로그인 </a>하기</h3>						
 					</div>
 				</div>
 			</div>
@@ -111,6 +87,11 @@
                                    <div class="row">
                                        <%-- <c:forEach var="member" items="${ list }"> --%>
                                        <div class="col-lg-12 col-md-12 col-12">
+                                       <div class="checkout-form-list">
+                                           	<div class="form-group">										
+                                               <input type="hidden" class="form-control" id="id" name="id" value="${ loginuser.id }">
+                                            </div>  
+                                           </div>
                                            <div class="checkout-form-list">
                                            	<div class="form-group">
                                                <label>이름 <span class="required">*</span></label>										
@@ -245,12 +226,13 @@
                                            <tfoot>
                                                <tr class="shipping">
                                                    <th>배송비</th>
-                                                   <td><span class="shipping">1000원</span></td>
+                                                   <td><span class="shipping">2500원</span></td>
                                                </tr>
                                                <tr class="order-total">
                                                    <th>총 주문금액</th>
-                                                   <td><strong><span class="amount">${ book.price + 1000 } 원</span></strong>
+                                                   <td><strong><span class="amount">${ book.price + 2500 } 원</span></strong>
                                                    </td>
+                                                   <input type="hidden" name="af_price" value="${ book.price + 2500 }">
                                                </tr>								
                                            </tfoot>
                                        </table>
@@ -305,7 +287,7 @@
                                            </div>
                                        </div>
                                        <div class="order-button-payment">
-                                           <input type="submit" value="주문">
+                                           <input type="submit" id="directorder-button" value="주문">
                                        </div>
                                    </div>
                                </div>
@@ -337,6 +319,21 @@
 	<script type="text/javascript">
 		$(function() {
 			$("#id, #name, #addr1, #addr2, #addr3, #phone, #email").attr({"readonly": "readonly" });
+
+			$('#directorder-button').on('click', function(event) {
+
+				/* $('#loginuser-purchase-form').submit(); */
+
+				event.preventDefault();
+				
+				if(${ not empty loginuser }) {
+					$('#loginuser-purchase-form').submit();
+				} else {
+					alert("로그인이 필요한 서비스 입니다.")
+					location.href = "/goodibooks/account/login.action";
+				}
+			})
+
 		})
 		
 		$("#btn").on("click", function(event) {

@@ -1,5 +1,6 @@
 package com.goodibooks.service;
 
+import com.goodibooks.mapper.CartMapper;
 import com.goodibooks.mapper.PurchaseMapper;
 import com.goodibooks.vo.OrderDetailVO;
 import com.goodibooks.vo.OrderInfoVO;
@@ -10,10 +11,18 @@ public class PurchaseServiceImpl implements PurchaseService {
 	
 	@Setter
 	private PurchaseMapper purchaseMapper;
+	
+	@Setter
+	private CartMapper cartMapper;
 
 	@Override
 	public int orderInfoPlus(OrderInfoVO order_info) {
 		purchaseMapper.orderInfoPlus(order_info);
+		
+		String order_id = order_info.getId();
+		
+		cartMapper.deleteCartById(order_id);
+		
 		return order_info.getNo();
 	}
 
