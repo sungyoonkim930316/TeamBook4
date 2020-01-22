@@ -55,8 +55,12 @@ public class AdminServiceImpl implements AdminService {
 			adminMapper.insertBookImg(bookImg);
 		}
 		
+	}
+
+	@Override
+	public void pubRegist(PublisherVO publisher) {
 		
-		
+		adminMapper.insertPub(publisher);
 		
 	}
 

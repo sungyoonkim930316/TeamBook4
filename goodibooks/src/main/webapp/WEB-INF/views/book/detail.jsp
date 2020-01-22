@@ -114,8 +114,8 @@
 										<div class="product-info-price">
 											가격 : 
 											<div class="price-final">
-												<span> ${book.price} 원 &nbsp;</span>
-												<span class="old-price">${book.price + 10000} 원</span>
+												<span> ${ book.price } 원 &nbsp;</span>
+												<%-- <span class="old-price">${book.price} 원</span> --%>
 											</div>
 										</div>
 										<div class="product-add-form">
