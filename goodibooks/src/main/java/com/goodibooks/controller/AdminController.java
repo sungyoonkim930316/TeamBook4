@@ -70,8 +70,7 @@ public class AdminController {
 		// bookInfo 정보 DB저장
 		//adminService.bookRegist(bookinfo);
 		
-		// 이미지 파일 DB저장
-		
+		// 이미지 파일 DB저장	
 		ArrayList<BookImgVO> BookImgs = new ArrayList<BookImgVO>();
 		
 		ServletContext application = req.getServletContext();
@@ -98,6 +97,9 @@ public class AdminController {
 			BookImgs.add(bookImg);
 			
 		}
+		
+		System.out.println(bookinfo.getIntro());
+		System.out.println(bookinfo.getContents());
 		
 		adminService.bookRegister(bookinfo, BookImgs);
 		

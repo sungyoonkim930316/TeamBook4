@@ -46,9 +46,14 @@
 	<!-- 전채첵 리스트 -->
 	<select id="selectBooks" parameterType="hashmap" resultType="BookInfoVO">
 		select * from (
-			<include refid="query"></include>
+			<include refid="query"></include> order by book_no desc
 		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
 	</select>
+	<!-- 페이징없는 전체책 리스트 (home 에서 사용할거) -->
+	<select id="selectBooksNoPaging" resultType="BookInfoVO">
+		<include refid="query"></include> and <![CDATA[rownum <= 10]]> order by book_no desc
+	</select>
+	
 	<!-- 전체 책 개수 -->
 	<select id="bookCount" resultType="int">
 		select count(*) from book_info
@@ -67,7 +72,7 @@
 	<select id="searchBook" parameterType="hashmap" resultType="BookInfoVO" >
 		select * from (
 			<include refid="query"></include> and 
-			<include refid="searchCondition"></include>
+			<include refid="searchCondition"></include> order by book_no desc
 		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
 	</select>
 	

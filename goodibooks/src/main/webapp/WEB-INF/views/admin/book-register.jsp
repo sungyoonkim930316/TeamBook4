@@ -72,6 +72,7 @@
 					        <option value="14">예술</option>
 					        <option value="15">자기계발</option>
 					        <option value="16">컴퓨터</option>
+					        <option value="17">에세이/시</option>
 					      </select>
 					    </div>
 					    
@@ -91,6 +92,7 @@
 					        <option value="1">웨일북</option>
 					        <option value="2">샘터사</option>
 					        <option value="3">사이언스북스</option>
+					        <option value="4">열린책들</option>
 					      </select>
 						</div>
 						
@@ -127,7 +129,7 @@
 						  </div>
 						  
 						  <br><br>
-						  <button type="submit" class="btn btn-primary">책등록</button>
+						  <button id="formSubmit" type="submit" class="btn btn-primary">책등록</button>
 						</form>
 					
 					</div>
@@ -165,6 +167,13 @@
 			}
 			
 		});
+
+/* 		$("#formSubmit").on("click", function(event) {
+			$("#intro").val().replace(/\n/g, "<br>");
+			$("#contents").val().replace(/\n/g, "<br>");
+
+			$("#register-form").submit();
+		}); */
 	});
 	</script>
 	
