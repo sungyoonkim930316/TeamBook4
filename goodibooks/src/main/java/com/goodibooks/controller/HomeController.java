@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.goodibooks.service.AdminService;
 import com.goodibooks.service.BookService;
 import com.goodibooks.vo.BookInfoVO;
+import com.goodibooks.vo.EventBoardVO;
 
 
 @Controller
@@ -21,6 +23,10 @@ public class HomeController {
 	@Qualifier("bookService")
 	private BookService bookservice;
 	
+	@Autowired
+	@Qualifier("adminService")
+	private AdminService adminService;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
@@ -28,6 +34,10 @@ public class HomeController {
 		List<BookInfoVO> books = bookservice.showBookListNoPaging();
 		if (books != null) model.addAttribute("books", books);
 
+		// 배너 이벤트 리스트
+		List<EventBoardVO> events = adminService.showEventList();
+		if (events != null) model.addAttribute("events", events);
+		
 		return "home";
 	}
 	
