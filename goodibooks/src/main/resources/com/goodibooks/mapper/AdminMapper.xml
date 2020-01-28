@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="selectPublisher" resultType="PublisherVO">
-		select * from publisher order by pub_no ASC
+		select * from publisher where deleted = '0' order by pub_no ASC 
 	</select>
 	
 	<insert id="insertBookImg" parameterType="BookImgVO">
@@ -28,9 +28,52 @@
 	</insert>
 	
 	<insert id="insertPub" parameterType="PublisherVO">
-	 insert into publisher (pub_no, pub_name) values (pub_seq.nextval, #{pub_name} )
+	 	insert into publisher (pub_no, pub_name) values (pub_seq.nextval, #{pub_name} )
 	</insert>
 	
+	<update id="deletePub" parameterType="int">
+		update publisher set deleted = '1' where pub_no = #{ pub_no } 
+	</update>
+	
+	<sql id="searchKeyContent">
+		<trim suffix="pub_name like '%'||#{searchKey}||'%' AND" />
+	</sql>
+	
+	<select id="selectpubListWidthPaging" parameterType="hashmap" resultType="PublisherVO">
+		select pub_no, pub_name, deleted from
+			(
+				select rownum idx, pub_no, pub_name, deleted from publisher
+				where <include refid="searchKeyContent" /> 
+				deleted ='0' and <![CDATA[ rownum < #{ end } ]]> 
+				order by pub_no asc
+			)
+		where idx >= #{ beginning }
+	</select>
+	
+	<select id="selectPubCount" resultType="int">
+		select count(*) from publisher where deleted='0'
+	</select>
+	
+	<select id="selectBookInfoByBookNo" parameterType="int" resultType="BookInfoVO">
+		select * from book_info where book_no = #{book_no}
+	</select>
+	
+	<select id="selectBookImgByBookNo" parameterType="int" resultType="BookImgVO">
+		select * from book_img where book_no = #{book_no}
+	</select>
+	
+	<update id="updateBook" parameterType="BookInfoVO">
+		update book_info set category_no=#{category_no}, pub_no=#{pub_no}, name=#{name}, price=#{price}, writer=#{writer}, intro=#{intro}, contents=#{contents} 
+		where book_no=#{ book_no }
+	</update>
+	
+	<update id="updateBookImg" parameterType="BookImgVO">
+		update book_img set img=#{img} where book_no=#{book_no}
+	</update>
+	
+	<update id="deleteBook" parameterType="int">
+		update book_info set deleted ='1' where book_no = #{book_no}
+	</update>
 	
 	<!-- 이벤트 관련 -->
 	<insert id="insertEvent" parameterType="EventBoardVO">

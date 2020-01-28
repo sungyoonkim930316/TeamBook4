@@ -1,5 +1,6 @@
 package com.goodibooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.mapper.ReviewMapper;
@@ -36,6 +37,24 @@ public class ReviewServiceImpl implements ReviewService {
 	public void deleteReive(int re_no) {
 
 		reviewMapper.deleteReview(re_no);
+	}
+
+	@Override
+	public int findReivewCount(int book_no) {
+
+		return reviewMapper.selectReivewCount(book_no);
+	}
+
+	@Override
+	public List<ReviewVO> findReivewWithPaging(HashMap<String, Object> params) {
+		
+		return reviewMapper.findReviewWithPaging(params);
+	}
+
+	@Override
+	public void reviewCount(int book_no) {
+
+		reviewMapper.selectReviewCount(book_no);
 	}
 
 	

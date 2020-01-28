@@ -14,26 +14,9 @@ public class ThePager {
 	
 	private String linkUrl;//페이저가 포함되는 페이지의 주소
 	
-	private String queryString;
-	
-	public ThePager(int dataCount, int pageNo, 
-		int pageSize, int pagerSize, String linkUrl, String queryString) {
+	public ThePager(int dataCount, int pageNo, int pageSize, int pagerSize, String linkUrl) {
 		
 		this.linkUrl = linkUrl;
-		
-		this.queryString = "";
-		if (queryString != null && queryString.length() > 0) {
-			String[] queryList = queryString.split("&");
-			for (String query : queryList) {
-				if (!query.contains("pageNo=")) {
-					if (this.queryString.length() > 0) {
-						this.queryString += "&" + query;
-					} else { 
-						this.queryString += query;
-					}
-				}
-			}
-		}
 		
 		this.dataCount = dataCount;
 		this.pageSize = pageSize;
@@ -42,19 +25,19 @@ public class ThePager {
 		pageCount = 
 			(dataCount / pageSize) + ((dataCount % pageSize) > 0 ? 1 : 0); 
 	}
-
+	
 	public String toString(){
-		StringBuffer linkString = new StringBuffer(2048);
 		
+		StringBuffer linkString = new StringBuffer(2048);
 		
 		//1. 처음, 이전 항목 만들기
 		if (pageNo > 1) {
 			linkString.append(
-				String.format("[<a href='%s?pageNo=1&%s'>처음</a>]",linkUrl, queryString));
+				String.format("[<a href='%s&pageNo=1'>처음</a>]",linkUrl));
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>이전</a>]", linkUrl, pageNo - 1, queryString));
+				"[<a href='%s&pageNo=%d'>이전</a>]", linkUrl, pageNo - 1));
 			linkString.append("&nbsp;");
 		}
 		
@@ -69,7 +52,7 @@ public class ThePager {
 				linkString.append(String.format("[%d]", i));
 			} else { 
 				linkString.append(String.format(
-					"<a href='%s?pageNo=%d&%s'>%d</a>", linkUrl, i, queryString, i));
+					"<a href='%s&pageNo=%d'>%d</a>", linkUrl, i, i));
 			}
 			linkString.append("&nbsp;");
 		}
@@ -78,11 +61,11 @@ public class ThePager {
 		if (pageNo < pageCount) {
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>다음</a>]",linkUrl, pageNo + 1, queryString));
+				"[<a href='%s&pageNo=%d'>다음</a>]",linkUrl, pageNo + 1));
 			linkString.append("&nbsp;");
 			linkString.append("&nbsp;");
 			linkString.append(String.format(
-				"[<a href='%s?pageNo=%d&%s'>마지막</a>]", linkUrl, pageCount, queryString));
+				"[<a href='%s&pageNo=%d'>마지막</a>]", linkUrl, pageCount));
 		}
 		
 		return linkString.toString();

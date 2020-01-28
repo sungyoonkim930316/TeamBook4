@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>책 상세 보기</title>
+        <title>구디북스-${book.name}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,8 +38,9 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">product-details</a></li>
+								<li><a href="/goodibooks/">Home</a></li>
+								<li><a href="/goodibooks/book/list.action">책 리스트</a></li>
+								<li><a href="#" class="active">상세페이지</a></li>
 							</ul>
 						</div>
 					</div>
@@ -108,7 +109,7 @@
 												</c:if>
 											</div>
 											<div class="reviews-actions">
-												<a href="#Reviews">${reviews.size()} Reviews</a>
+												<a href="#Reviews">${reviewCount} Reviews</a>
 											</div>
 										</div>
 										<div class="product-info-price">
@@ -125,6 +126,11 @@
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
 												<a id="buyBtn" href="/goodibooks/purchase/purchase.action?book_no=${book.book_no}">바로 구매하기</a>
+												<c:choose>
+													<c:when test="${ loginuser.userType == true }">
+														<a id="editBtn" href="/goodibooks/admin/editBook?book_no=${book.book_no}">수정</a>
+													</c:when>
+												</c:choose>
 											</form>
 										</div>
 									</div>
@@ -137,7 +143,7 @@
 							<!-- Nav tabs -->
 							<ul class="nav">
 								<li><a class="active" href="#Details" data-toggle="tab">책 상세 정보</a></li>
-								<li><a href="#Reviews" data-toggle="tab">리뷰 ${reviews.size()}</a></li>
+								<li><a href="#Reviews" data-toggle="tab">리뷰 ${reviewCount}</a></li>
 							</ul>
 							<div class="tab-content">
                                 <div class="tab-pane fade show active" id="Details">

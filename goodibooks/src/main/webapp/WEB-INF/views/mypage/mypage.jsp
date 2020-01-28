@@ -9,7 +9,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Koparion – Book Shop HTML5 Template</title>
+        <title>구디북스-마이페이지</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -405,11 +405,10 @@
 																  </div>
 																  <br>
 																  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
-																  </form>
-																  <br><br><br><br>
-																  
-																  
+																  &nbsp;
 																  <button type="button" id="delete" class="btn btn-danger">탈퇴하기</button>
+																  </form>
+																  <br>
 																  
 															</div>
 														</div>

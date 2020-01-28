@@ -1,6 +1,8 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
     								<div class="valu valu-2">
                                         <div class="review-add">
@@ -61,10 +63,11 @@
                                         <p class="text-center">아직 등록된 리뷰가 없지 뭐얌?</p>
                                         </c:if>
                                         <c:forEach items="${ reviews }" var="review">
+										<fmt:formatDate var="resultRegDt" value="${review.writeDate}" pattern="yyyy-MM-dd"/>
 										
 											<div>
 											<h5>${ review.title }</h5>
-											<p>${ review.id } | ${ review.writeDate } | 
+											<p>${ review.id } | <fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd"/> |  
 												<c:if test="${ review.rate == 1 }">
 												<i class="fa fa-star"></i>
 												</c:if>
@@ -92,6 +95,15 @@
 											<hr>
                                         </c:forEach>
                                         </div>
+                                        <!-- pagination-area-start -->
+										<div class="pagination-area mt-50">
+											<div class="page-number">
+					 							<ul>
+					 								${ pager }
+												</ul>
+											</div> 
+										</div>
+										<!-- pagination-area-end -->
                                         
                                     </div>
                                     

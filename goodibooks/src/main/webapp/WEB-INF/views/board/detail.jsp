@@ -7,7 +7,7 @@
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>GoodiBooks 공지사항</title>
+        <title>구디북스-공지사항</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,8 +36,9 @@
 					<div class="col-lg-12">
 						<div class="breadcrumbs-menu">
 							<ul>
-								<li><a href="#">Home</a></li>
-								<li><a href="#" class="active">Notice</a></li>
+								<li><a href="/goodibooks/">Home</a></li>
+								<li><a href="/goodibooks/board/notice.action">공지사항</a></li>
+								<li><a href="#" class="active">${ board.title }</a></li>
 							</ul>
 						</div>
 					</div>

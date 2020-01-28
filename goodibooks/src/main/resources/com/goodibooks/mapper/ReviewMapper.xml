@@ -31,4 +31,22 @@
 		delete from review where re_no=#{re_no}
 	</update>
 	
+	<select id="selectReivewCount" parameterType="int" resultType="int">
+		select count(*) from review where book_no = #{book_no} and deleted ='0'
+	</select>
+	
+	<select id="findReviewWithPaging" parameterType="hashmap" resultType="ReviewVO">
+		select re_no, rate, content, writedate, deleted, title, book_no, id from
+			(
+				select rownum idx, re_no, rate, content, writedate, deleted, title, book_no, id from review
+				where book_no=#{book_no} and deleted='0' and <![CDATA[ rownum < #{end} ]]>
+				order by re_no desc
+			)
+		where idx >= #{beginning}
+	</select>
+	
+	<select id="selectReviewCount" parameterType="int">
+		select count(*) from review where book_no = #{ book_no }
+	</select>
+	
 </mapper>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.goodibooks.service.BookService;
 import com.goodibooks.service.ReviewService;
+import com.goodibooks.ui.ThePager;
 import com.goodibooks.ui.ThePager2;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.ReviewVO;
@@ -73,7 +74,7 @@ public class BookController {
 	
 	// 상품 디테일 페이지로 이동
 	@GetMapping(path= {"/detail.action"})
-	public String toDetail(int book_no, Model model) {
+	public String toDetail(int book_no, Model model, @RequestParam(defaultValue = "1")int pageNo) {
 		
 		BookInfoVO book = bookService.showBookDetailByBookNo(book_no);
 		
@@ -84,10 +85,28 @@ public class BookController {
 		// 함께 구매한 책
 		model.addAttribute("products", bookService.selectDetailProducts(book));
 		
-		// 리뷰 조회
-		List<ReviewVO> reviews = reviewService.findReviewWithBookNo(book_no);
+		// 리뷰 페이징
+		int pageSize = 5;
+		int pagerSize = 3;
+		int beginning = (pageNo -1) * pageSize +1;
+		int reviewCount = reviewService.findReivewCount(book_no);
+		
+		HashMap<String, Object>params = new HashMap<String, Object>();
+		params.put("beginning", beginning);
+		params.put("end", beginning + pageSize);
+		params.put("book_no", book_no);
+		
+		List<ReviewVO> reviews = reviewService.findReivewWithPaging(params);
+		
 		model.addAttribute("reviews", reviews);
+		model.addAttribute("reviewCount", reviewCount);
+		
+		String format = "detail.action?book_no="+book_no;
+		
+		ThePager pager = new ThePager(reviewCount, pageNo, pageSize, pagerSize, format);
 
+		model.addAttribute("pager", pager);
+		
 		return "book/detail";
 	}
 	

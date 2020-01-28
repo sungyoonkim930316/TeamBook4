@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Koparion – Book Shop HTML5 Template</title>
+	<title>구디북스</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -63,7 +63,7 @@
 						<div class="row">
 							<div class="col-lg-12 col-md-6 col-12">
 								<div class="banner-img-2">
-									<a href="#"><img src="/goodibooks/resources/img/banner/20.jpg" alt="banner" /></a>
+									<a href="#"><img src="/goodibooks/resources/img/banner/banner1.png" alt="banner" /></a>
 								</div>
 							</div>
 							<div class="col-lg-12 col-md-6 col-12">
@@ -137,458 +137,28 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-4 col-12">
-					<!-- category-area-start -->
-					<div class="category-area mb-30">
-						<h3><a href="#">Category Menu <i class="fa fa-bars"></i></a></h3>
-						<div class="category-menu">
-							<nav class="menu">
-								<ul>
-									<li class="cr-dropdown"><a href="#">Book<i class="none-lg fa fa-angle-down"></i><i class="none-sm fa fa-angle-right"></i></a>
-										<div class="left-menu">
-											<span class="mb-30">
-												<a href="#" class="title">Jackets</a>
-												<a href="/goodibooks/book/list.action">Tops & Tees</a>
-												<a href="#">Polo Short Sleeve</a>
-												<a href="#">Graphic T-Shirts</a>
-												<a href="#">Jackets & Coats</a>
-												<a href="#">Fashion Jackets</a>
-											</span>
-											<span class="mb-30">
-												<a href="#" class="title">Bottoms</a>
-												<a href="#">Heeled sandals</a>
-												<a href="#">Polo Short Sleeve</a>
-												<a href="#">Flat sandals</a>
-												<a href="#">Short Sleeve</a>
-												<a href="#">Long Sleeve</a>
-											</span>
-											<span>
-												<a href="#" class="title">weaters</a>
-												<a href="#">Crochet</a>
-												<a href="#">Sleeveless</a>
-												<a href="#">Stripes</a>
-												<a href="#">Sweaters</a>
-												<a href="#">hoodies</a>
-											</span>
-											<span>
-												<a href="#" class="title">Jeans Pants</a>
-												<a href="#">Polo Short Sleeve </a>
-												<a href="#">Sleeveless</a>
-												<a href="#">Graphic T-Shirts</a>
-												<a href="#">Hoodies</a>
-												<a href="#">Jackets</a>
-											</span>
-										</div>
-										<ul>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jackets <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-grid-2-col.html">Tops & Tees</a></li>
-													<li><a href="shop-grid-3-col.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop-grid-6-col.html">Jackets & Coats</a></li>
-													<li><a href="shop-grid-box.html">Fashion Jackets</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Bottoms <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-list.html">Heeled sandals</a></li>
-													<li><a href="shop-list.html">Polo Short Sleeve</a></li>
-													<li><a href="shop-list-2-col.html">Flat sandals</a></li>
-													<li><a href="shop-list-3-col.html">Short Sleeve</a></li>
-													<li><a href="shop-list-box.html">Long Sleeve</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">weaters <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="product-details.html">Sleeveless</a></li>
-													<li><a href="product-details-sticky.html">Stripes</a></li>
-													<li><a href="product-details-gallery.html">Sweaters</a></li>
-													<li><a href="product-details-fixed-img.html">hoodies</a></li>
-													<li><a href="product-details-fixed-img.html">Crochet</a></li>
-													<li><a href="product-details-fixed-img.html">weaters</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jeans Pants <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop.html">Sleeveless</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop.html">Hoodies</a></li>
-													<li><a href="shop.html">Jackets</a></li>
-													<li><a href="shop.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Jeans Pants</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="cr-dropdown"><a href="#">Audio books<i class="none-lg fa fa-angle-down"></i><i class="none-sm fa fa-angle-right"></i></a>
-										<div class="left-menu">
-											<span class="mb-30">
-												<a href="#" class="title">Shirts</a>
-												<a href="#">Tops & Tees</a>
-												<a href="#">Sweaters</a>
-												<a href="#">Hoodies</a>
-												<a href="#">Jackets & Coats</a>
-											</span>
-											<span class="mb-30">
-												<a href="#" class="title">Jackets</a>
-												<a href="#">Sweaters</a>
-												<a href="#">Hoodies</a>
-												<a href="#">Wedges</a>
-												<a href="#">Vests</a>
-											</span>
-											<span>
-												<a href="#" class="title">Tops & Tees</a>
-												<a href="#">Long Sleeve </a>
-												<a href="#">Short Sleeve</a>
-												<a href="#">Polo Short Sleeve</a>
-												<a href="#">Sleeveless</a>
-											</span>
-											<span>
-												<a href="#" class="title">Jeans pants</a>
-												<a href="#">Polo Short Sleeve</a>
-												<a href="#">Sleeveless</a>
-												<a href="#">Graphic T-Shirts</a>
-												<a href="#">Hoodies</a>
-											</span>
-										</div>
-										<ul>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jackets <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-grid-2-col.html">Tops & Tees</a></li>
-													<li><a href="shop-grid-3-col.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop-grid-6-col.html">Jackets & Coats</a></li>
-													<li><a href="shop-grid-box.html">Fashion Jackets</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Bottoms <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-list.html">Heeled sandals</a></li>
-													<li><a href="shop-list.html">Polo Short Sleeve</a></li>
-													<li><a href="shop-list-2-col.html">Flat sandals</a></li>
-													<li><a href="shop-list-3-col.html">Short Sleeve</a></li>
-													<li><a href="shop-list-box.html">Long Sleeve</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">weaters <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="product-details.html">Sleeveless</a></li>
-													<li><a href="product-details-sticky.html">Stripes</a></li>
-													<li><a href="product-details-gallery.html">Sweaters</a></li>
-													<li><a href="product-details-fixed-img.html">hoodies</a></li>
-													<li><a href="product-details-fixed-img.html">Crochet</a></li>
-													<li><a href="product-details-fixed-img.html">weaters</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jeans Pants <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop.html">Sleeveless</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop.html">Hoodies</a></li>
-													<li><a href="shop.html">Jackets</a></li>
-													<li><a href="shop.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Jeans Pants</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="cr-dropdown"><a href="#">children’s books<i class="none-lg fa fa-angle-down"></i><i class="none-sm fa fa-angle-right"></i></a>
-										<div class="left-menu">
-											<span class="mb-30">
-												<a href="#" class="title">Tops</a>
-												<a href="#">Shirts</a>
-												<a href="#">Florals</a>
-												<a href="#">Crochet</a>
-												<a href="#">Stripes</a>
-											</span>
-											<span class="mb-30">
-												<a href="#" class="title">Bottoms</a>
-												<a href="#">Shoes</a>
-												<a href="#">Heeled sandals</a>
-												<a href="#">Flat sandals</a>
-												<a href="#">Wedges</a>
-											</span>
-											<span>
-												<a href="#" class="title">Shorts</a>
-												<a href="#">Dresses</a>
-												<a href="#">Trousers</a>
-												<a href="#">Jeans</a>
-											</span>
-										</div>
-										<ul>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jackets <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-grid-2-col.html">Tops & Tees</a></li>
-													<li><a href="shop-grid-3-col.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop-grid-6-col.html">Jackets & Coats</a></li>
-													<li><a href="shop-grid-box.html">Fashion Jackets</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Bottoms <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-list.html">Heeled sandals</a></li>
-													<li><a href="shop-list.html">Polo Short Sleeve</a></li>
-													<li><a href="shop-list-2-col.html">Flat sandals</a></li>
-													<li><a href="shop-list-3-col.html">Short Sleeve</a></li>
-													<li><a href="shop-list-box.html">Long Sleeve</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">weaters <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="product-details.html">Sleeveless</a></li>
-													<li><a href="product-details-sticky.html">Stripes</a></li>
-													<li><a href="product-details-gallery.html">Sweaters</a></li>
-													<li><a href="product-details-fixed-img.html">hoodies</a></li>
-													<li><a href="product-details-fixed-img.html">Crochet</a></li>
-													<li><a href="product-details-fixed-img.html">weaters</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="cr-dropdown"><a href="#">bussiness & money<i class="none-lg fa fa-angle-down"></i><i class="none-sm fa fa-angle-right"></i></a>
-										<div class="left-menu">
-											<span>
-												<a href="#" class="title">Rings</a>
-												<a href="#">Coats & Jackets</a>
-												<a href="#">Blazers</a>
-												<a href="#">Jackets</a>
-												<a href="#">Raincoats</a>
-												<a href="#">Trousers</a>
-											</span>
-											<span>
-												<a href="#" class="title">Trousers</a>
-												<a href="#">Joggers</a>
-												<a href="#">Casual</a>
-												<a href="#">Chinos</a>
-												<a href="#">Tailored</a>
-												<a href="#">Jeans</a>
-											</span>
-										</div>
-										<ul>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Jackets <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-grid-2-col.html">Tops & Tees</a></li>
-													<li><a href="shop-grid-3-col.html">Polo Short Sleeve</a></li>
-													<li><a href="shop.html">Graphic T-Shirts</a></li>
-													<li><a href="shop-grid-6-col.html">Jackets & Coats</a></li>
-													<li><a href="shop-grid-box.html">Fashion Jackets</a></li>
-												</ul>
-											</li>
-											<li class="cr-sub-dropdown sub-style"><a href="#">Bottoms <i class="fa fa-angle-down"></i></a>
-												<ul>
-													<li><a href="shop-list.html">Heeled sandals</a></li>
-													<li><a href="shop-list.html">Polo Short Sleeve</a></li>
-													<li><a href="shop-list-2-col.html">Flat sandals</a></li>
-													<li><a href="shop-list-3-col.html">Short Sleeve</a></li>
-													<li><a href="shop-list-box.html">Long Sleeve</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li><a href="#">usedbooks</a></li>
-									<li><a href="#">sales off</a></li>
-									<li><a href="#">Biographies</a></li>
-									<li><a href="#">Cookbooks</a></li>
-									<li><a href="#">Education</a></li>
-									<li><a href="#">Engineering</a></li>
-									<li class="rx-child"><a href="shop.html">Health, Fitness</a></li>
-									<li class="rx-parent">
-										<a class="rx-default">
-											<span class="cat-thumb fa fa-plus"></span>
-											More categories
-										</a>
-										<a class="rx-show">
-											<span class="cat-thumb fa fa-minus"></span>
-											close menu
-										</a>
-									</li>
-								</ul>
-							</nav>
+					
+					<div class="shop-left">
+						<div class="left-title mb-20">
+							<h4>카테고리</h4>
 						</div>
+						<div class="left-menu mb-30">
+							<ul>
+									<li><a href="list.action">전체 보기<span>${totalBook}</span></a></li>
+								<c:forEach var="c" items="${categorys}">
+									<li><a href="book/list.action?searchType=C&searchKey=${c.category_name}">${c.category_name}<span>${c.book_count}</span></a></li>
+								</c:forEach>
+							</ul>
+						</div>
+
 					</div>
-					<!-- category-area-end -->
+					
 					<!-- banner-area-start -->
 					<div class="banner-area mb-30">
 						<div class="banner-img-2">
-							<a href="#"><img src="/goodibooks/resources/img/banner/21.jpg" alt="banner" /></a>
+							<a href="#"><img src="/goodibooks/resources/img/banner/phy1.png" alt="banner" /></a>
 						</div>
 					</div>
-					<!-- banner-area-end -->
-					
-					
-					<!-- most-product-area-start 
-					<div class="most-product-area mb-30">
-						<div class="section-title-2 mb-30">
-							<h3>Trending Products </h3>
-						</div>
-						<div class="product-active-2 owl-carousel">
-							<div class="product-total-2">
-								<div class="single-most-product bd mb-18">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/20.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Endeavor Daytrip</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$30.00</li>
-												<li class="old-price">$33.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="single-most-product bd mb-18">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/21.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Savvy Shoulder Tote</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$30.00</li>
-												<li class="old-price">$35.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="single-most-product">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/22.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Compete Track Tote</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$35.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="product-total-2">
-								<div class="single-most-product bd mb-18">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/23.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Voyage Yoga Bag</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$30.00</li>
-												<li class="old-price">$33.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="single-most-product bd mb-18">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/24.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Impulse Duffle</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$70.00</li>
-												<li class="old-price">$74.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="single-most-product">
-									<div class="most-product-img">
-										<a href="#"><img src="/goodibooks/resources/img/product/22.jpg" alt="book" /></a>
-									</div>
-									<div class="most-product-content">
-										<h4><a href="#">Fusion Backpack</a></h4>
-										<div class="product-price">
-											<ul>
-												<li>$59.00</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					 most-product-area-end -->
-					
-					
-					
-					<!-- recent-post-area-start 
-					<div class="recent-post-area mb-30">
-						<div class="section-title-2 mb-30">
-							<h3>Recent Posts </h3>
-						</div>
-						<div class="post-active-2 owl-carousel">
-							<div class="single-post">
-								<div class="post-img">
-									<a href="#"><img src="/goodibooks/resources/img/post/1.jpg" alt="post" /></a>
-									<div class="blog-date-time">
-										<span class="day-time">06</span>
-										<span class="moth-time">Dec</span>
-									</div>
-								</div>
-								<div class="post-content">
-									<h3><a href="#">The History and the Hype</a></h3>
-									<span class="meta-author"> Demo koparion </span>
-									<p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-								</div>
-							</div>
-							<div class="single-post">
-								<div class="post-img">
-									<a href="#"><img src="/goodibooks/resources/img/post/2.jpg" alt="post" /></a>
-									<div class="blog-date-time">
-										<span class="day-time">07</span>
-										<span class="moth-time">Dec</span>
-									</div>
-								</div>
-								<div class="post-content">
-									<h3><a href="#">Answers to your Questions</a></h3>
-									<span class="meta-author"> Demo koparion </span>
-									<p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-								</div>
-							</div>
-							<div class="single-post">
-								<div class="post-img">
-									<a href="#"><img src="/goodibooks/resources/img/post/3.jpg" alt="post" /></a>
-									<div class="blog-date-time">
-										<span class="day-time">08</span>
-										<span class="moth-time">Dec</span>
-									</div>
-								</div>
-								<div class="post-content">
-									<h3><a href="#">What is Bootstrap?</a></h3>
-									<span class="meta-author"> Demo koparion </span>
-									<p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-								</div>
-							</div>
-							<div class="single-post">
-								<div class="post-img">
-									<a href="#"><img src="/goodibooks/resources/img/post/4.jpg" alt="post" /></a>
-									<div class="blog-date-time">
-										<span class="day-time">09</span>
-										<span class="moth-time">Dec</span>
-									</div>
-								</div>
-								<div class="post-content">
-									<h3><a href="#">Etiam eros massa</a></h3>
-									<span class="meta-author"> Demo koparion </span>
-									<p>Discover five of our favourite dresses from our new collection that are destined to be worn and loved immediately.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- recent-post-area-end -->
-					<!-- block-newsletter-area-start
-					<div class="block-newsletter">
-						<h2>Sign up for send newsletter</h2>
-						<p>You can be always up to date with our company new!</p>
-						<form action="#">
-							<input type="text" placeholder="Enter your email address" />
-						</form>
-						<a href="#">Send Email</a>
-					</div>
-					block-newsletter-area-end -->
 					
 					
 				</div>
@@ -597,12 +167,12 @@
 					<div class="banner-area-5">
 						<div class="single-banner-4 xs-mb">
 							<div class="banner-img-2">
-								<a href="#"><img src="/goodibooks/resources/img/banner/24.jpg" alt="banner" /></a>
+								<a href="#"><img src="/goodibooks/resources/img/banner/banner4.png" alt="banner" /></a>
 							</div>
 						</div>
 						<div class="single-banner-5">
 							<div class="banner-img-2">
-								<a href="#"><img src="/goodibooks/resources/img/banner/23.jpg" alt="banner" /></a>
+								<a href="#"><img src="/goodibooks/resources/img/banner/banner3.png" alt="banner" /></a>
 							</div>
 						</div>
 					</div>

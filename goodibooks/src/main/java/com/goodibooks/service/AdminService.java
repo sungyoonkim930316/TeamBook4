@@ -25,6 +25,21 @@ public interface AdminService {
 
 	void pubRegist(PublisherVO publisher);
 
+	void deletePubNo(int pub_no);
+
+	List<PublisherVO> showPubListWithPaging(HashMap<String, Object> params);
+
+	int findPubCount();
+
+	BookInfoVO showBookInfo(int book_no);
+
+	List<BookImgVO> showBookImg(int book_no);
+
+	void editBook(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs);
+
+	void deleteBookByBookNo(int book_no);
+
+
 	// 이벤트 관련
 	void writeEvent(EventBoardVO event);
 	List<EventBoardVO> showEventList();
