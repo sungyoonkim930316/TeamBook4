@@ -136,16 +136,16 @@
                                     <tr class="shipping">
                                         <th>Shipping</th>
                                         <td>
-                                            <ul id="shipping_method">
+                                        	<ul id="shipping_method">
                                                 <li>
-                                                    <input type="radio">
+                                                    <input type="radio" checked disabled="true">
                                                     <label>
-                                                        Flat Rate:
-                                                        <span class="amount">£7.00</span>
+                                                        	배송비:
+                                                        <span class="amount">3000원</span>
                                                     </label>
                                                 </li>
                                                 <li>
-                                                    <input type="radio">
+                                                    <input type="radio" disabled="true">
                                                     <label> Free Shipping </label>
                                                 </li>
                                             </ul>
@@ -156,7 +156,7 @@
                                         <th>Total</th>
                                         <td>
                                             <strong>
-                                                <span class="amount subtotal"></span>
+                                                <span id="total" class="amount"></span>
                                             </strong>
                                         </td>
                                     </tr>
@@ -185,7 +185,7 @@ $(function() {
 	$().priceTotal();
 
 	$("#checkoutBtn").on("click", function(event) {
-		if (${not empty cartlist}) location.href = "/goodibooks/account/checkout.action";
+		if (${not empty cartlist}) $(this).attr("href", "/goodibooks/account/checkout.action");
 		else alert("장바구니에 담긴 상품이 없습니다.");
 	});
 });
