@@ -12,5 +12,6 @@ public class OrderInfoVO {
 	private int af_price;
 	private String id;
 	private int ship_no;
+	private int book_no;
 	
 }

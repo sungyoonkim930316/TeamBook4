@@ -7,8 +7,8 @@
 <mapper namespace="com.goodibooks.mapper.PurchaseMapper">
 
 	<insert id="orderInfoPlus" parameterType="OrderInfoVO">
-	  	INSERT INTO order_info (no, id, af_price)
-	  	VALUES (order_seq.nextval, #{id}, #{af_price})
+	  	INSERT INTO order_info (no, id, af_price, book_no)
+	  	VALUES (order_seq.nextval, #{id}, #{af_price}, #{book_no})
 	</insert>
 	
 	<update id="deleteOrder" parameterType="int">

@@ -1,6 +1,8 @@
- <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
+<%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html class="no-js" lang="ko">
@@ -67,36 +69,11 @@
 						<label>제목</label> <input class="form-control fixed" id='title'
 							name='title' value='${ askdetail.title }'>
 					</div>
-					<%-- 
-					<div class="form-group">
-						<label>문의유형</label> 
-						<form action="askwrite.action" method="get">
-						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option value="AskCho">선택</option>
-							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
-						</select>
-						</form>
-					</div>
- 					 --%>
- 					 <div class="form-group">
-						<label>문의유형</label> 
-						<form name="form" action="askwrite.action" method="post">
-						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option value="AskCho">선택</option>
-							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
-						</select>
-						</form>
-					</div>
+ 					<%-- <div class="form-group">
+						<label>문의유형</label>
+						<textarea class="form-control fixed" rows="3" id='qnaType'
+							name='qnaType'>${ askdetail.qnaType }</textarea>
+					</div> --%>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control fixed" rows="3" id='content'
@@ -109,18 +86,18 @@
 					</div>
 					
 					<div class="form-group">
-		            	<label>작성일자</label> 
-		            	<input class="form-control fixed" id='regDate' value='${ askdetail.regDate }'>
+		            	<label>작성일자 : </label> 
+		            	<fmt:formatDate value="${ askdetail.regDate }" pattern="yyyy-MM-dd"/>
 		            </div>
 		            
 		            <div class="form-group">
-		            	<label>수정일자</label> 
-		            	<input class="form-control fixed" id='updateDate' value='${ askdetail.updateDate }'>
+		            	<label>수정일자 : </label> 
+		            	<fmt:formatDate value="${ askdetail.updateDate }" pattern="yyyy-MM-dd"/>
 		            </div>
 		            
 		            <div class="form-group">
 		            	<label>답변여부</label> 
-		            	<input class="form-control fixed" id='ans_check' value='${ askdetail.ans_check }'>
+		            	<input class="form-control fixed" id='ans_check' value='${ askdetail.ans_check == true ? "답변완료" : "답변대기" }'>
 		            </div>
 		            <br>
 
@@ -194,7 +171,7 @@
 				}
 				//location.href = 'delete.action?no=${ askdetail.no }';
 				var form =
-					makeForm('delete.action', ${ askdetail.no });
+					makeForm('askdelete.action', ${ askdetail.no });
 				form.submit();
 			});
 			$('#askwriteedit-button').on('click', function(event) {
@@ -247,7 +224,7 @@
 				});
 			})
 
-			function changeItem() {
+			/* function changeItem() {
 				var itemidSelect = document.getElementById("ITEM_ID");
 
 				var itemID = itemidSelect.options[itemidSelect.selectedIndex].value;
@@ -260,7 +237,7 @@
 			$.ajax({
 				"url" : "/goodibooks/board/answerwrite",
 				"method" : "post",
-				"data" : { input1, input2, input3, input4, input5, input6, input7 },
+				"data" : { askcho, accask, sysask, payask, eveask, sugask, etcask },
 				"success" : function(data, status, xhr) {
 					item = res.data;
 				}
@@ -274,7 +251,9 @@
 					selectItems.push(obj);
 					$('#ITEM_ID').append($('<option value="' + p.ITEM_ID + '">' + p.NAME + '</option>')); 
 				});
-			})
+			}) */
+
+			
 		});
 
 	</script>

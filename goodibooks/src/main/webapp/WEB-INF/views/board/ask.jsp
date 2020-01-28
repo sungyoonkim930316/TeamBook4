@@ -2,6 +2,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!doctype html>
 <html class="no-js" lang="ko">
 <head>
@@ -69,8 +71,8 @@
 			<td>${ ask.qnaType }</td>
 			<td><a href="askdetail.action?no=${ask.no}" style="color:black"> ${ ask.title }</a></td>
 			<td>${ ask.id }</td>
-			<td>${ ask.regDate }</td>
-			<td>${ ask.ans_check ? '답변완료' : '답변대기' }</td>
+			<td><fmt:formatDate value="${ ask.regDate }" pattern="yyyy-MM-dd"/></td>
+			<td>${ ask.ans_check == true ? "답변완료" : "답변대기" }</td>
 		</tr>
 		</c:if>
 		</c:forEach>

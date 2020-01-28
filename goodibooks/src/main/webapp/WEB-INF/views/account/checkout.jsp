@@ -78,6 +78,7 @@
                                            <div class="checkout-form-list">
                                            	<div class="form-group">										
                                                <input type="hidden" class="form-control" id="id" name="id" value="${ loginuser.id }">
+                                               <input type="hidden" class="form-control" id="book_no" name="book_no" value="${ param.book_no }">
                                             </div>  
                                            </div>
                                        <div class="col-lg-12 col-md-12 col-12">
