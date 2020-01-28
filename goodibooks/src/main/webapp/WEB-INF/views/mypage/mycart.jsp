@@ -83,7 +83,7 @@
 											<c:when test="${not empty cartlist}">
 											<c:forEach var="c" items="${cartlist}">
 											<tr class="cart-products"  cartNo="${c.cart_no}">
-												<td class="product-thumbnail"><img src="/goodibooks/resources/img/book-img/${c.book.imgs[0].img}.jpg" style="height:120px !important;" /></td>
+												<td class="product-thumbnail"><img src="/goodibooks/resources/file/bookImg/${c.book.imgs[0].img}" style="height:120px !important;" /></td>
 												<td class="product-name"><a href="#">${c.book.name}</a></td>
 												<td class="product-price" ><span class="amount">${c.book.price}</span></td>
 												<td class="product-quantity"><input cartNo="${c.cart_no}" price="${c.book.price} "type="number" value="${c.cart_count}"></td>
@@ -163,7 +163,7 @@
                                 </tbody>
                             </table>
                             <div class="wc-proceed-to-checkout">
-                                <a href="/goodibooks/account/checkout.action">결제하기</a>
+                                <a id="checkoutBtn" href="">결제하기</a>
                             </div>
                         </div>
                     </div>
@@ -183,6 +183,11 @@
 <script>
 $(function() {
 	$().priceTotal();
+
+	$("#checkoutBtn").on("click", function(event) {
+		if (${not empty cartlist}) location.href = "/goodibooks/account/checkout.action";
+		else alert("장바구니에 담긴 상품이 없습니다.");
+	});
 });
 </script>
     </body>

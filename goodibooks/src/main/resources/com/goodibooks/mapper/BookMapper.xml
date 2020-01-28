@@ -56,7 +56,7 @@
 	
 	<!-- 전체 책 개수 -->
 	<select id="bookCount" resultType="int">
-		select count(*) from book_info
+		select count(*) from book_info where deleted = '0'
 	</select>
 	
 	<!-- 카테고리 리스트 -->
@@ -65,7 +65,8 @@
 	</select>
 	<!-- 카테고리별 책 개수 -->
 	<select id="bookCountByCategoryNo" parameterType="int" resultType="int">
-		select count(category_no) from book_info where category_no = #{categoryNo} group by category_no
+		select count(category_no) from book_info 
+		where category_no = #{categoryNo} and deleted = '1' group by category_no
 	</select>
 	
 	<!-- 책 검색 -->
