@@ -36,14 +36,20 @@
 	</update>
 	
 	<sql id="searchKeyContent">
-		<trim suffix="pub_name like '%'||#{searchKey}||'%' AND" />
+		<trim suffix="AND">
+			<choose>
+				<when test="searchKey">
+					pub_name like '%'||#{searchKey}||'%'
+				</when>
+			</choose>
+		</trim>
 	</sql>
 	
 	<select id="selectpubListWidthPaging" parameterType="hashmap" resultType="PublisherVO">
 		select pub_no, pub_name, deleted from
 			(
 				select rownum idx, pub_no, pub_name, deleted from publisher
-				where <include refid="searchKeyContent" /> 
+				where <include refid="searchKeyContent"/> 
 				deleted ='0' and <![CDATA[ rownum < #{ end } ]]> 
 				order by pub_no asc
 			)
@@ -68,7 +74,7 @@
 	</update>
 	
 	<update id="updateBookImg" parameterType="BookImgVO">
-		update book_img set img=#{img} where book_no=#{book_no}
+		insert into book_img (img_no, book_no, img) values (bookimg_seq.nextval, #{book_no}, #{img} )
 	</update>
 	
 	<update id="deleteBook" parameterType="int">
