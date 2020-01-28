@@ -63,7 +63,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public Object searchBook(HashMap<String, Object> params) {
+	public List<BookInfoVO> searchBook(HashMap<String, Object> params) {
 		
 		List<BookInfoVO> books;
 		

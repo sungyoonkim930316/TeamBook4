@@ -19,6 +19,7 @@ import com.goodibooks.service.ReviewService;
 import com.goodibooks.ui.ThePager;
 import com.goodibooks.ui.ThePager2;
 import com.goodibooks.vo.BookInfoVO;
+import com.goodibooks.vo.CategoryVO;
 import com.goodibooks.vo.ReviewVO;
 
 @Controller
@@ -48,9 +49,7 @@ public class BookController {
 		int start = (page_no - 1) * pageSize + 1;
 		int end = start + pageSize;
 		int total = bookService.bookCount();
-		
-		//System.out.println("start : " + start + " / end : " + end);
-		
+
 		HashMap<String, Object> params = new HashMap<>();
 		params.put("start", start);
 		params.put("end", end);
@@ -61,10 +60,13 @@ public class BookController {
 			params.put("searchType", searchType);
 			params.put("searchKey", searchKey);
 			
-			model.addAttribute("books", bookService.searchBook(params));
+			List<BookInfoVO> books =  bookService.searchBook(params);
+			total = books.size();
+			model.addAttribute("books", books);
 		}
 
 		ThePager2 pager = new ThePager2(total, page_no, pageSize, pagerSize, "list.action", req.getQueryString());
+		
 		model.addAttribute("pager", pager);
 		model.addAttribute("categorys", bookService.getCategoryList());
 		model.addAttribute("totalBook", total);

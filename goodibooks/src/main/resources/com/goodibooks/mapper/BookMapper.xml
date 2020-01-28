@@ -79,11 +79,10 @@
 	
 	<!-- topbar 검색 -->
 	<select id="searchBookByKey" parameterType="hashmap" resultType="BookInfoVO">
-		select * from (
-			select * from (
-				<include refid="query"></include> 
-			) where name like '%'||#{searchKey}||'%' or writer like '%'||#{searchKey}||'%' or pub_name like '%'||#{searchKey}||'%'
-		) where <![CDATA[#{start} <= idx and idx < #{end}]]>
+		select rownum, book_no, name, price, intro, writer from (
+			<include refid="query"></include>
+			and name like '%'||#{searchKey}||'%' or writer like '%'||#{searchKey}||'%' or pub_name like '%'||#{searchKey}||'%'
+		) where <![CDATA[#{start} <= rownum and rownum < #{end}]]>
 	</select>
 	
 </mapper>
