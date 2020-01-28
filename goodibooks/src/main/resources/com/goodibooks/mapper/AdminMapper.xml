@@ -89,7 +89,7 @@
 	
 	<select id="selectEventList" resultType="EventBoardVO">
 		select no, title, regdate, begindate, enddate, img, content, deleted, active
-		from event_board 
+		from event_board where deleted = '0'
 	</select>
 	
 	<select id="selectEventByNo" parameterType="int" resultType="EventBoardVO">

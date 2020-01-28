@@ -212,15 +212,15 @@
                                            <tbody>
 										   		<tr class="cart_item">
                                                    <td class="product-name">
-                                                       ${ book.name } <strong class="product-quantity"> × 1</strong>
+                                                       ${ book.name } <strong class="product-quantity"> × ${book_cnt}</strong>
                                                    </td>
                                                    <td class="product-total">
-                                                       <span class="amount">${ book.price } 원</span>
+                                                       <span class="amount">${ book.price * book_cnt} 원</span>
                                                    </td>
                                                </tr>
                                                <tr class="cart-subtotal">
                                                    <th>소계</th>
-                                                   <td><span class="amount">${ book.price } 원</span></td>
+                                                   <td><span class="amount">${ book.price * book_cnt} 원</span></td>
                                                </tr>  
                                            </tbody>
                                            <tfoot>
@@ -230,9 +230,9 @@
                                                </tr>
                                                <tr class="order-total">
                                                    <th>총 주문금액</th>
-                                                   <td><strong><span class="amount">${ book.price + 2500 } 원</span></strong>
+                                                   <td><strong><span class="amount">${ (book.price * book_cnt) + 2500 } 원</span></strong>
                                                    </td>
-                                                   <input type="hidden" name="af_price" value="${ book.price + 2500 }">
+                                                   <input type="hidden" name="af_price" value="${ (book.price * book_cnt) + 2500 }">
                                                </tr>								
                                            </tfoot>
                                        </table>

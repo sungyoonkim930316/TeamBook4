@@ -120,12 +120,15 @@
 											</div>
 										</div>
 										<div class="product-add-form">
-											<form action="#">
+											<form>
 												<div class="quality-button">
-													<input id="bookCount" class="qty" type="number" value="1">
+													<input id="bookCount" class="qty" type="number" value="1" name="book_cnt">
 												</div>
 												<a id="cartBtn" href="">장바구니</a>
-												<a id="buyBtn" href="/goodibooks/purchase/purchase.action?book_no=${book.book_no}">바로 구매하기</a>
+												<!-- <a id="buyBtn" href="/goodibooks/purchase/purchase.action?book_no=${book.book_no}">바로 구매하기</a> -->
+												
+												<a id="buyBtn" href="">바로 구매하기</a>
+												
 												<c:choose>
 													<c:when test="${ loginuser.userType == true }">
 														<a id="editBtn" href="/goodibooks/admin/editBook?book_no=${book.book_no}">수정</a>
@@ -295,6 +298,13 @@
 	
 	<script type="text/javascript">
 	$(function() {
+		$("#buyBtn").on("click", function(event) {
+			if (!confirm("바로 구매하시겠습니까?")) return;
+
+			$(this).attr("href",  "/goodibooks/purchase/purchase.action?book_no=${book.book_no}&book_cnt=" + $("#bookCount").val());
+		});
+
+		
 		$("#cartBtn").on("click", function(event) {
 
 			if (!confirm("장바구니에 넣을까요?")) {
