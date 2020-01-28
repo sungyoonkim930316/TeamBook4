@@ -65,8 +65,8 @@
 					      <label for="inputState">카테고리</label>
 					      <select id="category_no" name="category_no" class="form-control">
 							<c:forEach items="${ categorys }" var="category">
-							<option value="${ category.category_no }">
-							<c:if test="${ book.category_no == category.category_no }">selected</c:if> ${ category.category_name }</option>				        
+							<option value="${ category.category_no }" ${ book.category_no == category.category_no ? "selected" : "" }>
+							${ category.category_name }</option>				        
 					        </c:forEach>
 					      </select>
 					    </div>
@@ -75,8 +75,8 @@
 					      <label for="inputState">출판사</label>
 					      <select id="pub_no" name="pub_no" class="form-control">
 							<c:forEach items="${ publishers }" var="publisher">
-							<option value="${ publisher.pub_no }">
-							<c:if test="${ book.pub_no == publisher.pub_no }">selected</c:if> ${ publisher.pub_name }</option>				        
+							<option value="${ publisher.pub_no }" ${ book.pub_no == publisher.pub_no ? "selected" : "" } >
+							${ publisher.pub_name }</option>				        
 					        </c:forEach>
 					      </select>
 					    </div>

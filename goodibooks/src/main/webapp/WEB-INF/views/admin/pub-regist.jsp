@@ -105,7 +105,7 @@
 							<form class="form-inline" action="toPubRegist" method="get">
 							  <div class="form-group mx-sm-3 mb-2">
 							    <label for="inputPassword2" class="sr-only">Pub_name</label>
-							    <input type="text" name="searchKey" class="form-control" id="inputPassword2" placeholder="검색할 출판사명">
+							    <input type="search" name="searchKey" class="form-control" id="inputPassword2" placeholder="검색할 출판사명">
 							  </div>
 							  <button type="submit" class="btn btn-primary mb-2">검색</button>
 							</form>

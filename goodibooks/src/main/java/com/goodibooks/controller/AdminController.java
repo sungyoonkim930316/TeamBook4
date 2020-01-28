@@ -138,12 +138,17 @@ public class AdminController {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("beginning", beginning);
 		params.put("end", beginning + pageSize);
-
-		if(searchKey == null) model.addAttribute("publishers", adminService.showPubListWithPaging(params));
-		else {
-			params.put("searchKey", searchKey);
-			model.addAttribute("publishers", adminService.showPubListWithPaging(params));
-		}
+		params.put("searchKey", searchKey);
+		
+//		if(searchKey == null) model.addAttribute("publishers", adminService.showPubListWithPaging(params));
+//		else {
+//			params.put("searchKey", searchKey);
+//			model.addAttribute("publishers", adminService.showPubListWithPaging(params));
+//		}
+		
+		List<PublisherVO> publishers = adminService.showPubListWithPaging(params);
+		
+		model.addAttribute("publishers", publishers);
 		
 		ThePager2 pager = new ThePager2(pubCount, pageNo, pageSize, pagerSize, "toPubRegist", req.getQueryString());
 		

@@ -69,7 +69,8 @@ public class MyPageController {
 		List<CartListVO> carts = cartService.showCartListByMemberId(id);
 		session.setAttribute("cartlist", carts);
 		
-		return "/goodibooks/modules/cartlist";
+		//return "/goodibooks/modules/cartlist";
+		return "/goodibooks/modules/topbar";
 	}
 
 	//장바구니에서 삭제
