@@ -20,6 +20,7 @@
 		<typeAlias type="com.goodibooks.vo.OrderInfoVO" alias="OrderInfoVO" />
 		<typeAlias type="com.goodibooks.vo.PublisherVO" alias="PublisherVO"/>
 		<typeAlias type="com.goodibooks.vo.BookImgVO" alias="BookImgVO"/>
+		<typeAlias type="com.goodibooks.vo.EventBoardVO" alias="EventBoardVO"/>
 	</typeAliases>
 	
 	
