@@ -1,6 +1,7 @@
 package com.goodibooks.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.mapper.AdminMapper;
@@ -63,5 +64,59 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.insertPub(publisher);
 		
 	}
+
+	@Override
+	public void deletePubNo(int pub_no) {
+		
+		adminMapper.deletePub(pub_no);
+		
+	}
+
+	@Override
+	public List<PublisherVO> showPubListWithPaging(HashMap<String, Object> params) {
+		
+		return adminMapper.selectpubListWidthPaging(params);
+	}
+
+	@Override
+	public int findPubCount() {
+		
+		return adminMapper.selectPubCount();
+	}
+
+	@Override
+	public BookInfoVO showBookInfo(int book_no) {
+		
+		return adminMapper.selectBookInfoByBookNo(book_no);
+	}
+
+	@Override
+	public List<BookImgVO> showBookImg(int book_no) {
+		
+		return adminMapper.selectBookImgByBookNo(book_no);
+	}
+
+	@Override
+	public void editBook(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs) {
+
+		// 텍스트 정보 입력
+		adminMapper.updateBook(bookinfo);
+
+		// img 정보 입력
+		int book_no = bookinfo.getBook_no();
+
+		for (BookImgVO bookImg : bookImgs) {
+			bookImg.setBook_no(book_no);
+			adminMapper.updateBookImg(bookImg);
+		}
+		
+	}
+
+	@Override
+	public void deleteBookByBookNo(int book_no) {
+
+		adminMapper.deleteBook(book_no);
+	}
+
 
 }

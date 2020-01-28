@@ -1,6 +1,7 @@
 package com.goodibooks.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.vo.BookImgVO;
@@ -22,5 +23,20 @@ public interface AdminService {
 	void bookRegister(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs);
 
 	void pubRegist(PublisherVO publisher);
+
+	void deletePubNo(int pub_no);
+
+	List<PublisherVO> showPubListWithPaging(HashMap<String, Object> params);
+
+	int findPubCount();
+
+	BookInfoVO showBookInfo(int book_no);
+
+	List<BookImgVO> showBookImg(int book_no);
+
+	void editBook(BookInfoVO bookinfo, ArrayList<BookImgVO> bookImgs);
+
+	void deleteBookByBookNo(int book_no);
+
 
 }

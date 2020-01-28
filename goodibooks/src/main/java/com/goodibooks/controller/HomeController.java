@@ -28,6 +28,9 @@ public class HomeController {
 		List<BookInfoVO> books = bookservice.showBookListNoPaging();
 		if (books != null) model.addAttribute("books", books);
 
+		model.addAttribute("categorys", bookservice.getCategoryList());
+		model.addAttribute("totalBook", bookservice.bookCount());
+		
 		return "home";
 	}
 	

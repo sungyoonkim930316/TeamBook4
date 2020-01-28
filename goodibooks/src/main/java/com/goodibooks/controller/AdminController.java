@@ -1,7 +1,9 @@
 package com.goodibooks.controller;
 
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -11,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +23,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goodibooks.service.AdminService;
+import com.goodibooks.ui.ThePager;
+import com.goodibooks.ui.ThePager2;
 import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
@@ -109,33 +115,141 @@ public class AdminController {
 	}
 	
 	// 출판사 등록 페이지로 이동
+//	@GetMapping(path= {"/toPubRegist"})
+//	public String toPubRegist(Model model) {
+//		
+//		List<PublisherVO> publishers = adminService.showPublisher();
+//		model.addAttribute("publishers", publishers);
+//		
+//		return "admin/pub-regist";
+//	}
+	
+	// 출판사 등록 페이지로 이동
 	@GetMapping(path= {"/toPubRegist"})
-	public String toPubRegist(Model model) {
+	public String toPubRegist(@RequestParam(defaultValue = "1")int pageNo, 
+							  @RequestParam(required = false)String searchKey, HttpServletRequest req, Model model) {
 		
-		List<PublisherVO> publishers = adminService.showPublisher();
-		model.addAttribute("publishers", publishers);
+		int pageSize = 10;
+		int pagerSize = 3;
+		int beginning = (pageNo -1) * pageSize +1;
+		int pubCount = adminService.findPubCount();
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("beginning", beginning);
+		params.put("end", beginning + pageSize);
+
+		if(searchKey == null) model.addAttribute("publishers", adminService.showPubListWithPaging(params));
+		else {
+			params.put("searchKey", searchKey);
+			model.addAttribute("publishers", adminService.showPubListWithPaging(params));
+		}
+		
+		ThePager2 pager = new ThePager2(pubCount, pageNo, pageSize, pagerSize, "toPubRegist", req.getQueryString());
+		
+		model.addAttribute("pager", pager);
 		
 		return "admin/pub-regist";
 	}
 
 	// 출판사 등록
 	@PostMapping(path= {"/pubRegist"})
-	@ResponseBody
+//	@ResponseBody
 	public String pubRegist(PublisherVO publisher) {
 		
 		adminService.pubRegist(publisher);
 		
-		return "success";
+		return "redirect:/admin/toPubRegist";
 	}
 	
-	@GetMapping(path= {"/showPub"})
-	public String ShowPub(Model model) {
+	// 출판사 리스트 리로드
+//	@GetMapping(path= {"/showPub"})
+//	public String ShowPub(Model model) {
+//		
+//		List<PublisherVO> publishers = adminService.showPublisher();
+//		model.addAttribute("publishers", publishers);
+//		
+//		return "admin/pub-list";
+//	}
+	
+	// 출판사 삭제
+	@GetMapping(path= {"/deletePub"})
+	public String deletePub(int pub_no, int pageNo, @RequestParam(required = false) String searchKey) {
 		
+		System.out.println(pub_no);
+		
+		adminService.deletePubNo(pub_no);
+		
+		String encodedKey = "";
+		try {
+			encodedKey = URLEncoder.encode(searchKey, "utf-8");
+		} catch(Exception ex) {
+		}
+		
+		return String.format("redirect:toPubRegist?pageNo=%d&searchKey=%s" , pageNo, encodedKey);
+	}
+	
+	// 책 수정 페이지로 이동
+	@GetMapping(path= {"editBook"})
+	public String editBook(int book_no, BookInfoVO bookinfo, BookImgVO bookImg, Model model) {
+		
+		BookInfoVO book = adminService.showBookInfo(book_no);
+		List<BookImgVO> bookImgs = adminService.showBookImg(book_no);
+		List<CategoryVO> categorys = adminService.showCategory();
 		List<PublisherVO> publishers = adminService.showPublisher();
+		
+		model.addAttribute("book", book);
+		model.addAttribute("bookImgs", bookImgs);
+		model.addAttribute("categorys", categorys);
 		model.addAttribute("publishers", publishers);
 		
-		return "admin/pub-list";
+		return "admin/book-edit";
 	}
 	
+	// 책 수정 실행
+	@PostMapping(path= {"editBook"})
+	public String editBook(BookInfoVO bookinfo, @RequestParam("bookImg") MultipartFile[] files, HttpServletRequest req) {
+		
+		ArrayList<BookImgVO> BookImgs = new ArrayList<BookImgVO>();
+		
+		ServletContext application = req.getServletContext();
+		String path = application.getRealPath("/resources/file/bookImg");
+		
+		for (MultipartFile file : files) {
+			
+			BookImgVO bookImg = new BookImgVO();
+			
+			String fileName = file.getOriginalFilename();
+			System.out.println(fileName);
+			
+			try {
+				File f = new File(path, fileName);
+				if (f.exists()) {
+					f.delete();
+				}
+				file.transferTo( f ); //파일 저장
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+			bookImg.setImg(fileName);
+			BookImgs.add(bookImg);
+			
+		}
+		
+		bookinfo.setIntro(bookinfo.getIntro().replace("\r\n","<br>"));
+		bookinfo.setContents(bookinfo.getContents().replace("\r\n",  "<br>"));
+
+		adminService.editBook(bookinfo, BookImgs);
+		
+		return "redirect:/book/list.action";
+	}
+	
+	@GetMapping(path= {"deleteBook"})
+	public String deleteBook(int book_no) {
+		
+		adminService.deleteBookByBookNo(book_no);
+		
+		return "redirect:/book/list.action";
+	}
 
 }

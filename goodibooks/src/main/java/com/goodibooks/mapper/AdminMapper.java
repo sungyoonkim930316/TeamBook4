@@ -1,5 +1,6 @@
 package com.goodibooks.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -24,7 +25,21 @@ public interface AdminMapper {
 	void insertBookImg(BookImgVO bookImg);
 
 	void insertPub(PublisherVO publisher);
-	
-	
 
+	void deletePub(int pub_no);
+
+	List<PublisherVO> selectpubListWidthPaging(HashMap<String, Object> params);
+
+	int selectPubCount();
+
+	BookInfoVO selectBookInfoByBookNo(int book_no);
+
+	List<BookImgVO> selectBookImgByBookNo(int book_no);
+
+	void updateBook(BookInfoVO bookinfo);
+
+	void updateBookImg(BookImgVO bookImg);
+
+	void deleteBook(int book_no);
+	
 }
