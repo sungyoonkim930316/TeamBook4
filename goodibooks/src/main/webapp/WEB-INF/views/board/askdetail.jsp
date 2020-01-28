@@ -82,7 +82,7 @@
 						</form>
 					</div>
  					 --%>
- 					 <%-- <div class="form-group">
+ 					 <div class="form-group">
 						<label>문의유형</label> 
 						<form name="form" action="askwrite.action" method="post">
 						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
@@ -95,7 +95,7 @@
 							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
 						</select>
 						</form>
-					</div> --%>
+					</div>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control fixed" rows="3" id='content'
@@ -246,7 +246,7 @@
 				});
 			})
 
-			/* function changeItem() {
+			function changeItem() {
 				var itemidSelect = document.getElementById("ITEM_ID");
 
 				var itemID = itemidSelect.options[itemidSelect.selectedIndex].value;
@@ -265,8 +265,15 @@
 				}
 
 				var selectItems = [];
-				$("#ITEM_ID").append($('<option value="' + "))
-			}) */
+				$("#ITEM_ID").append($('<option value="' + '0' + '">' + 전체 + '</option>'));
+				sitelist = $.map(item, function (p, c) {
+					var obj = {};
+					obj.label = p.NAME;
+					obj.value = p.ITEM_ID;
+					selectItems.push(obj);
+					$('#ITEM_ID').append($('<option value="' + p.ITEM_ID + '">' + p.NAME + '</option>')); 
+				});
+			})
 		});
 
 	</script>
