@@ -141,7 +141,7 @@
                                                     <input type="radio" checked disabled="true">
                                                     <label>
                                                         	배송비:
-                                                        <span class="amount">3000원</span>
+                                                        <span class="amount">2500원</span>
                                                     </label>
                                                 </li>
                                                 <li>
