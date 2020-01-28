@@ -13,7 +13,7 @@ public interface BookService {
 	List<BookInfoVO> showBookList(HashMap<String, Object> params);
 	List<CategoryVO> getCategoryList();
 	int bookCount();
-	Object searchBook(HashMap<String, Object> params);
+	List<BookInfoVO> searchBook(HashMap<String, Object> params);
 	List<BookInfoVO> showBookListNoPaging();
 	
 }
