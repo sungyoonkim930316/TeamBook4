@@ -79,9 +79,7 @@ $(function(){
 					"no" : $(this).attr("no"),
 					"active" : ($(this).text() == "활성화") ? false : true
 				},
-				"success" : function(data, status, xhr) { 
-					$(".container").load("/goodibooks/admin/event-board-list.jsp");
-				},
+				"success" : function(data, status, xhr) { $(".container").load("/goodibooks/admin/event-board-list.jsp"); },
 				"error" : function(xhr, status, err) { alert(err); }
 			});
 		}
