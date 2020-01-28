@@ -74,5 +74,34 @@
 	<update id="deleteBook" parameterType="int">
 		update book_info set deleted ='1' where book_no = #{book_no}
 	</update>
+	
+	<!-- 이벤트 관련 -->
+	<insert id="insertEvent" parameterType="EventBoardVO">
+		insert into event_board (no, id, title, begindate, enddate, img, content) 
+		values (event_seq.nextval, #{id}, #{title}, #{beginDate}, #{endDate}, #{img}, #{content})
+	</insert>
+	
+	<select id="selectEventList" resultType="EventBoardVO">
+		select no, title, regdate, begindate, enddate, img, content, deleted, active
+		from event_board 
+	</select>
+	
+	<select id="selectEventByNo" parameterType="int" resultType="EventBoardVO">
+		select no, title, regdate, begindate, enddate, img, content, deleted, active
+		from event_board where no = #{no}
+	</select>
+	
+	<update id="updateEventByNo" parameterType="EventBoardVO" >
+		update event_board set title = #{title}, begindate = #{beginDate}, enddate = #{endDate},
+		img = #{img} where no = #{no}
+	</update>
+	
+	<update id="updateActiveByNo" parameterType="hashmap">
+		update event_board set active = #{active} where no = #{no}
+	</update>
+	
+	<delete id="deleteEventByNo" parameterType="int">
+		delete event_board where no = #{no}
+	</delete>
 
 </mapper>

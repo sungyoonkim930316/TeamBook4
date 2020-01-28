@@ -22,7 +22,7 @@
 											<div class="single-cart">
 												<div class="cart-img">
 													<a href="/goodibooks/book/detail.action?book_no=${c.book_no}">
-													<img src="/goodibooks/resources/img/book-img/${c.book.imgs[0].img}.jpg" alt="book" />
+													<img src="/goodibooks/resources/file/bookImg/${c.book.imgs[0].img}.jpg" alt="book" />
 													</a>
 												</div>
 												<div class="cart-info">

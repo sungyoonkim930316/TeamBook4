@@ -94,6 +94,7 @@
 												<li><a href="/goodibooks/admin/admin.action">모든회원조회</a></li>
 												<li><a href="/goodibooks/admin/bookRegister.action">책 등록</a></li>
 												<li><a href="/goodibooks/admin/toPubRegist">출판사 관리</a></li>
+												<li><a href="/goodibooks/admin/eventBoard.action">이벤트 배너 관리</a></li>
 											</ul>
 										</div>
 									</li>

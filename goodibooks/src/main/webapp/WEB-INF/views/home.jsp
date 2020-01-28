@@ -42,21 +42,18 @@
 					<!-- slider-area-start -->
 					<div class="slider-area">
 						<div class="slider-active owl-carousel">
-							<div class="single-slider slider-hm4-1 pt-154 pb-154 bg-img" style="background-image:url(resources/img/slider/7.jpg);">
-								<div class="slider-content-4 slider-animated-1 pl-40">
-									<h1>Sale up to 30% off</h1>
-									<h2>Books in Store</h2>
-									<a href="#">Shopping now!</a>
+							<c:forEach var="e" items="${events}">
+								<c:if test="${e.active == true}">
+								<div class="single-slider pt-154 pb-154 bg-img" style="background-image:url(resources/file/eventImg/${e.img});">
+									<div class="slider-content-4 slider-animated-1 pl-40">
+										<h1>이벤트 기간 : ${e.beginDate} ~ ${e.endDate}</h1>
+										<h2>${e.title}</h2>
+										<a href="/goodibooks/admin/eventBoard-detail.action?no=${e.no}">자세히 보기</a>
+									</div>
 								</div>
-							</div>
-							<div class="single-slider pt-154 pb-154 bg-img" style="background-image:url(resources/img/slider/8.jpg);">
-								<div class="slider-content-4 slider-animated-1 pl-40">
-									<h1>Sale up to 30% off</h1>
-									<h2>Books in Order</h2>
-									<a href="#">Shopping now!</a>
-								</div>
-							</div>
-						</div>
+								</c:if>
+							</c:forEach>
+						</div>	
 					</div>
 					<!-- slider-area-end -->
 				</div>

@@ -28,6 +28,7 @@ import com.goodibooks.ui.ThePager2;
 import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
+import com.goodibooks.vo.EventBoardVO;
 import com.goodibooks.vo.MemberVO;
 import com.goodibooks.vo.PublisherVO;
 
@@ -251,5 +252,104 @@ public class AdminController {
 		
 		return "redirect:/book/list.action";
 	}
+	
+	// 이벤트 페이지
+	@GetMapping("/eventBoard.action")
+	public String showEvent(Model model) {
+		model.addAttribute("eventList", adminService.showEventList());
+		
+		return "admin/event-board";
+	}
 
+	// 이벤트 등록
+	@GetMapping("/eventBoard-write.action")
+	public String writeEvent() {
+		return "admin/event-board-write";
+	}
+	
+	// 이벤트 등록
+	@PostMapping(path= {"/eventBoard-write.action"})
+	public String eventRegister(EventBoardVO event, @RequestParam("eventImg") MultipartFile file, HttpServletRequest req) {
+		
+		ServletContext application = req.getServletContext();
+		String path = application.getRealPath("/resources/file/eventImg");
+
+		String fileName = file.getOriginalFilename();
+			
+			try {
+				File f = new File(path, fileName);
+				if (f.exists()) {
+					f.delete();
+				}
+				file.transferTo( f ); //파일 저장
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+		event.setImg(fileName);
+		event.setContent(event.getContent().replace("\r\n", "<br>"));
+		adminService.writeEvent(event);
+		
+		return "redirect:/admin/eventBoard.action";
+	}
+	
+	@GetMapping("/eventBoard-detail.action")
+	public String showEventDetail(int no, Model model) {
+		EventBoardVO event = adminService.showEventByNo(no);
+		if (event == null) return "redirect:/admin/eventBoard.action";
+		
+		model.addAttribute("event", event);
+		return "admin/event-board-detail";
+	}
+	
+	@GetMapping("/eventBoard-update.action")
+	public String eventUpdate(int no, Model model) {
+		model.addAttribute("event", adminService.showEventByNo(no));
+		
+		return "admin/event-board-update";
+	}
+	
+	@PostMapping(path= {"/eventBoard-update.action"})
+	public String eventUpdate(EventBoardVO event, @RequestParam("eventImg") MultipartFile file, HttpServletRequest req) {
+		
+		ServletContext application = req.getServletContext();
+		String path = application.getRealPath("/resources/file/eventImg");
+
+		String fileName = file.getOriginalFilename();
+			
+			try {
+				File f = new File(path, fileName);
+				if (f.exists()) {
+					f.delete();
+				}
+				file.transferTo( f ); //파일 저장
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			
+		event.setImg(fileName);
+		event.setContent(event.getContent().replace("\r\n", "<br>"));
+		adminService.updateEventByNo(event);
+		
+		return "redirect:/admin/eventBoard.action";
+	}
+	
+	@PostMapping("/eventBoard-delete.action")
+	public String eventDelete(int no) {
+		adminService.deleteEventByNo(no);
+		
+		return "redirect:/admin/eventBoard.action";
+	}
+	
+	@PostMapping("/eventActive.action")
+	@ResponseBody
+	public String eventBannerActive(int no, boolean active) {
+		HashMap<String, Object> params = new HashMap<>();
+		params.put("no", no);
+		params.put("active", active);
+		
+		adminService.updateActiveByNo(params);
+		
+		return "success";
+	}
 }

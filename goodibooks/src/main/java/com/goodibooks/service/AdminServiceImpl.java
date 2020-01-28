@@ -8,6 +8,7 @@ import com.goodibooks.mapper.AdminMapper;
 import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
+import com.goodibooks.vo.EventBoardVO;
 import com.goodibooks.vo.MemberVO;
 import com.goodibooks.vo.PublisherVO;
 
@@ -118,5 +119,33 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.deleteBook(book_no);
 	}
 
+	public void writeEvent(EventBoardVO event) {
+		adminMapper.insertEvent(event);
+	}
+
+	@Override
+	public List<EventBoardVO> showEventList() {
+		return adminMapper.selectEventList();
+	}
+
+	@Override
+	public EventBoardVO showEventByNo(int no) {
+		return adminMapper.selectEventByNo(no);
+	}
+
+	@Override
+	public void updateEventByNo(EventBoardVO event) {
+		adminMapper.updateEventByNo(event);
+	}
+
+	@Override
+	public void deleteEventByNo(int no) {
+		adminMapper.deleteEventByNo(no);
+	}
+
+	@Override
+	public void updateActiveByNo(HashMap<String, Object> params) {
+		adminMapper.updateActiveByNo(params);
+	}
 
 }

@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.goodibooks.vo.BookImgVO;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CategoryVO;
+import com.goodibooks.vo.EventBoardVO;
 import com.goodibooks.vo.MemberVO;
 import com.goodibooks.vo.PublisherVO;
 
@@ -25,6 +26,14 @@ public interface AdminMapper {
 	void insertBookImg(BookImgVO bookImg);
 
 	void insertPub(PublisherVO publisher);
+	
+	// 이벤트 관련
+	void insertEvent(EventBoardVO event);
+	List<EventBoardVO> selectEventList();
+	EventBoardVO selectEventByNo(int no);
+	void updateEventByNo(EventBoardVO event);
+	void deleteEventByNo(int no);
+	void updateActiveByNo(HashMap<String, Object> params);
 
 	void deletePub(int pub_no);
 
