@@ -81,7 +81,21 @@
 						</select>
 						</form>
 					</div>
-  --%>
+ 					 --%>
+ 					 <%-- <div class="form-group">
+						<label>문의유형</label> 
+						<form name="form" action="askwrite.action" method="post">
+						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
+							<option value="AskCho">선택</option>
+							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
+							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
+							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
+							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
+							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
+							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
+						</select>
+						</form>
+					</div> --%>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control fixed" rows="3" id='content'
@@ -231,6 +245,28 @@
 
 				});
 			})
+
+			/* function changeItem() {
+				var itemidSelect = document.getElementById("ITEM_ID");
+
+				var itemID = itemidSelect.options[itemidSelect.selectedIndex].value;
+				console.log("itemID : " + itemID);
+
+				var itemName = itemidSelect.options[itemidSelect.selectedIndex].text;
+				console.log("itemName : " + itemName);
+			}
+
+			$.ajax({
+				"url" : "/goodibooks/board/answerwrite",
+				"method" : "post",
+				"data" : { input1, input2, input3, input4, input5, input6, input7 },
+				"success" : function(data, status, xhr) {
+					item = res.data;
+				}
+
+				var selectItems = [];
+				$("#ITEM_ID").append($('<option value="' + "))
+			}) */
 		});
 
 	</script>
