@@ -43,8 +43,8 @@
 				<div class="col-lg-12">
 					<div class="breadcrumbs-menu">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#" class="active">shop list</a></li>
+							<li><a href="/goodibooks/">Home</a></li>
+							<li><a href="#" class="active">책 리스트</a></li>
 						</ul>
 					</div>
 				</div>
@@ -58,11 +58,8 @@
 			<div class="row">
 				<div class="col-lg-3 col-md-12 col-12 order-lg-1 order-2 mt-sm-50 mt-xs-40">
 					<div class="shop-left">
-						<div class="section-title-5 mb-30">
-							<h2>Shopping Options</h2>
-						</div>
 						<div class="left-title mb-20">
-							<h4>Category</h4>
+							<h4>카테고리</h4>
 						</div>
 						<div class="left-menu mb-30">
 							<ul>
@@ -77,7 +74,7 @@
 				</div>
 				<div class="col-lg-9 col-md-12 col-12 order-lg-2 order-1">
 					<div class="category-image mb-30">
-						<a href="#"><img src="/goodibooks/resources/img/banner/32.jpg" alt="banner" /></a>
+						<a href="#"><img src="/goodibooks/resources/img/banner/banner5.png" alt="banner" /></a>
 					</div>
 					<div class="section-title-5 mb-30">
 						<h2>Book</h2>

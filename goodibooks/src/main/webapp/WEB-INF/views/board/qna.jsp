@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Koparion – Book Shop HTML5 Template</title>
+<title>구디북스-자주하는질문</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,8 +35,8 @@
 				<div class="col-lg-12">
 					<div class="breadcrumbs-menu">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>자주 하는 질문</li>
+							<li><a href="/goodibooks/">Home</a></li>
+							<li><a href="#" class="active">자주 하는 질문</a></li>
 						</ul>
 					</div>
 				</div>

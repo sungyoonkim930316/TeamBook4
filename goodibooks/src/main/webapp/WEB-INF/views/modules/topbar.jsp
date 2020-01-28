@@ -38,7 +38,7 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-4 col-12">
 						<div class="logo-area">
-							<a href="/goodibooks/"><img src="/goodibooks/resources/img/logo/3.png" alt="logo" /></a>
+							<a href="/goodibooks/"><img src="/goodibooks/resources/img/logo/logo12.png" alt="logo" /></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-5 col-12">
@@ -117,45 +117,30 @@
 						<div class="mobile-menu">
 							<nav id="mobile-menu-active">
 								<ul id="nav">
-									<li><a href="index.html">Home</a>
+									<li><a href="/goodibooks/">Home</a></li>
+									<li><a href="/goodibooks/book/list.action">카테고리별 보기</a>
 										<ul>
-											<li><a href="index.html">Home-1</a></li>
-											<li><a href="index-2.html">Home-2</a></li>
-											<li><a href="index-3.html">Home-3</a></li>
-											<li><a href="index-4.html">Home-4</a></li>
-											<li><a href="index-5.html">Home-5</a></li>
-											<li><a href="index-6.html">Home-6</a></li>
-											<li><a href="index-7.html">Home-7</a></li>
+											<li><a href="/goodibooks/book/list.action">카테고리</a></li>
 										</ul>
 									</li>
-									<li><a href="shop.html">Enable Cookies</a></li>
-									<li><a href="product-details.html">Pages</a>
+									<li><a href="#">게시판</a>
 										<ul>
-											<li><a href="shop.html">shop</a></li>
-											<li><a href="shop-list.html">shop list view</a></li>
-											<li><a href="product-details.html">product-details</a></li>
-											<li><a href="product-details-affiliate.html">product-affiliate</a></li>
-											<li><a href="blog.html">blog</a></li>
-											<li><a href="blog-details.html">blog-details</a></li>
-											<li><a href="contact.html">contact</a></li>
-											<li><a href="about.html">about</a></li>
-											<li><a href="login.html">login</a></li>
-											<li><a href="register.html">register</a></li>
-											<li><a href="my-account.html">my-account</a></li>
-											<li><a href="cart.html">cart</a></li>
-											<li><a href="compare.html">compare</a></li>
-											<li><a href="checkout.html">checkout</a></li>
-											<li><a href="wishlist.html">wishlist</a></li>
-											<li><a href="404.html">404 Page</a></li>
+											<li><a href="/goodibooks/board/notice.action">공지사항</a></li>
+											<li><a href="/goodibooks/board/qna.action">자주하는질문</a></li>
+											<li><a href="/goodibooks/board/ask.action">1:1 문의</a></li>
 										</ul>
 									</li>
-									<li><a href="contact.html">contact us</a></li>
-									<li><a href="#">blog</a>
+									<c:choose>
+									<c:when test="${ loginuser.userType == true }">
+									<li><a href="#">관리자 페이지</a>
 										<ul>
-											<li><a href="blog.html">Blog</a></li>
-											<li><a href="blog-details.html">blog-details</a></li>
+											<li><a href="/goodibooks/admin/admin.action">모든회원조회</a></li>
+											<li><a href="/goodibooks/admin/bookRegister.action">책 등록</a></li>
+											<li><a href="/goodibooks/admin/toPubRegist">출판사 관리</a></li>
 										</ul>
 									</li>
+									</c:when>
+									</c:choose>
 								</ul>
 							</nav>
 						</div>

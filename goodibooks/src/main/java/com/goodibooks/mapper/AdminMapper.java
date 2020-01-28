@@ -35,4 +35,20 @@ public interface AdminMapper {
 	void deleteEventByNo(int no);
 	void updateActiveByNo(HashMap<String, Object> params);
 
+	void deletePub(int pub_no);
+
+	List<PublisherVO> selectpubListWidthPaging(HashMap<String, Object> params);
+
+	int selectPubCount();
+
+	BookInfoVO selectBookInfoByBookNo(int book_no);
+
+	List<BookImgVO> selectBookImgByBookNo(int book_no);
+
+	void updateBook(BookInfoVO bookinfo);
+
+	void updateBookImg(BookImgVO bookImg);
+
+	void deleteBook(int book_no);
+	
 }

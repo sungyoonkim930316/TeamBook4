@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>구디북스-책등록</title>
+        <title>구디북스-책수정</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,7 +37,7 @@
 						<div class="breadcrumbs-menu">
 						<ul>
 							<li><a href="/goodibooks/">Home</a></li>
-							<li><a href="#" class="active">책 등록</a></li>
+							<li><a href="#" class="active">책 수정</a></li>
 						</ul>
 						</div>
 					</div>
@@ -59,84 +59,62 @@
 					<!-- <div class="billing-fields"> -->
 					
 					<!-- form 변경 -->
-					<form id="register-form" action="/goodibooks/admin/bookRegister" method="post" enctype="multipart/form-data">
-						
-						<!-- <div class="form-group" style="width:360px;">
-					      <label for="inputState">카테고리</label>
-					      <select id="category_no" name="category_no" class="form-control">
-					        <option value="9">경제/경영</option>
-					        <option value="10">과학</option>
-					        <option value="11">만화</option>
-					        <option value="12">소설</option>
-					        <option value="13">수험서/자격증</option>
-					        <option value="14">예술</option>
-					        <option value="15">자기계발</option>
-					        <option value="16">컴퓨터</option>
-					        <option value="17">에세이/시</option>
-					      </select>
-					    </div> -->
-					    
+					<form id="register-form" action="/goodibooks/admin/editBook" method="post" enctype="multipart/form-data">
+						<input type="hidden" name="book_no" value="${ book.book_no }">
 					    <div class="form-group" style="width:360px;">
 					      <label for="inputState">카테고리</label>
 					      <select id="category_no" name="category_no" class="form-control">
 							<c:forEach items="${ categorys }" var="category">
-							<option value="${ category.category_no }">${ category.category_name }</option>				        
+							<option value="${ category.category_no }">
+							<c:if test="${ book.category_no == category.category_no }">selected</c:if> ${ category.category_name }</option>				        
 					        </c:forEach>
 					      </select>
 					    </div>
-					    
-						<!-- <div class="form-group" style="width:360px;">
-					      <label for="inputState">출판사</label>
-					      <select id="pub_no" name="pub_no" class="form-control">
-					        <option value="1">웨일북</option>
-					        <option value="2">샘터사</option>
-					        <option value="3">사이언스북스</option>
-					        <option value="4">열린책들</option>
-					      </select>
-						</div> -->
 						
 						<div class="form-group" style="width:360px;">
 					      <label for="inputState">출판사</label>
 					      <select id="pub_no" name="pub_no" class="form-control">
 							<c:forEach items="${ publishers }" var="publisher">
-							<option value="${ publisher.pub_no }">${ publisher.pub_name }</option>				        
+							<option value="${ publisher.pub_no }">
+							<c:if test="${ book.pub_no == publisher.pub_no }">selected</c:if> ${ publisher.pub_name }</option>				        
 					        </c:forEach>
 					      </select>
 					    </div>
 						
 						 <div class="form-group" style="width:360px;">
 							  <label for="inputAddress">책이름</label>
-							  <input type="text" class="form-control" id="name" name="name">
+							  <input type="text" class="form-control" id="name" name="name" value="${ book.name }">
 						  </div>
 						  <div class="form-group" style="width:360px;">
 							  <label for="inputAddress">가격</label>
-							  <input type="text" class="form-control" id="price" name="price">
+							  <input type="text" class="form-control" id="price" name="price" value="${ book.price }">
 						  </div>
 						  <div class="form-group" style="width:360px;">
 						    <label for="inputAddress">지은이</label>
-						    <input type="text" class="form-control" id="writer" name="writer">
+						    <input type="text" class="form-control" id="writer" name="writer" value="${ book.writer }">
 						  </div>
 						  <div class="form-group">
 						    <label for="exampleFormControlTextarea1">책소개</label>
-						    <textarea class="form-control" id="intro" name="intro" rows="8"></textarea>
+						    <textarea class="form-control" id="intro" name="intro" rows="8">${ book.intro }</textarea>
 						  </div>
 						  <div class="form-group">
 						    <label for="exampleFormControlTextarea1">목차</label>
-						    <textarea class="form-control" id="contents" name="contents" rows="8"></textarea>
+						    <textarea class="form-control" id="contents" name="contents" rows="8">${ book.contents }</textarea>
 						  </div>
 						  <div class="form-row">
 						    <label for="exampleFormControlFile1">책 이미지1</label>
-						    <input type="file" class="form-control-file" name="bookImg" data-idx="1">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="1" value="${ book.imgs[0].img }">
 							<label for="exampleFormControlFile1">책 이미지2</label>
-						    <input type="file" class="form-control-file" name="bookImg" data-idx="2">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="2" value="${ book.imgs[1].img }">
 						    <label for="exampleFormControlFile1">책 이미지3</label>
-						    <input type="file" class="form-control-file" name="bookImg" data-idx="3">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="3" value="${ book.imgs[2].img }">
 						    <label for="exampleFormControlFile1">책 이미지4</label>
-						    <input type="file" class="form-control-file" name="bookImg" data-idx="4">
+						    <input type="file" class="form-control-file" name="bookImg" data-idx="4" value="${ book.imgs[3].img }">
 						  </div>
-						  
+
 						  <br><br>
-						  <button id="formSubmit" type="submit" class="btn btn-primary">책등록</button>
+						  <button id="formSubmit" type="submit" class="btn btn-primary">책수정</button>&nbsp;&nbsp;
+						  <button type="button" id="delete" class="btn btn-danger" data-book_no="${book.book_no}">삭제</button>
 						</form>
 					
 					</div>
@@ -173,6 +151,14 @@
 				reader.readAsDataURL(this.files[0]); // 파일 읽기
 			}
 			
+		});
+
+		$("#delete").on("click", function(event){
+
+			var book_no = $(this).attr("data-book_no");
+
+			location.href="/goodibooks/admin/deleteBook?book_no=" +book_no;
+
 		});
 
 	});

@@ -34,6 +34,9 @@ public class HomeController {
 		List<BookInfoVO> books = bookservice.showBookListNoPaging();
 		if (books != null) model.addAttribute("books", books);
 
+		model.addAttribute("categorys", bookservice.getCategoryList());
+		model.addAttribute("totalBook", bookservice.bookCount());
+		
 		// 배너 이벤트 리스트
 		List<EventBoardVO> events = adminService.showEventList();
 		if (events != null) model.addAttribute("events", events);

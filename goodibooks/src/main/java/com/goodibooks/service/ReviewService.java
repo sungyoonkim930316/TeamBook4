@@ -1,5 +1,6 @@
 package com.goodibooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.vo.ReviewVO;
@@ -18,6 +19,12 @@ public interface ReviewService {
 	void editReivew(ReviewVO review);
 
 	void deleteReive(int re_no);
+
+	int findReivewCount(int book_no);
+
+	List<ReviewVO> findReivewWithPaging(HashMap<String, Object> params);
+
+	void reviewCount(int book_no);
 
 
 }
