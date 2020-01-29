@@ -63,12 +63,15 @@
 					
 					<!-- form 변경 -->
 					<form id="register-form" action="register.action" method="post">
-						 <div class="form-group" style="width:360px;">
-							  <label for="inputAddress">아이디</label>
-							  <input type="text" class="form-control" id="id" name="id">
-						  </div>
-						  <div class="form-group" style="width:360px;">
-							   <button type="button" class="btn btn-primary mb-2" id="id-check">중복 확인</button><p id="id-check-result" style="display: inline; margin-left: 20px;"></p> 
+						  
+						  <label for="inputAddress">아이디</label>
+						  <div class="form-row align-items-center">
+						    <div class="col-auto" style="width:360px;">
+						      <input type="text" id="id" name="id" class="form-control mb-2">
+						    </div>
+						    <div class="col-auto">
+						      <button type="button" class="btn btn-primary mb-2" id="id-check">중복 확인</button><p id="id-check-result" style="display: inline; margin-left: 20px;"></p>
+						    </div>
 						  </div>
 						    
 						  <div class="form-row">
@@ -94,7 +97,7 @@
 						  </div>
 						  <div class="form-group" style="width:360px;">
 						    <label for="inputAddress2">핸드폰</label>
-						    <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+						    <input type="text" class="form-control" id="phone" name="phone" placeholder="-빼고 입력">
 						  </div>
 						  
 						  <label for="inputAddress">우편번호</label>

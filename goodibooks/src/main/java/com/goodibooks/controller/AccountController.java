@@ -102,8 +102,16 @@ public class AccountController {
 	@PostMapping(path= {"/checkpw.action"})
 	public String checkPw(MemberVO member, RedirectAttributes attr, Model model) {
 		
-		if (memberService.findMemberByIdAndPasswd(member) != null) attr.addFlashAttribute("pwcheck", true);	
-		else attr.addFlashAttribute("pwcheck", false);
+//		if (memberService.findMemberByIdAndPasswd(member) != null) attr.addFlashAttribute("pwcheck", true);	
+//		else attr.addFlashAttribute("pwcheck", false);
+		
+		MemberVO membervo = memberService.findMemberByIdAndPasswd(member);
+		
+		if(membervo != null ) {
+			attr.addFlashAttribute("pwcheck", true);
+		} else {
+			attr.addFlashAttribute("pwcheck", false);
+		}
 		
 		return "redirect:/mypage/mypage.action";
 	}
