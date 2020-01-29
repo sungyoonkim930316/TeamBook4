@@ -1,5 +1,7 @@
 package com.goodibooks.vo;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -15,5 +17,6 @@ public class MemberVO {
 	private String addr1;
 	private String addr2;
 	private String addr3;
+	private Date regDate;
 	
 }
