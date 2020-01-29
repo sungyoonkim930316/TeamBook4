@@ -132,6 +132,7 @@
                                                     <div class="myaccount-table table-responsive text-center">
 			                                        
                                                         <table class="table table-bordered">
+                                                        	
                                                             <thead class="thead-light">
                                                                 <tr>
                                                                     <th>주문번호</th>
@@ -141,8 +142,10 @@
                                                                     <th>결제가격</th>
                                                                 </tr>
                                                             </thead>
-					                                        <c:forEach items="${ infos }" var="info">
                                                             <tbody>
+                                                            <c:choose>
+                                                            <c:when test="${not empty infos}">
+                                                            	<c:forEach items="${ infos }" var="info">
                                                                 <tr>
                                                                     <td>${ info.no }</td>
                                                                     <td><fmt:formatDate value="${info.payDate}" pattern="yyyy-MM-dd"/></td> 
@@ -150,8 +153,13 @@
                                                                     <td>${ info.detail_cnt }</td>
                                                                     <td>${ info.detail_price }</td>
                                                                 </tr>
-                                                            </tbody>
-        		                                            </c:forEach>
+        		                                            	</c:forEach>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                           		<tr><td colspan="5"> 주문 내역이 없습니다. <tr>
+                                                            </c:otherwise>
+                                                            </c:choose>
+					                                        </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -173,8 +181,10 @@
                                                                     <th>작성일</th>
                                                                 </tr>
                                                             </thead>
-                                                            <c:forEach items="${ reviews }" var="review">
                                                             <tbody>
+                                                            <c:choose>
+                                                            <c:when test="${not empty review}">
+                                                            <c:forEach items="${ reviews }" var="review">
                                                                 <tr>
                                                                     <td>${ review.re_no }</td>
                                                                     <td>${ review.name }</td>
@@ -182,8 +192,13 @@
                                                                     <td>${ review.rate }</td>
                                                                     <td><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd"/></td>
                                                                 </tr>
-                                                            </tbody>
                                                             </c:forEach>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            	<tr><td colspan="5"> 작성한 한줄평이 없습니다. </td></tr>
+                                                            </c:otherwise>
+                                                            </c:choose>
+                                                            </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -205,8 +220,11 @@
                                                                     <th>답변여부</th>
                                                                 </tr>
                                                             </thead>
-                                                            <c:forEach items="${ qnas }" var="qna">
                                                             <tbody>
+                                                            <c:choose>
+                                                            <c:when test="${not empty qnas}">
+                                                            <c:forEach items="${ qnas }" var="qna">
+                                                           
                                                                 <tr>
                                                                     <td>${ qna.no }</td>
                                                                     <td>${ qna.qnaType }</td>
@@ -214,8 +232,14 @@
                                                                     <td><fmt:formatDate value="${qna.regDate}" pattern="yyyy-MM-dd"/></td>
                                                                     <td>${ qna.ans_check }</td>
                                                                 </tr>
-                                                            </tbody>
+                                                            
                                                             </c:forEach>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                            	<tr><td colspan="5"> 문의 내역이 없습니다. </td></tr>
+                                                            </c:otherwise>
+                                                            </c:choose>
+                                                            </tbody>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -285,7 +309,7 @@
                                             </div>
                                             <!-- Single Tab Content End -->
 
-                                            <!-- Single Tab Content Start -->
+                                             <!-- Single Tab Content Start -->
                                             <div class="tab-pane fade" id="edit-info" role="tabpanel">
                                                 <div class="myaccount-content">
 											<!-- user-login-area-start -->
@@ -300,62 +324,59 @@
 																		<h2>회원정보 수정</h2>
 																	</div>
 																</div>
-
-															</div>
-															<div class="offset-lg-2 col-lg-8 col-md-12 col-12">
-															
-															<form id="edit-form" action="/goodibooks/account/edit.action" method="post">
-																 <div class="form-group" style="width:360px;">
-																	  <label for="inputAddress">아이디</label>
-																	  <input type="text" class="form-control" id="id" name="id" value="${ loginuser.id }">
-																  </div>
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">이름</label>
-																    <input type="text" class="form-control" id="name" name="name" value="${ loginuser.name }">
-																  </div>
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">패스워드</label>
-																    <input type="password" class="form-control" id="passwd" name="passwd">
-																  </div>
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">패스워드 확인</label>
-																    <input type="password" class="form-control" id="confirm">
-																  </div>
-																    
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress">이메일</label>
-																    <input type="email" class="form-control" id="email" name="email"value="${ loginuser.email }">
-																  </div>
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress2">핸드폰</label>
-																    <input type="text" class="form-control" id="phone" name="phone" value="${ loginuser.phone }">
-																  </div>
-																  
-																  <label for="inputAddress">우편번호</label>
-																  <div class="form-row align-items-center">
-																    <div class="col-auto" style="width:360px;">
-																      <input type="text" id="addr1" name="addr1" class="form-control mb-2" value="${ loginuser.addr1 }">
-																    </div>
-																    <div class="col-auto">
-																      <button type="button" class="btn btn-primary mb-2" id="btn">우편번호 찾기</button>
-																    </div>
-																  </div>
-																  
-																  <div class="form-group" style="width:360px;">
-																    <label for="inputAddress2">도로명 주소</label>
-																    <input type="text" class="form-control" id="addr2" name="addr2" value="${ loginuser.addr2 }">
-																   </div>
-																   <div class="form-group" style="width:360px;">
-																    <label for="inputAddress2">상세 주소</label>
-																    <input type="text" class="form-control" id="addr3" name="addr3" value="${ loginuser.addr3 }">
-																  </div>
-																  <br>
-																  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
-																  &nbsp;
-																  <button type="button" id="delete" class="btn btn-danger">탈퇴하기</button>
-																  </form>
-																  <br>
-																  
+																<div class="offset-lg-2 col-lg-8 col-md-12 col-12">
+																
+																<form id="edit-form" action="/goodibooks/account/edit.action" method="post">
+																	 <div class="form-group" style="width:360px;">
+																		  <label for="inputAddress">아이디</label>
+																		  <input type="text" class="form-control" id="id" name="id" value="${ loginuser.id }">
+																	  </div>
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress">이름</label>
+																	    <input type="text" class="form-control" id="name" name="name" value="${ loginuser.name }">
+																	  </div>
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress">변경할 패스워드</label>
+																	    <input type="password" class="form-control" id="passwd" name="passwd">
+																	  </div>
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress">패스워드 확인</label>
+																	    <input type="password" class="form-control" id="confirm">
+																	  </div>
+																	    
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress">이메일</label>
+																	    <input type="email" class="form-control" id="email" name="email"value="${ loginuser.email }">
+																	  </div>
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress2">핸드폰</label>
+																	    <input type="text" class="form-control" id="phone" name="phone" value="${ loginuser.phone }">
+																	  </div>
+																	  
+																	  <label for="inputAddress">우편번호</label>
+																	  <div class="form-row align-items-center">
+																	    <div class="col-auto" style="width:360px;">
+																	      <input type="text" id="addr1" name="addr1" class="form-control mb-2" value="${ loginuser.addr1 }">
+																	    </div>
+																	    <div class="col-auto">
+																	      <button type="button" class="btn btn-primary mb-2" id="btn">우편번호 찾기</button>
+																	    </div>
+																	  </div>
+																	  
+																	  <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress2">도로명 주소</label>
+																	    <input type="text" class="form-control" id="addr2" name="addr2" value="${ loginuser.addr2 }">
+																	   </div>
+																	   <div class="form-group" style="width:360px;">
+																	    <label for="inputAddress2">상세 주소</label>
+																	    <input type="text" class="form-control" id="addr3" name="addr3" value="${ loginuser.addr3 }">
+																	  </div>
+																	  <br>
+																	  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
+																</form>
+																
+																
+																</div>
 															</div>
 														</div>
 													</div>
@@ -559,8 +580,6 @@
 
 
 		$("#checkpw").on("click" , function(event) {
-
-			
 			// 1. 유효성 검사
 			if($("#passwd").val() == '' ){
 				alert("패스워드를 입력하세요!");

@@ -101,11 +101,13 @@ public class AccountController {
 	
 	@PostMapping(path= {"/checkpw.action"})
 	public String checkPw(MemberVO member, RedirectAttributes attr, Model model) {
+
+		MemberVO member2 = memberService.findMemberByIdAndPasswd(member);
 		
-		if (memberService.findMemberByIdAndPasswd(member) != null) attr.addFlashAttribute("pwcheck", true);	
+		if (member2 != null) attr.addFlashAttribute("pwcheck", true);	
 		else attr.addFlashAttribute("pwcheck", false);
 		
-		return "redirect:/mypage/mypage.action";
+		return "redirect:/mypage/mypage.action?id=" + member.getId();
 	}
 	
 	// 회원정보 수정
