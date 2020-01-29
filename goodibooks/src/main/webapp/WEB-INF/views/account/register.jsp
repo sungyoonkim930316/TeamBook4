@@ -7,6 +7,12 @@
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title>Koparion – Book Shop HTML5 Template</title>
+<style>
+	.error { 
+		color: red; 
+		font-weight: bold; 
+	}
+</style>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,7 +100,7 @@
 						  </div>
 						  <div class="form-group" style="width:360px;">
 						    <label for="inputAddress2">핸드폰</label>
-						    <input type="text" class="form-control" id="phone" name="phone" placeholder="">
+						    <input type="text" class="form-control" id="phone" name="phone" placeholder="하이픈(-) 포함하여 입력">
 						  </div>
 						  
 						  <label for="inputAddress">우편번호</label>
@@ -224,6 +230,7 @@
 		});
 
 		$("#register").on("click" , function(event) {
+			
 			// 1. 유효성 검사
 			if($("#id").val() == '' ){
 				alert("아이디를 입력하세요!");

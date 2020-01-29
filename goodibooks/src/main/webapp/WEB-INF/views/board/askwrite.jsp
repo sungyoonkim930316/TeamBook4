@@ -36,8 +36,8 @@
 				<div class="col-lg-12">
 					<div class="breadcrumbs-menu">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>자주 묻는 질문</li>
+							<li><a href="/goodibooks/">Home</a></li>
+							<li><a href="/goodibooks/board/ask.action">1대1 문의</a></li>
 						</ul>
 					</div>
 				</div>

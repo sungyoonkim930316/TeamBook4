@@ -103,7 +103,7 @@ public class AskController {
 	
 	// 1:1 문의 게시글 수정 데이터 전송
 	@PostMapping(path = { "/askupdate.action" })
-	public String update(QnAVO ask, @RequestParam(value="no") int no) {
+	public String update(QnAVO ask) {
 		
 		askService.updateAsk(ask);
 		

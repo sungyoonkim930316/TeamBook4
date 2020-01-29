@@ -35,8 +35,8 @@
 				<div class="col-lg-12">
 					<div class="breadcrumbs-menu">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>자주 묻는 질문</li>
+							<li><a href="/goodibooks/">Home</a></li>
+							<li><a href="/goodibooks/board/ask.action">1대1 문의</a></li>
 						</ul>
 					</div>
 				</div>
@@ -51,27 +51,14 @@
 	<div class="container">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
+				<span class="m-0 font-weight-bold text-default">수정하기</span>
 			</div>
 			<div class="card-body">
-				<form id="askupdate-form" role="form" action="/goodibooks/board/askupdate.action">
+				<form id="askupdate-form" role="form" action="askupdate.action" method="post">
 					<div class="form-group"> 
 						<input class="form-control" type="hidden" id='no'
 							name='no' value='${ askupdate.no }'>
 					</div>
-					<!-- <div class="form-group">
-						<label>문의유형</label> 
-						<select id="qnaType" name="qnaType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option selected>선택</option>
-							<option>계정문의</option>
-							<option>시스템장애</option>
-							<option>결제, 환불문의</option>
-							<option>이벤트문의</option>
-							<option>건의</option>
-							<option>기타문의</option>
-						</select>
-					</div> -->
-					
 					<div class="form-group">
 						<label>제목</label> <input class="form-control" id='title'
 							name='title' value='${ askupdate.title }'>
@@ -88,8 +75,6 @@
 					</div>
 
 					<button id="askupdate-button" type="button" class="btn btn-light">수정</button>
-					&nbsp
-					<button type="reset" class="btn btn-light">다시쓰기</button>
 					&nbsp
 					<button id="cancel-button" type="button" class="btn btn-light">취소</button>
 					&nbsp
@@ -127,7 +112,7 @@
 			});
 
 			$('#askupdate-button').on('click', function(event) {
-				$('#update-form').submit();
+				$('#askupdate-form').submit();
 			})
 			
 			$('#cancel-button').on('click', function(event) {
