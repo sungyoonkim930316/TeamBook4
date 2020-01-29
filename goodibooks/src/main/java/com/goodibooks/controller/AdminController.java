@@ -337,6 +337,7 @@ public class AdminController {
 			
 		event.setImg(fileName);
 		event.setContent(event.getContent().replace("\r\n", "<br>"));
+		
 		adminService.updateEventByNo(event);
 		
 		return "redirect:/admin/eventBoard.action";
