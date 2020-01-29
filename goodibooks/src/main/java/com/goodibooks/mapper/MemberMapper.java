@@ -1,5 +1,7 @@
 package com.goodibooks.mapper;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.goodibooks.vo.MemberVO;
@@ -18,5 +20,6 @@ public interface MemberMapper {
 	MemberVO selectMemberById(String id);
 
 	void deleteMember(MemberVO member);
+
 
 }

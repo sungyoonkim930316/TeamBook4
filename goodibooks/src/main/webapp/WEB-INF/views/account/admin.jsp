@@ -59,7 +59,6 @@
 				<td>ID</td>
 				<td>이름</td>
 				<td>전화번호</td>
-				<td>주소</td>
 				<td>E-mail</td>
 			</tr>
 			</thead>
@@ -69,7 +68,6 @@
 				<td>${ member.id }</td>
 				<td>${ member.name }</td>
 				<td>${ member.phone }</td>
-				<td>${ member.addr1 }</td>
 				<td>${ member.email }</td>
 			</tr>
 			</c:forEach>

@@ -99,7 +99,7 @@
 	
 	<update id="updateEventByNo" parameterType="EventBoardVO" >
 		update event_board set title = #{title}, begindate = #{beginDate}, enddate = #{endDate},
-		img = #{img} where no = #{no}
+		img = #{img}, content = #{content} where no = #{no}
 	</update>
 	
 	<update id="updateActiveByNo" parameterType="hashmap">

@@ -55,17 +55,19 @@ public class BookController {
 		params.put("end", end);
 		//////////////////////
 		
+		int stotal = 0;
+		
 		if (searchType == null) model.addAttribute("books", bookService.showBookList(params));
 		else {
 			params.put("searchType", searchType);
 			params.put("searchKey", searchKey);
 			
 			List<BookInfoVO> books =  bookService.searchBook(params);
-			total = books.size();
+			stotal = books.size();
 			model.addAttribute("books", books);
 		}
 
-		ThePager2 pager = new ThePager2(total, page_no, pageSize, pagerSize, "list.action", req.getQueryString());
+		ThePager2 pager = new ThePager2((stotal == 0) ? total : stotal, page_no, pageSize, pagerSize, "list.action", req.getQueryString());
 		
 		model.addAttribute("pager", pager);
 		model.addAttribute("categorys", bookService.getCategoryList());

@@ -42,28 +42,31 @@
 				<div class="col-lg-9 col-md-12 col-12">
 					<!-- slider-area-start -->
 					<div class="slider-area">
+						
 						<div class="slider-active owl-carousel">
+						<c:choose>
+						<c:when test="${not empty events}">
 							<c:forEach var="e" items="${events}">
-								<c:choose>
-								<c:when test="${e.active == true}">
+								<c:if test="${e.active}">
 								<div class="single-slider pt-154 pb-154 bg-img" style="background-image:url(resources/file/eventImg/${e.img});">
 									<div class="slider-content-4 slider-animated-1 pl-40">
-										<h1>이벤트 기간 : ${e.beginDate} ~ ${e.endDate}</h1>
-										<h2>${e.title}</h2>
-										<a href="/goodibooks/admin/eventBoard-detail.action?no=${e.no}">자세히 보기</a>
+										<h1></h1>
+										<h2></h2>
 									</div>
 								</div>
-								</c:when>
-								<c:otherwise>
-								<div class="single-slider pt-154 pb-154 bg-img" style="background-color:lightgray">
-								<div class="slider-content-4 slider-animated-1 pl-40">
-									<h1 style="color:black">진행중인 이벤트가 없습니다.</h1>
-								</div>
-								</div>
-								</c:otherwise>
-								</c:choose>
+								</c:if> 
 							</c:forEach>
-						</div>	
+						</c:when>
+						<c:otherwise>
+							<div class="single-slider pt-154 pb-154 bg-img" style="background-color:lightgray">
+							<div class="slider-content-4 slider-animated-1 pl-40">
+								<h1 style="color:black">진행중인 이벤트가 없습니다.</h1>
+							</div>
+							</div>
+						</c:otherwise>
+						</c:choose>
+						</div>
+						
 					</div>
 					<!-- slider-area-end -->
 				</div>

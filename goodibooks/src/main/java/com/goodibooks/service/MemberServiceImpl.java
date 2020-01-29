@@ -1,6 +1,8 @@
 package com.goodibooks.service;
 
 
+import java.util.HashMap;
+
 import com.goodibooks.common.Util;
 import com.goodibooks.mapper.MemberMapper;
 import com.goodibooks.vo.MemberVO;
@@ -25,11 +27,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public MemberVO findMemberByIdAndPasswd(MemberVO member) {
-		
+
 		member.setPasswd(Util.getHashedString(member.getPasswd(), "SHA-256"));
 		
-		return memberMapper.selectMemberByIdAndPasswd(member);
+		MemberVO member2 = memberMapper.selectMemberByIdAndPasswd(member);
 		
+		return member2;
 	}
 
 	@Override
@@ -54,6 +57,5 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberMapper.selectMemberById(id);
 	}
-
 
 }
