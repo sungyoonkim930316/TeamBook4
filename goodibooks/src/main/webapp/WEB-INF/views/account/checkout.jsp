@@ -48,27 +48,12 @@
 
 
 	<!-- breadcrumbs-area-end -->
-	<!-- entry-header-area-start -->
-	<div class="entry-header-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="entry-header-title">
-						<h2>CheckOut</h2>
-						<br><br><br><br>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- entry-header-area-end -->
 	<!-- checkout-area-start -->
 	<div class="checkout-area mb-70">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-				    <form id="loginuser-purchase-form" action="/goodibooks/purchase/loginuserpurchase.action" method="post">
+				    <form id="loginuser-purchase-form" action="/goodibooks/purchase/cartListPurchase.action" method="post">
                            <div class="row">
                                <div class="col-lg-6 col-md-12 col-12">
                                <div class="checkbox-form">						

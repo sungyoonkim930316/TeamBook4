@@ -1,5 +1,7 @@
 package com.goodibooks.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import com.goodibooks.service.BookService;
 import com.goodibooks.service.CartService;
 import com.goodibooks.service.PurchaseService;
 import com.goodibooks.vo.BookInfoVO;
+import com.goodibooks.vo.CartListVO;
+import com.goodibooks.vo.OrderDetailVO;
 import com.goodibooks.vo.OrderInfoVO;
 
 @Controller
@@ -36,33 +40,45 @@ public class PurchaseController {
 	public String toPurchase(int book_no, int book_cnt, Model model) {
 		
 		BookInfoVO book = bookService.showBookDetailByBookNo(book_no);
-		
+
 		model.addAttribute("book", book);
 		model.addAttribute("book_cnt", book_cnt);
-
+		
 		return "purchase/purchase";
 	}
 	
+//	@PostMapping(path = { "/loginuserpurchase.action" })
+//	public String orderInfo(OrderInfoVO order_info, RedirectAttributes attr) {
+//		
+//		System.out.println(order_info.toString());
+//		
+//		int newOrderInfoNo = purchaseService.orderInfoPlus(order_info);
+//		
+//		attr.addFlashAttribute("newOrderInfoNo", newOrderInfoNo);
+//		
+//		return "redirect:/";
+//	}
+
+	// 책 상세페이지에서 구매하기
 	@PostMapping(path = { "/loginuserpurchase.action" })
-	public String orderInfo(OrderInfoVO order_info, RedirectAttributes attr) {
+	public String orderInfo(RedirectAttributes attr, OrderDetailVO detail) {
 		
-		System.out.println(order_info.toString());
+		int orderSuccess = purchaseService.purchaseBook(detail);
 		
-		int newOrderInfoNo = purchaseService.orderInfoPlus(order_info);
-		
-		attr.addFlashAttribute("newOrderInfoNo", newOrderInfoNo);
+		attr.addFlashAttribute("newOrderInfoNo", orderSuccess);
 		
 		return "redirect:/";
 	}
 	
-//	@PostMapping(path = { "/loginuserpurchase.action" })
-//	public String orderDetail(OrderDetailVO order_detail, RedirectAttributes attr) {
-//		
-//		int newOrderDetailNo = purchaseService.orderDetailPlus(order_detail);
-//		
-//		attr.addFlashAttribute("newOrderDetailNo", newOrderDetailNo);
-//		
-//		return "redirect:/";
-//	}
+	// 장바구니에서 구매하기
+	@PostMapping(path= {"cartListPurchase.action"})
+	public String cartListOrder(RedirectAttributes attr, OrderDetailVO detail) {
+		
+		// 장바구니 리스트 -> Order_Deatil 로 카피 and 장바구니 삭제
+		int cartListOrder = purchaseService.purchaseCartList(detail);
+		
+		return "";
+	}
+	
 
 }

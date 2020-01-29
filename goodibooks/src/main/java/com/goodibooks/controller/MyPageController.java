@@ -7,14 +7,22 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.goodibooks.service.AskService;
 import com.goodibooks.service.CartService;
+import com.goodibooks.service.PurchaseService;
+import com.goodibooks.service.ReviewService;
 import com.goodibooks.vo.CartListVO;
+import com.goodibooks.vo.OrderDetailVO;
+import com.goodibooks.vo.OrderInfoVO;
+import com.goodibooks.vo.QnAVO;
+import com.goodibooks.vo.ReviewVO;
 
 @Controller
 @RequestMapping( path= {"/mypage/"})
@@ -24,9 +32,34 @@ public class MyPageController {
 	@Qualifier("cartService")
 	private CartService cartService;
 	
+	@Autowired
+	@Qualifier("purchaseService")
+	private PurchaseService purchaseService;
+	
+	@Autowired
+	@Qualifier("reviewService")
+	private ReviewService reviewService;
+	
+	@Autowired
+	@Qualifier("askService")
+	private AskService askService;
+	
 	// 마이페이지로 이동
 	@GetMapping( path= {"/mypage.action"})
-	public String toMypage() {
+	public String toMypage(HttpSession session, Model model, String id, OrderInfoVO info, OrderDetailVO detail) {
+		
+		// 구매내역 조회
+		List<OrderInfoVO> infos = purchaseService.showCheckoutList(id);
+		
+		// 한줄평 조회
+		List<ReviewVO> reviews = reviewService.showReviewList(id); 
+		
+		// 1대1문의 조회
+		List<QnAVO> qnas = askService.showAskList(id);
+
+		model.addAttribute("infos", infos);
+		model.addAttribute("reviews", reviews);
+		model.addAttribute("qnas", qnas);
 		
 		return "mypage/mypage";
 	}

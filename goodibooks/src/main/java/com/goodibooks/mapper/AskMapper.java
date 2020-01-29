@@ -22,6 +22,8 @@ public interface AskMapper {
 
 	void updateAsk(QnAVO ask);
 
+	List<QnAVO> selectAskList(String id);
+
 //	void updateAsk(QnAVO ask);
 
 }

@@ -40,7 +40,7 @@
 							<ul>
 								<li><a href="/goodibooks/">Home</a></li>
 								<li><a href="/goodibooks/book/list.action">책 리스트</a></li>
-								<li><a href="#" class="active">상세페이지</a></li>
+								<li><a href="#" class="active">${book.name}</a></li>
 							</ul>
 						</div>
 					</div>

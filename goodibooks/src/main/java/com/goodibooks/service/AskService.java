@@ -1,6 +1,5 @@
 package com.goodibooks.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.vo.QnAVO;
@@ -18,5 +17,7 @@ public interface AskService {
 	QnAVO updateAskByNo(int no);
 
 	void updateAsk(QnAVO ask);
+
+	List<QnAVO> showAskList(String id);
 
 }

@@ -53,4 +53,10 @@ public class AskServiceImpl implements AskService {
 		
 	}
 
+	@Override
+	public List<QnAVO> showAskList(String id) {
+		
+		return askMapper.selectAskList(id);
+	}
+
 }

@@ -15,5 +15,5 @@ public class ReviewVO {
 	private boolean deleted;
 	private String id;
 	private int book_no;
-	
+	private String name;
 }
