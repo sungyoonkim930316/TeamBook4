@@ -180,7 +180,7 @@ public class AdminController {
 	
 	// 출판사 삭제
 	@GetMapping(path= {"/deletePub"})
-	public String deletePub(int pub_no, int pageNo, @RequestParam(required = false) String searchKey) {
+	public String deletePub(int pub_no, @RequestParam(defaultValue = "1")int pageNo, @RequestParam(required = false) String searchKey) {
 		
 		System.out.println(pub_no);
 		
