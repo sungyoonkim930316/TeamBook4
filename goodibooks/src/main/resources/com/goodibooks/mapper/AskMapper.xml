@@ -43,7 +43,7 @@
 	  </update>
 	  
 	  <select id="selectAskList" parameterType="String" resultType="QnaVO">
-	  	select * from qna where id = #{ id } and deleted ='0'
+	  	select * from qna where id = #{ id } and deleted ='0' order by regdate desc
 	  </select>
 	   
 </mapper>
