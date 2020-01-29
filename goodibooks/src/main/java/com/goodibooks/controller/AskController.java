@@ -109,7 +109,7 @@ public class AskController {
 		
 		askService.updateAsk(ask);
 		
-		return String.format("redirect:ask.action");
+		return "redirect:ask.action";
 	}
 	
 	@GetMapping(path = { "/askdelete.action" })
