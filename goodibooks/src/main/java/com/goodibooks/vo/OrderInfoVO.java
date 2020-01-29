@@ -11,6 +11,7 @@ public class OrderInfoVO {
 	private Date payDate;
 	private String id;
 	private int ship_no;
+	private int book_no;
 	
 	private int detail_no;
 	private int detail_cnt;

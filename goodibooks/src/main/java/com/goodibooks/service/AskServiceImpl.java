@@ -1,5 +1,6 @@
 package com.goodibooks.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.mapper.AskMapper;
@@ -17,6 +18,7 @@ public class AskServiceImpl implements AskService {
 		
 		askMapper.askWriteBoard(qna);
 		return qna.getNo();
+		
 	}
 
 	@Override

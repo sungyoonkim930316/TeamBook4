@@ -54,26 +54,25 @@
 				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
 			</div>
 			<div class="card-body">
-				<form id="write-form" role="form" action="askwrite.action"
-					method="post">
+				<form id="write-form" role="form" action="askwrite.action" method="post">
 					<div class="form-group">
 						<label>제목</label> <input class="form-control" id='title'
 							name='title'>
 					</div>
 					<div class="form-group">
 						<label>문의유형</label> 
-						<form action="askwrite.action" method="get">
-						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option value="AskCho"selected>선택</option>
-							<option id="AccAsk" value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option id="SysAsk" value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option id="PayAsk" value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option id="EveAsk" value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option id="SugAsk" value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option id="EtcAsk" value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
+						<select id="qnaType" name="qnaType" aria-controls="dataTable" class="form-control" style="width:150px">
+							<option selected>선택</option>
+							<option>계정문의</option>
+							<option>시스템장애</option>
+							<option>결제, 환불문의</option>
+							<option>이벤트문의</option>
+							<option>건의</option>
+							<option>기타문의</option>
 						</select>
-						</form>
 					</div>
+					
+					
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='content'
@@ -138,6 +137,15 @@
 			})
 
 			$('.fixed').attr({'readonly': 'readonly'})
+
+			//var target = document.getElementById("askType");
+			//alert('선텍된 옵션 text값 = ' + target.options[target.selectedIndex].text);
+			//alert('선텍된 옵션 value값 = ' + target.options[target.selectedIndex].value);
+
+			$('#qnaType').change(function(event) {
+				alert(this.value);
+				
+			})
 		})
 	</script>
 

@@ -1,5 +1,6 @@
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="ko">
 
@@ -207,7 +208,7 @@
 									<div class="product-wrapper mb-40">
 										<div class="product-img">
 											<a href="/goodibooks/book/detail.action?book_no=${books[idx].book_no}">
-												<img src="/goodibooks/resources/file/bookImg/${books[idx].imgs[0].img}" alt="book" class="primary" />
+												<img style="height:270px" src="/goodibooks/resources/file/bookImg/${books[idx].imgs[0].img}" alt="book" class="primary" />
 											</a>
 											<div class="product-flag">
 												<ul>
@@ -216,16 +217,17 @@
 											</div>
 										</div>
 										<div class="product-details text-center">
-											<div class="product-rating">
-												<ul>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-													<li><a href="#"><i class="fa fa-star"></i></a></li>
-												</ul>
-											</div>
-											<h4><a href="/goodibooks/book/detail.action?book_no=${books[idx].book_no}">${books[idx].name}</a></h4>
+											<h4><a href="/goodibooks/book/detail.action?book_no=${books[idx].book_no}">
+											<c:choose>
+												<c:when test="${fn:length(books[idx].name) > 11 }">
+													${fn:substring(books[idx].name, 0, 11)}....
+												</c:when>
+												<c:otherwise>
+												${books[idx].name}
+												</c:otherwise>
+											</c:choose>
+											</a></h4>
+											<p>${books[idx].writer}</p>
 											<div class="product-price">
 												<ul>
 													<li>${books[idx].price}</li>

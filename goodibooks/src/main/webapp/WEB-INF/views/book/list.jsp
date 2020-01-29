@@ -101,7 +101,7 @@
 									<div class="product-wrapper mb-40">
 										<div class="product-img">
 											<a href="detail.action?book_no=${b.book_no}">
-												<img src="/goodibooks/resources/img/book-img/${b.imgs[0].img}.jpg" alt="book" class="primary" />
+												<img style="height:280px" src="/goodibooks/resources/file/bookImg/${b.imgs[0].img}" alt="book" class="primary" />
 											</a>
 											<div class="quick-view">
 												<a class="action-view" href="detail.action?book_no=${b.book_no}" title="Quick View">
@@ -115,7 +115,17 @@
 											</div>
 										</div>
 										<div class="product-details text-center">
-											<h4><a href="#">${b.name}</a></h4>
+											<h4><a href="#">
+											<c:choose>
+												<c:when test="${fn:length(b.name) > 11 }">
+													<c:out value="${fn:substring(b.name, 0, 11)}"></c:out>....
+												</c:when>
+												<c:otherwise>
+												${b.name}
+												</c:otherwise>
+											</c:choose>
+											</a></h4>
+											<p>${b.writer}</p>
 											<div class="product-price">
 												<ul>
 													<li>${b.price}</li>
@@ -163,8 +173,8 @@
 												</div>
 												<p>
 												<c:choose>
-												 <c:when test="${fn:length(b.intro) > 100}">
-            										<c:out value="${fn:substring(b.intro,0,100)}"/>....
+												 <c:when test="${fn:length(b.intro) > 200}">
+            										${fn:substring(b.intro, 0 ,200)}....
            										</c:when>
            										<c:otherwise>
            											${b.intro}

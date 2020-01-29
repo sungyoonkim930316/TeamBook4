@@ -1,9 +1,8 @@
 package com.goodibooks.service;
 
-import java.util.List;
-
 import com.goodibooks.mapper.AnswerMapper;
 import com.goodibooks.vo.AnswerVO;
+import com.goodibooks.vo.QnAVO;
 
 import lombok.Setter;
 
@@ -24,6 +23,18 @@ public class AnswerServiceImpl implements AnswerService {
 		
 		return answerMapper.selectAnswerByAskNo(no);
 	}
+
+	@Override
+	public void updateAnsCheck(QnAVO qna) {
+		//return answerMapper.updateAnsCheck();
+		answerMapper.updateAnsCheck();
+	}
+
+//	@Override
+//	public void updateAnsCheck() {
+//		answerMapper.updateAnsCheck();
+//		
+//	}
 
 	
 }

@@ -17,5 +17,10 @@
 		WHERE no = #{ no }
 		ORDER BY ans_no DESC
 	  </select>
+	  
+	  <update id="updateAnsCheck" parameterType="QnAVO">
+		UPDATE qna 
+		SET ans_check = '1' 
+	  </update>
 	   
 </mapper>
