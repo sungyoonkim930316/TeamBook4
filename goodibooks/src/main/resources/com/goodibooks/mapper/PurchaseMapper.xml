@@ -48,7 +48,7 @@
 	</insert> -->
 	
 	<select id="selectCheckoutList" parameterType="String" resultType="OrderInfoVO">
-		select no, paydate, id, d.no2, d.book_no, d.detail_cnt, d.detail_price, b.name  
+		select no, paydate, id, d.no2, d.book_no, d.detail_cnt, d.detail_price, b.name, ship_no
 		from order_info i, order_detail d , book_info b
 		where i.no = d.no2 and d.book_no = b.book_no and id = #{ id }
 		order by no desc

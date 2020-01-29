@@ -140,6 +140,7 @@
                                                                     <th>주문내역</th>
                                                                     <th>수량</th>
                                                                     <th>결제가격</th>
+                                                                    <th>배송상태</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -152,11 +153,13 @@
                                                                     <td>${ info.name }</td>
                                                                     <td>${ info.detail_cnt }</td>
                                                                     <td>${ info.detail_price }</td>
+                                                                   
+                                                                    <td>${ (info.ship_no == 1) ? "배송 준비중" : (info.ship_no == 2) ? "배송중" : "배송 완료" }</td>
                                                                 </tr>
         		                                            	</c:forEach>
                                                             </c:when>
                                                             <c:otherwise>
-                                                           		<tr><td colspan="5"> 주문 내역이 없습니다. <tr>
+                                                           		<tr><td colspan="6"> 주문 내역이 없습니다. <tr>
                                                             </c:otherwise>
                                                             </c:choose>
 					                                        </tbody>
