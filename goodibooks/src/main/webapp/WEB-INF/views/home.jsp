@@ -141,7 +141,7 @@
 						</div>
 						<div class="left-menu mb-30">
 							<ul>
-									<li><a href="list.action">전체 보기<span>${totalBook}</span></a></li>
+									<li><a href="book/list.action">전체 보기<span>${totalBook}</span></a></li>
 								<c:forEach var="c" items="${categorys}">
 									<li><a href="book/list.action?searchType=C&searchKey=${c.category_name}">${c.category_name}<span>${c.book_count}</span></a></li>
 								</c:forEach>
