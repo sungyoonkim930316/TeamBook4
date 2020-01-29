@@ -57,5 +57,11 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewMapper.selectReviewCount(book_no);
 	}
 
+	@Override
+	public List<ReviewVO> showReviewList(String id) {
+		
+		return reviewMapper.selectReviewList(id);
+	}
+
 	
 }

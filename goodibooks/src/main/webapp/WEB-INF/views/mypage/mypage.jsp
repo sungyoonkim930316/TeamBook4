@@ -1,6 +1,7 @@
 <%@page import="com.goodibooks.vo.MemberVO"%>
 <%@ page pageEncoding="utf-8" contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <% MemberVO member = new MemberVO(); %>
 
@@ -76,7 +77,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="entry-header-title">
-							<h2>My-Account</h2>
+							<h2>마이페이지</h2>
 						</div>
 					</div>
 				</div>
@@ -99,17 +100,10 @@
                                                 Dash board</a>
                                             <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                                 주문 내역</a>
-                                            <a href="#reviews" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+                                            <a href="#reviews" data-toggle="tab"><i class="fa fa-cloud-download"></i>
                                                 나의 한줄평</a>
-                                            <a href="#qna" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
+                                            <a href="#qna" data-toggle="tab"><i class="fa fa-credit-card"></i>
                                                 1대1 문의 내역</a>
-                                            <a href="#download" data-toggle="tab"><i class="fa fa-cloud-download"></i>
-                                                Download</a>
-                                            <a href="#payment-method" data-toggle="tab"><i class="fa fa-credit-card"></i>
-                                                Payment
-                                                Method</a>
-                                            <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i>
-                                                address</a>
                                             <a href="#edit-info" data-toggle="tab"><i class="fa fa-user"></i> 회원정보 수정</a>
                                             <!-- <a href="/goodibooks/account/checkpw.action"><i class="fa fa-user"></i> 회원정보 수정</a> -->
                                             <a id="logout"><i class="fa fa-sign-out"></i> Logout</a>
@@ -140,42 +134,28 @@
                                                 <div class="myaccount-content">
                                                     <h5>주문 내역</h5>
                                                     <div class="myaccount-table table-responsive text-center">
+			                                        
                                                         <table class="table table-bordered">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th>Order</th>
-                                                                    <th>Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Total</th>
-                                                                    <th>Action</th>
+                                                                    <th>주문번호</th>
+                                                                    <th>주문일자</th>
+                                                                    <th>주문내역</th>
+                                                                    <th>수량</th>
+                                                                    <th>결제가격</th>
                                                                 </tr>
                                                             </thead>
+					                                        <c:forEach items="${ infos }" var="info">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>1</td>
-                                                                    <td>Aug 22, 2018</td>
-                                                                    <td>Pending</td>
-                                                                    <td>$3000</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>July 22, 2018</td>
-                                                                    <td>Approved</td>
-                                                                    <td>$200</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>June 12, 2017</td>
-                                                                    <td>On Hold</td>
-                                                                    <td>$990</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
+                                                                    <td>${ info.no }</td>
+                                                                    <td><fmt:formatDate value="${info.payDate}" pattern="yyyy-MM-dd"/></td> 
+                                                                    <td>${ info.name }</td>
+                                                                    <td>${ info.detail_cnt }</td>
+                                                                    <td>${ info.detail_price }</td>
                                                                 </tr>
                                                             </tbody>
+        		                                            </c:forEach>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -190,39 +170,24 @@
                                                         <table class="table table-bordered">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th>Order</th>
-                                                                    <th>Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Total</th>
-                                                                    <th>Action</th>
+                                                                    <th>한줄평 번호</th>
+                                                                    <th>책 이름</th>
+                                                                    <th>제목</th>
+                                                                    <th>평점</th>
+                                                                    <th>작성일</th>
                                                                 </tr>
                                                             </thead>
+                                                            <c:forEach items="${ reviews }" var="review">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>1</td>
-                                                                    <td>Aug 22, 2018</td>
-                                                                    <td>Pending</td>
-                                                                    <td>$3000</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>July 22, 2018</td>
-                                                                    <td>Approved</td>
-                                                                    <td>$200</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>June 12, 2017</td>
-                                                                    <td>On Hold</td>
-                                                                    <td>$990</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
+                                                                    <td>${ review.re_no }</td>
+                                                                    <td>${ review.name }</td>
+                                                                    <td>${ review.title }</td>
+                                                                    <td>${ review.rate }</td>
+                                                                    <td><fmt:formatDate value="${review.writeDate}" pattern="yyyy-MM-dd"/></td>
                                                                 </tr>
                                                             </tbody>
+                                                            </c:forEach>
                                                         </table>
                                                     </div>
                                                 </div>
@@ -237,39 +202,24 @@
                                                         <table class="table table-bordered">
                                                             <thead class="thead-light">
                                                                 <tr>
-                                                                    <th>Order</th>
-                                                                    <th>Date</th>
-                                                                    <th>Status</th>
-                                                                    <th>Total</th>
-                                                                    <th>Action</th>
+                                                                    <th>번호</th>
+                                                                    <th>문의유형</th>
+                                                                    <th>제목</th>
+                                                                    <th>작성날짜</th>
+                                                                    <th>답변여부</th>
                                                                 </tr>
                                                             </thead>
+                                                            <c:forEach items="${ qnas }" var="qna">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>1</td>
-                                                                    <td>Aug 22, 2018</td>
-                                                                    <td>Pending</td>
-                                                                    <td>$3000</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>2</td>
-                                                                    <td>July 22, 2018</td>
-                                                                    <td>Approved</td>
-                                                                    <td>$200</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>3</td>
-                                                                    <td>June 12, 2017</td>
-                                                                    <td>On Hold</td>
-                                                                    <td>$990</td>
-                                                                    <td><a href="cart.html" class="btn btn-sqr">View</a>
-                                                                    </td>
+                                                                    <td>${ qna.no }</td>
+                                                                    <td>${ qna.qnaType }</td>
+                                                                    <td>${ qna.title }</td>
+                                                                    <td><fmt:formatDate value="${qna.regDate}" pattern="yyyy-MM-dd"/></td>
+                                                                    <td>${ qna.ans_check }</td>
                                                                 </tr>
                                                             </tbody>
+                                                            </c:forEach>
                                                         </table>
                                                     </div>
                                                 </div>

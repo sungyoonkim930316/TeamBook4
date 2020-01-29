@@ -54,7 +54,7 @@
 				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
 			</div>
 			<div class="card-body">
-				<form id="askupdate-form" role="form" action="askupdate.action"
+				<form id="askupdate-form" role="form" action="/board/askupdate.action"
 					method="post">
 					<div class="form-group"> 
 						<input class="form-control" type="hidden" id='no'

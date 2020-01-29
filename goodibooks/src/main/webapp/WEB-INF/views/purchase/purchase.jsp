@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Koparion – Book Shop HTML5 Template</title>
+<title>구디북스-결제</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,8 +36,9 @@
 				<div class="col-lg-12">
 					<div class="breadcrumbs-menu">
 						<ul>
-							<li><a href="#">Home</a></li>
-							<li>자주 묻는 질문</li>
+							<li><a href="/goodibooks/">Home</a></li>
+							<li><a href="/goodibooks/book/list.action">책 리스트</a></li>
+							<li><a href="#" class="active">구매하기</a></li>
 						</ul>
 					</div>
 				</div>
@@ -47,33 +48,6 @@
 	<!-- breadcrumbs-area-end -->
 
 
-	<!-- breadcrumbs-area-end -->
-	<!-- entry-header-area-start -->
-	<div class="entry-header-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="entry-header-title">
-						<h2>Checkout</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- entry-header-area-end -->
-	<!-- coupon-area-area-start -->
-	<div class="coupon-area mb-70">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="coupon-accordion">
-						<h3>로그인이 필요한 서비스 입니다. <a href="/goodibooks/account/login.action" style="color:orange">로그인 </a>하기</h3>						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- coupon-area-area-end -->
 	<!-- checkout-area-start -->
 	<div class="checkout-area mb-70">
 		<div class="container">
@@ -218,25 +192,28 @@
                                                        <span class="amount">${ book.price * book_cnt} 원</span>
                                                    </td>
                                                </tr>
-                                               <tr class="cart-subtotal">
+                                               <%-- <tr class="cart-subtotal">
                                                    <th>소계</th>
                                                    <td><span class="amount">${ book.price * book_cnt} 원</span></td>
-                                               </tr>  
+                                               </tr>   --%>
                                            </tbody>
                                            <tfoot>
-                                               <tr class="shipping">
+                                               <!-- <tr class="shipping">
                                                    <th>배송비</th>
                                                    <td><span class="shipping">2500원</span></td>
-                                               </tr>
+                                               </tr> -->
                                                <tr class="order-total">
                                                    <th>총 주문금액</th>
-                                                   <td><strong><span class="amount">${ (book.price * book_cnt) + 2500 } 원</span></strong>
+                                                   <%-- <td><strong><span class="amount">${ (book.price * book_cnt) + 2500 } 원</span></strong> --%>
+                                                   <td><strong><span class="amount">${ book.price * book_cnt } 원</span></strong>
                                                    </td>
-                                                   <input type="hidden" name="af_price" value="${ (book.price * book_cnt) + 2500 }">
                                                </tr>								
                                            </tfoot>
                                        </table>
                                    </div>
+                                   <input type="hidden" name="detail_price" value="${ book.price * book_cnt }">
+                                   <input type="hidden" name="detail_cnt" value="${ book_cnt }">
+                                   <input type="hidden" name="book_no" value="${ book.book_no }">
                                    <div class="payment-method">
                                        <div class="payment-accordion">
                                            <div class="collapses-group">

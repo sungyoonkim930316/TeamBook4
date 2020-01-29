@@ -26,5 +26,7 @@ public interface ReviewService {
 
 	void reviewCount(int book_no);
 
+	List<ReviewVO> showReviewList(String id);
+
 
 }

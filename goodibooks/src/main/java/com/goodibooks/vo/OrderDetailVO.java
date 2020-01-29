@@ -10,5 +10,6 @@ public class OrderDetailVO {
 	private int detail_price;
 	private int no2;
 	private int book_no;
+	private String id;
 	
 }

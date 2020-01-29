@@ -18,4 +18,6 @@ public interface AskService {
 
 	void updateAsk(QnAVO ask);
 
+	List<QnAVO> showAskList(String id);
+
 }

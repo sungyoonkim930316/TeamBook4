@@ -49,4 +49,10 @@
 		select count(*) from review where book_no = #{ book_no }
 	</select>
 	
+	<select id="selectReviewList" parameterType="String" resultType="ReviewVO">
+		select r.re_no, r.rate, r.title, r.content, r.writedate, r.id, r.book_no, b.name 
+		from review r , book_info b 
+		where r.book_no = b.book_no and r.id = #{ id } and r.deleted ='0'
+	</select>
+	
 </mapper>

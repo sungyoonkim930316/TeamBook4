@@ -24,4 +24,6 @@ public interface ReviewMapper {
 
 	void selectReviewCount(int book_no);
 
+	List<ReviewVO> selectReviewList(String id);
+
 }
