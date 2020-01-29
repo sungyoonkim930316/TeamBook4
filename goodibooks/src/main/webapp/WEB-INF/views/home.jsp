@@ -90,8 +90,8 @@
 													</a>
 												</div>
 												<div class="single-text-2">
-													<h2>Free shipping item</h2>
-													<p>For all orders over $500</p>
+													<h2>배송 이벤트</h2>
+													<p>모든제품 무료배송</p>
 												</div>
 											</div>
 											<!-- single-banner-2-end -->
@@ -106,24 +106,8 @@
 													</a>
 												</div>
 												<div class="single-text-2">
-													<h2>Money back guarante</h2>
-													<p>100% money back guarante</p>
-												</div>
-											</div>
-											<!-- single-banner-2-end -->
-										</div>
-										<div class="col-12">
-											<!-- single-banner-2-start -->
-											<div class="single-banner-2 mt-16">
-												<div class="single-icon-2">
-													<a href="#">
-														<img class="service-blue-img" src="/goodibooks/resources/img/icon-img/service-3.png" alt="banner" />
-														<img class="service-white-img" src="/goodibooks/resources/img/icon-img/service-3-white.png" alt="banner" />
-													</a>
-												</div>
-												<div class="single-text-2">
-													<h2>Cash on delivery</h2>
-													<p>Lorem ipsum dolor amet</p>
+													<h2>페이백 이벤트</h2>
+													<p>결제금액 10% 페이백</p>
 												</div>
 											</div>
 											<!-- single-banner-2-end -->

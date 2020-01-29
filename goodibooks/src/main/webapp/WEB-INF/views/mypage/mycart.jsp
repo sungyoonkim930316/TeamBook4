@@ -113,14 +113,6 @@
                                 <li><a href="javascript:history.back()">쇼핑 계속하기</a></li>
                             </ul>
                         </div>
-                        <div class="coupon">
-                            <h3>Coupon</h3>
-                            <p>Enter your coupon code if you have one.</p>
-                            <form id="coupon" action="#">
-                                <input type="text" placeholder="Coupon code">
-                                <a>Apply Coupon</a>
-                            </form>
-                        </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="cart_totals">
@@ -138,20 +130,18 @@
                                         <td>
                                         	<ul id="shipping_method">
                                                 <li>
-                                                    <input type="radio" checked disabled="true">
                                                     <label>
                                                         	배송비:
-                                                        <span class="amount">2500원</span>
+                                                        <span class="amount">무료</span>
                                                     </label>
                                                 </li>
                                                 <li>
-                                                    <input type="radio" disabled="true">
                                                     <label> Free Shipping </label>
                                                 </li>
                                             </ul>
-                                            <a href="#">Calculate Shipping</a>
                                         </td>
                                     </tr>
+                                    
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td>
