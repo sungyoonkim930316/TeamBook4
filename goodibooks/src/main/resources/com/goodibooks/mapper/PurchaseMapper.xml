@@ -6,9 +6,9 @@
 
 <mapper namespace="com.goodibooks.mapper.PurchaseMapper">
 
-	<insert id="orderInfoPlus" parameterType="OrderInfoVO">
-	  	INSERT INTO order_info (no, id, af_price, book_no)
-	  	VALUES (order_seq.nextval, #{id}, #{af_price}, #{book_no})
+	<insert id="orderInfoPlus" parameterType="String" >
+	  	INSERT INTO order_info (no, id)
+	  	VALUES (order_seq.nextval, #{id})
 	</insert>
 	
 	<update id="deleteOrder" parameterType="int">
@@ -22,7 +22,8 @@
 	</insert>
 	
 	<insert id="insertOrderDeatil" parameterType="OrderDetailVO">
-		insert into order_detail (detail_no, book_no, no2, detail_cnt, detail_price) values (order_detail_seq.nextval, #{book_no}, order_seq.currval, #{detail_cnt}, #{detail_price} )
+		insert into order_detail (detail_no, detail_cnt, detail_price, no2, book_no) 
+		values (order_detail_seq.nextval, #{detail_cnt}, #{detail_price}, order_seq.currval, #{book_no})
 	</insert>
 	
 	<insert id="insertCartList" parameterType="CartListVO">
@@ -50,6 +51,7 @@
 		select no, paydate, id, d.no2, d.book_no, d.detail_cnt, d.detail_price, b.name  
 		from order_info i, order_detail d , book_info b
 		where i.no = d.no2 and d.book_no = b.book_no and id = #{ id }
+		order by no desc
 	</select>
 	
 	<select id="selectDetailList" parameterType="int" resultType="OrderDetailVO">
