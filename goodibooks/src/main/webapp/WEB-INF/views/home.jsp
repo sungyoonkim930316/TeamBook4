@@ -327,6 +327,7 @@ $(function() {
 	if (newOrderInfoNo && !history.state) {
 		$('#messageModal .modal-body').text("결제가 완료되었습니다.")
 		$('#messageModal').modal('show');
+		$('#topbar-cart').reload("/goodibooks/mypage/cartlist/${loginuser.id}");
 	} else if( purchasefail && !history.state ){
 		$('#messageModal .modal-body').text("결제 실패.")
 		$('#messageModal').modal('show');

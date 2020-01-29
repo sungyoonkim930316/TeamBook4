@@ -188,7 +188,7 @@
 											<div class="single-most-product bd mb-18">
 												<div class="most-product-img">
 													<a href="/goodibooks/book/detail.action?book_no=${product.book_no}">
-													<img src="/goodibooks/resources/img/book-img/${product.imgs[0].img}.jpg" alt="book" /></a>
+													<img src="/goodibooks/resources/file/bookImg/${product.imgs[0].img}" alt="book" /></a>
 												</div>
 												<div class="most-product-content">
 	

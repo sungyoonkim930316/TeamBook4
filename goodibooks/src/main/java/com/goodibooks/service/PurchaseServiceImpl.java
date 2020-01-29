@@ -19,14 +19,16 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private CartMapper cartMapper;
 
 	@Override
-	public int orderInfoPlus(OrderInfoVO order_info) {
-		purchaseMapper.orderInfoPlus(order_info);
+	public void orderInfoPlus(String id) {
+
+		purchaseMapper.orderInfoPlus(id);
+//		
+//		String order_id = order_info.getId();
+//		
+//		cartMapper.deleteCartById(order_id);
+//		
+//		return order_info.getNo();
 		
-		String order_id = order_info.getId();
-		
-		cartMapper.deleteCartById(order_id);
-		
-		return order_info.getNo();
 	}
 
 	@Override
@@ -41,20 +43,26 @@ public class PurchaseServiceImpl implements PurchaseService {
 	}
 
 	@Override
-	public int purchaseCartList(OrderDetailVO detail) {
+	public void purchaseCartList(List<OrderDetailVO> orderList) {
 		
-		String id = detail.getId();
+//		String id = detail.getId();
+//		
+//		// 장바구니 목록 가져오기
+//		List<CartListVO> carts = cartMapper.selectCartByMemberId(id);
+//		
+//		// Order
+//		purchaseMapper.insertOrder(id);
+//		
+//		// Order_detail에 데이터 복사
+//		purchaseMapper.insertCartList(carts);
 		
-		// 장바구니 목록 가져오기
-		List<CartListVO> carts = cartMapper.selectCartByMemberId(id);
+		// DB 에 orderDetailList 저장
+		for (OrderDetailVO order : orderList) {
+			purchaseMapper.insertOrderDeatil(order);	
+		}
 		
-		// Order
-		purchaseMapper.insertOrder(id);
-		
-		// Order_detail에 데이터 복사
-		purchaseMapper.insertCartList(carts);
-		
-		return 0;
+		// 회원 id 로 카트리스트 삭제
+		cartMapper.deleteCartById(orderList.get(0).getId());
 	}
 
 	@Override
@@ -62,7 +70,6 @@ public class PurchaseServiceImpl implements PurchaseService {
 		
 		return purchaseMapper.selectCheckoutList(id);
 	}
-
 
 
 }

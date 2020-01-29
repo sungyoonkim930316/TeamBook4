@@ -1,6 +1,7 @@
 package com.goodibooks.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -17,5 +18,5 @@ public class OrderInfoVO {
 	private int detail_cnt;
 	private int detail_price;
 	private String name;
-	
+
 }
