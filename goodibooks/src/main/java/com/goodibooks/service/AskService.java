@@ -1,6 +1,5 @@
 package com.goodibooks.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.goodibooks.vo.QnAVO;

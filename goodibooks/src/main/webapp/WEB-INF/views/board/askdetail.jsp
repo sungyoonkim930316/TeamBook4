@@ -65,15 +65,15 @@
 						<label>글 번호</label> <input class="form-control fixed" id='no'
 							name='no' value='${ askdetail.no }'>
 					</div>
+ 					<div class="form-group">
+						<label>문의유형</label>
+						<textarea class="form-control fixed" rows="3" id='qnaType'
+							name='qnaType'>${ askdetail.qnaType }</textarea>
+					</div>
 					<div class="form-group">
 						<label>제목</label> <input class="form-control fixed" id='title'
 							name='title' value='${ askdetail.title }'>
 					</div>
- 					<%-- <div class="form-group">
-						<label>문의유형</label>
-						<textarea class="form-control fixed" rows="3" id='qnaType'
-							name='qnaType'>${ askdetail.qnaType }</textarea>
-					</div> --%>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control fixed" rows="3" id='content'
@@ -82,7 +82,8 @@
 
 					<div class="form-group">
 						<label>작성자</label>
-						<input class="form-control fixed" id='id' name='id' value='${ loginuser.id }'>
+						<textarea class="form-control fixed" rows="3" id='id'
+							name='id'>${ askdetail.id }</textarea>
 					</div>
 					
 					<div class="form-group">

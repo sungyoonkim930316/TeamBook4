@@ -54,33 +54,28 @@
 				<span class="m-0 font-weight-bold text-default">글 쓰기</span>
 			</div>
 			<div class="card-body">
-				<form id="askupdate-form" role="form" action="/board/askupdate.action"
-					method="post">
+				<form id="askupdate-form" role="form" action="/goodibooks/board/askupdate.action">
 					<div class="form-group"> 
 						<input class="form-control" type="hidden" id='no'
 							name='no' value='${ askupdate.no }'>
 					</div>
+					<!-- <div class="form-group">
+						<label>문의유형</label> 
+						<select id="qnaType" name="qnaType" aria-controls="dataTable" class="form-control" style="width:150px">
+							<option selected>선택</option>
+							<option>계정문의</option>
+							<option>시스템장애</option>
+							<option>결제, 환불문의</option>
+							<option>이벤트문의</option>
+							<option>건의</option>
+							<option>기타문의</option>
+						</select>
+					</div> -->
 					
 					<div class="form-group">
 						<label>제목</label> <input class="form-control" id='title'
 							name='title' value='${ askupdate.title }'>
 					</div>
-					<%-- 
-					<div class="form-group">
-						<label>문의유형</label> 
-						<form action="askwrite.action" method="get">
-						<select id="askType" name="askType" aria-controls="dataTable" class="form-control" style="width:150px">
-							<option value="AskCho">선택</option>
-							<option value="AccAsk" ${ param.askType == 'AccAsk' ? 'selected' : '' }>계정문의</option>
-							<option value="SysAsk" ${ param.askType == 'SysAsk' ? 'selected' : '' }>시스템장애</option>
-							<option value="PayAsk" ${ param.askType == 'PayAsk' ? 'selected' : '' }>결제, 환불문의</option>
-							<option value="EveAsk" ${ param.askType == 'EveAsk' ? 'selected' : '' }>이벤트문의</option>
-							<option value="SugAsk" ${ param.askType == 'SugAsk' ? 'selected' : '' }>건의</option>
-							<option value="EtcAsk" ${ param.askType == 'EtcAsk' ? 'selected' : '' }>기타문의</option>
-						</select>
-						</form>
-					</div>
-  --%>
 					<div class="form-group">
 						<label>내용</label>
 						<textarea class="form-control" rows="3" id='content'
@@ -132,17 +127,6 @@
 			});
 
 			$('#askupdate-button').on('click', function(event) {
-				if ($('#title').val() == '') {
-					alert('제목을 입력하세요.');
-					$('#title').focus();
-					return;
-				}
-				if ($('#content').val() == '') {
-					alert('내용을 입력하세요');
-					$('#content').focus();
-					return;
-				}
-
 				$('#update-form').submit();
 			})
 			
