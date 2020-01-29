@@ -11,7 +11,7 @@ import com.goodibooks.vo.OrderInfoVO;
 @Mapper
 public interface PurchaseMapper {
 
-	void orderInfoPlus(OrderInfoVO order_info);
+	void orderInfoPlus(String id);
 
 	void insertOrder(String id);
 

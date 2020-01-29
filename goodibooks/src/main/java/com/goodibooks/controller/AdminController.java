@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.goodibooks.service.AdminService;
 import com.goodibooks.ui.ThePager;
@@ -213,7 +214,7 @@ public class AdminController {
 	
 	// 책 수정 실행
 	@PostMapping(path= {"editBook"})
-	public String editBook(BookInfoVO bookinfo, @RequestParam("bookImg") MultipartFile[] files, HttpServletRequest req) {
+	public String editBook(BookInfoVO bookinfo, @RequestParam("bookImg") MultipartFile[] files, HttpServletRequest req, RedirectAttributes attr) {
 		
 		ArrayList<BookImgVO> BookImgs = new ArrayList<BookImgVO>();
 		
@@ -246,6 +247,8 @@ public class AdminController {
 		bookinfo.setContents(bookinfo.getContents().replace("\r\n",  "<br>"));
 
 		adminService.editBook(bookinfo, BookImgs);
+		
+		attr.addFlashAttribute("bookRegist", BookImgs);
 		
 		return "redirect:/book/list.action";
 	}

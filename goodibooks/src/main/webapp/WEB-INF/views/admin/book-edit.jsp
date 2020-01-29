@@ -157,6 +157,18 @@
 
 			var book_no = $(this).attr("data-book_no");
 
+			if (!confirm("책정보를 삭제할까요?")) {
+				preventDefault(); return;
+			}
+
+			if (${empty sessionScope.loginuser}) {
+				alert("로그인이 필요합니다."); preventDefault(); return;
+			} 
+			
+			if (${loginuser.userType == false }) {
+				alert("관리자 권한입니다"); preventDefault(); return;
+			} 
+
 			location.href="/goodibooks/admin/deleteBook?book_no=" +book_no;
 
 		});

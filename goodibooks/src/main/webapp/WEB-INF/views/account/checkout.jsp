@@ -106,71 +106,7 @@
                                            </div>
                                        </div>
                                        <%-- </c:forEach> --%>
-                                       <div class="col-lg-12 col-md-12 col-12">
-                                           <div class="checkout-form-list create-acc">	
-                                               <input type="checkbox" id="cbox">
-                                           </div>
-                                           <div class="checkout-form-list create-account" id="cbox_info" style="display: none;">
-                                               <p>Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                                               <label>Account password  <span class="required">*</span></label>
-                                               <input type="password" placeholder="password">	
-                                           </div>
-                                       </div>								
                                    </div>
-                                   <div class="different-address">
-                                           <div class="ship-different-title">
-                                               <h3>
-                                                   <label>다른 주소로 배송하시겠습니까?</label>
-                                                   <input type="checkbox" id="ship-box">
-                                               </h3>
-                                           </div>
-                                       <div class="row" id="ship-box-info" style="display: none;">
-                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>이름 <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>주소 <span class="required">*</span></label>
-                                                   <input type="text" placeholder="도로명 주소" id="addr02">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                               <div class="checkout-form-list">									
-                                                   <input type="text" placeholder="상세주소">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>우편번호 <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="우편번호" id="addr01">
-                                               </div>
-                                                   <div>
-                                                   <button type="button" class="btn btn-primary mb-2" id="btn">우편번호 찾기</button>
-                                                   </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>Email 주소 <span class="required">*</span></label>										
-                                                   <input type="email" placeholder="">
-                                               </div>
-                                           </div>
-                                           <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                               <div class="checkout-form-list">
-                                                   <label>전화번호  <span class="required">*</span></label>										
-                                                   <input type="text" placeholder="하이픈(-) 제외">
-                                               </div>
-                                           </div>								
-                                       </div>
-                                       <div class="order-notes">
-                                           <div class="checkout-form-list">
-                                               <label>Order Notes</label>
-                                               <textarea placeholder="주문에 대한 메모를 입력하세요." rows="10" cols="30" id="checkout-mess"></textarea>
-                                           </div>									
-                                       </div>
-                                   </div>													
                                </div>
                            </div>
                                <div class="col-lg-6 col-md-12 col-12">
@@ -203,14 +139,6 @@
 										   </c:choose>
                                            </tbody>
                                            <tfoot>
-                                           	   <tr class="cart-subtotal">
-                                                   <th>소계</th>
-                                                   <td><span>${ sub_total } 원</span></td>
-                                               </tr>
-                                               <tr class="shipping">
-                                                   <th>배송비</th>
-                                                   <td><span class="shipping">2500원</span></td>
-                                               </tr>
                                                <tr class="order-total" class="form-control" id="af_price">
                                                    <th>총 주문금액</th>
                                                    <td>${ sub_total + 2500 } 원</td>

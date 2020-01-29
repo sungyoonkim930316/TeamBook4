@@ -222,7 +222,26 @@
 	</div>
 	<!-- shop-main-area-end -->
 	<!-- footer-area-start -->
-	
+	<div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
+		aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalTitle">알림</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body"></div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">확인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- footer-area-start -->
 	<footer>
 	
@@ -234,7 +253,21 @@
 	<!-- all js here -->
 	<!-- jquery latest version -->
 	<jsp:include page="/WEB-INF/views/modules/common-js.jsp" />
-	
+	<script type="text/javascript">
+		$(function() {
+
+			var bookRegist = '${ bookRegist }';
+			if (bookRegist && !history.state) {
+				$('#messageModal .modal-body').text("책정보가 등록되었습니다");
+				$('#messageModal').modal('show');
+				alert("책정보가 등록되었습니다");
+			}
+			history.replaceState({}, null, null);
+
+			var b
+
+		})
+	</script>
 </body>
 
 </html>

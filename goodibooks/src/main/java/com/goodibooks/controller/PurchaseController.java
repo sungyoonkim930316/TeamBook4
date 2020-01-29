@@ -1,6 +1,9 @@
 package com.goodibooks.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +19,7 @@ import com.goodibooks.service.CartService;
 import com.goodibooks.service.PurchaseService;
 import com.goodibooks.vo.BookInfoVO;
 import com.goodibooks.vo.CartListVO;
+import com.goodibooks.vo.MemberVO;
 import com.goodibooks.vo.OrderDetailVO;
 import com.goodibooks.vo.OrderInfoVO;
 
@@ -72,13 +76,56 @@ public class PurchaseController {
 	
 	// 장바구니에서 구매하기
 	@PostMapping(path= {"cartListPurchase.action"})
-	public String cartListOrder(RedirectAttributes attr, OrderDetailVO detail) {
+	public String cartListOrder(RedirectAttributes attr, HttpSession session, String id) {
+		
+		// 회원 id 로 orderinfo 생성
+		purchaseService.orderInfoPlus(id);
 		
 		// 장바구니 리스트 -> Order_Deatil 로 카피 and 장바구니 삭제
-		int cartListOrder = purchaseService.purchaseCartList(detail);
+		// int cartListOrder = purchaseService.purchaseCartList(detail);
+		List<OrderDetailVO> orderList = new ArrayList<>();
+
+		for (CartListVO c : (List<CartListVO>)session.getAttribute("cartlist")) {
+			OrderDetailVO order = new OrderDetailVO();
+			order.setDetail_cnt(c.getCart_count());
+			order.setDetail_price(c.getBook().getPrice() * c.getCart_count());
+			order.setBook_no(c.getBook_no());
+			order.setId(id);
+			
+			orderList.add(order);
+		}
 		
-		return "";
+		// DB 에 orderDetail 저장
+		purchaseService.purchaseCartList(orderList);
+		
+		// 모달띄우기
+		attr.addFlashAttribute("newOrderInfoNo", 1);
+		
+		return "redirect:/";
 	}
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

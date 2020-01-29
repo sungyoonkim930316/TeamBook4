@@ -8,16 +8,12 @@ import com.goodibooks.vo.OrderInfoVO;
 
 public interface PurchaseService {
 
-	int orderInfoPlus(OrderInfoVO order_info);
+	void orderInfoPlus(String id);
 
 	int purchaseBook(OrderDetailVO detail);
 
-	int purchaseCartList(OrderDetailVO detail);
+	void purchaseCartList(List<OrderDetailVO> orderList);
 
 	List<OrderInfoVO> showCheckoutList(String id);
-
-
-
-
 
 }

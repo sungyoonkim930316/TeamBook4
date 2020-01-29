@@ -36,7 +36,7 @@ $(function() {
 		for (var i = 0; i < total.length; i ++) total2 += Number(total[i]);
 
 		$(".subtotal").text(total2 + "원");
-		$("#total").text((total2 + 2500) + "원");
+		$("#total").text(total2 + "원");
 	}
 	
 	// 장바구니 페이지 로드될때 총가격 계산
