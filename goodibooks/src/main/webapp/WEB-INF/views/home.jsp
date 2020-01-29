@@ -50,9 +50,8 @@
 								<c:if test="${e.active}">
 								<div class="single-slider pt-154 pb-154 bg-img" style="background-image:url(resources/file/eventImg/${e.img});">
 									<div class="slider-content-4 slider-animated-1 pl-40">
-										<h1>이벤트 기간 : ${e.beginDate} ~ ${e.endDate}</h1>
-										<h2>${e.title}</h2>
-										<a href="/goodibooks/admin/eventBoard-detail.action?no=${e.no}">자세히 보기</a>
+										<h1></h1>
+										<h2></h2>
 									</div>
 								</div>
 								</c:if> 

@@ -372,10 +372,11 @@
 																	    <input type="text" class="form-control" id="addr3" name="addr3" value="${ loginuser.addr3 }">
 																	  </div>
 																	  <br>
-																	  <button type="button" id="edit" class="btn btn-primary">정보수정</button>
+																	  <button type="button" id="edit" class="btn btn-primary">정보수정</button>&nbsp;&nbsp;
+																	  <button type="button" id="delete" class="btn btn-danger">탈퇴하기</button>
+																	  
 																</form>
-																
-																
+
 																</div>
 															</div>
 														</div>
