@@ -363,12 +363,19 @@
 		$().priceTotal();
 
 		// 모달 창 닫기
-		$("#Reviews").on("click", "#modalCloseBtn", function(event){
+		/* $("#Reviews").on("click", "#modalCloseBtn", function(event){
+			$("#review-modal").modal('hide');
+		}); */
+		$("#modalCloseBtn").on("click", function(event){
 			$("#review-modal").modal('hide');
 		});
 
 		$('#Reviews').on('click', '.review-edit', function(event) {
 			// 수정버튼을 눌렀을때, 해당되는 re_no을 저장시킨다
+			
+			$("#edit-form input[name=title]").val("");
+			$("#edit-form input[name=content]").val("");
+			
 			var re_no = $(this).attr("data-reno");
 
 			$("#edit-form input[name=re_no]").val(re_no);

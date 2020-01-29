@@ -96,8 +96,8 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4">
                                         <div class="myaccount-tab-menu nav" role="tablist">
-                                            <a href="/goodibooks/account/edit.action" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
-                                                Dash board</a>
+                                            <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
+                                                나의 정보</a>
                                             <a href="#orders" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i>
                                                 주문 내역</a>
                                             <a href="#reviews" data-toggle="tab"><i class="fa fa-cloud-download"></i>
@@ -117,14 +117,10 @@
                                             <!-- Single Tab Content Start -->
                                             <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
                                                 <div class="myaccount-content">
-                                                    <h5>Dashboard</h5>
+                                                    <h5>나의 등급</h5>
                                                     <div class="welcome">
-                                                        <p>Hello, <strong>Erik Jhonson</strong> (If Not <strong>Jhonson
-                                                            !</strong><a href="login-register.html" class="logout"> Logout</a>)</p>
+                                                        <p>${ loginuser.name }님은 이번달 구매 ${ infos.size() }건으로 실버회원입니다</p>
                                                     </div>
-                                                    <p class="mb-0">From your account dashboard. you can easily check &
-                                                        view your recent orders, manage your shipping and billing addresses
-                                                        and edit your password and account details.</p>
                                                 </div>
                                             </div>
                                             <!-- Single Tab Content End -->
