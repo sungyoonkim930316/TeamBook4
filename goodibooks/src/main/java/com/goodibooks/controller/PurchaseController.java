@@ -88,7 +88,7 @@ public class PurchaseController {
 		for (CartListVO c : (List<CartListVO>)session.getAttribute("cartlist")) {
 			OrderDetailVO order = new OrderDetailVO();
 			order.setDetail_cnt(c.getCart_count());
-			order.setDetail_price(c.getBook().getPrice());
+			order.setDetail_price(c.getBook().getPrice() * c.getCart_count());
 			order.setBook_no(c.getBook_no());
 			order.setId(id);
 			
