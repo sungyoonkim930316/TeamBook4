@@ -51,18 +51,25 @@
 	
 	
 	<div class="container accordion" id="accordionExample">
-	<h1 style="border:2px]">구디북스 자주 하는 질문</h1><br>
+	<h1 style="border:2px]">자주 하는 질문</h1><br>
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
         <button style="color:black" class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-             [결제]  홈페이지가 이상하게 나옵니다. 결제가 되지 않습니다.
+             [계정]휴면계정은 무엇인가요?
         </button>
       </h2>
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        휴면계정이란 일정기간(만 1년)동안 회원이 구디북스 사이트에 로그인 하지 않았을 경우,<br> 
+        원활하고 안전한 회원 관리를 위해 사이트 이용 및 계정으로 지급된 일체의 캐시 및 포인트 사용이 제한된 계정입니다.<br>
+
+		※ 최근 1년간 구디북스 서비스를 이용한 기록이 없는 경우, 정보통신망법에 의거하여 2015년 8월부터 휴면회원으로 전환처리 됩니다.<br>
+
+		※ 휴면계정으로 전환된 아이디의 경우 직접 구디북스 서점 홈페이지에 로그인을 하여주시면 휴면 계정 해제처리 됩니다.<br>
+
+		※ 2016년 이후 이메일인증을 통해서 가입한 경우, 리디북스 서점 홈페이지 로그인 후 마이페이지>정보변경에서 이메일 인증을 완료하면 휴면 계정 해제 처리 됩니다.<br>
       </div>
     </div>
   </div>

@@ -248,8 +248,6 @@ public class AdminController {
 
 		adminService.editBook(bookinfo, BookImgs);
 		
-		attr.addFlashAttribute("bookRegist", BookImgs);
-		
 		return "redirect:/book/list.action";
 	}
 	

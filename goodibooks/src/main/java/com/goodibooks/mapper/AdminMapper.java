@@ -50,5 +50,7 @@ public interface AdminMapper {
 	void updateBookImg(BookImgVO bookImg);
 
 	void deleteBook(int book_no);
+
+	void deleteBookImg(int book_no);
 	
 }

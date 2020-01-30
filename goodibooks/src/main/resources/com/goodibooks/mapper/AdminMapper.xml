@@ -77,6 +77,10 @@
 		insert into book_img (img_no, book_no, img) values (bookimg_seq.nextval, #{book_no}, #{img} )
 	</update>
 	
+	<delete id="deleteBookImg" parameterType="int">
+		delete from book_img where book_no = #{book_no}
+	</delete>
+	
 	<update id="deleteBook" parameterType="int">
 		update book_info set deleted ='1' where book_no = #{book_no}
 	</update>

@@ -105,6 +105,7 @@ public class AdminServiceImpl implements AdminService {
 
 		// img 정보 입력
 		int book_no = bookinfo.getBook_no();
+		adminMapper.deleteBookImg(book_no);
 
 		for (BookImgVO bookImg : bookImgs) {
 			bookImg.setBook_no(book_no);
